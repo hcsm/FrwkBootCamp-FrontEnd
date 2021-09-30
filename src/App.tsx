@@ -1,9 +1,7 @@
 import React from 'react'
 
-import './App.css'
-
 function App() {
-  return <div className="App">lws</div>
+  return <div className="App">Hello World Frameworker!!</div>
 }
 
 export default App
