@@ -44,14 +44,15 @@
     <!-- <script type="systemjs-importmap" src="/importmap.json"></script> -->
 
     <% if (isLocal) { %>
-    <script type="systemjs-importmap">
-      {
-        "imports": {
-          "@frameworker/root-config": "//localhost:9000/frameworker-root-config.js",
-          "@frameworker/react-single": "//localhost:8500/frameworker-frameworker.js"
-        }
-      }
-    </script>
+    <script
+      type="systemjs-importmap"
+      src="https://mfe.sfo3.digitaloceanspaces.com/importmap.dev.json"
+    ></script>
+    <% } else { %>
+    <script
+      type="systemjs-importmap"
+      src="https://mfe.sfo3.digitaloceanspaces.com/importmap.prod.json"
+    ></script>
     <% } %>
 
     <!--
