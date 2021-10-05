@@ -9,7 +9,7 @@ import styled from 'styled-components'
 import * as yup from 'yup'
 import { Stepper } from '../../components/Stepper'
 import { CadastroType } from '../../types/cadastro'
-import If from './../../components/If'
+import If from '../../components/If'
 import { CadastroBasicoForm } from './CadastroBasicoForm'
 import { FormStacks } from './components/FormStacks'
 
