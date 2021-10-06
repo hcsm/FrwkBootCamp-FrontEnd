@@ -13,14 +13,13 @@ import If from '../../components/If'
 import { CadastroBasicoForm } from './CadastroBasicoForm'
 import { FormStacks } from './components/FormStacks'
 
-
 const Wrapper = styled.section`
   position: relative;
   z-index: 1;
   background: #ffffff;
   max-width: 460px;
-  height: 100vh;
-  margin: 0 auto;
+  min-height: 100vh;
+  margin: 5px auto;
   padding: 25px;
   text-align: center;
   border-radius: 15px;
@@ -49,13 +48,6 @@ const Button = styled.button`
 const Form = styled.form`
   position: relative;
   height: calc(100% - 95px);
-  .container-button{
-    width: 100%;
-    position: absolute;
-    margin-left: auto;
-    margin-right: auto;
-    bottom: 5%;
-  }
 `
 type Props = {}
 export const Cadastro = (props: Props) => {
@@ -63,20 +55,21 @@ export const Cadastro = (props: Props) => {
   const validatedFields = {
     nome: yup.string().required('O campo nome é obrigatorio'),
     inicioEmail: yup.string().required('Email invalido'),
-    cep: yup.string().matches(/[0-9]{5}-[0-9]{3}/,'CEP invalido').required('CEP invalido'),
-    telefone: yup
+    cep: yup
       .string()
-      .min(13, 'Telefone invalido'),
+      .matches(/[0-9]{5}-[0-9]{3}/, 'CEP invalido')
+      .required('CEP invalido'),
+    telefone: yup.string().min(13, 'Telefone invalido'),
   }
   const schema = yup.object(validatedFields).required()
   const { register, handleSubmit, setValue, watch } = useForm<CadastroType>({
     resolver: yupResolver<yup.AnyObjectSchema>(schema),
   })
   const onSubmit = (data: CadastroType) => {
-    if(step === 1 || step === 2){
-      proximo();
-    }else{
-      data.email = data.inicioEmail + data.dominio;
+    if (step === 1 || step === 2) {
+      proximo()
+    } else {
+      data.email = data.inicioEmail + data.dominio
       console.log(data)
     }
   }
@@ -102,65 +95,71 @@ export const Cadastro = (props: Props) => {
   ]
   return (
     <Container>
-      <Wrapper className="">
-        <Row className="justify-content-around">
-          <Stepper active={step === 1 ? true : false} step="1" />
-          <Stepper active={step === 2 ? true : false} step="2" />
-          <Stepper active={step === 3 ? true : false} step="3" />
-        </Row>
-        <Form autoComplete="off" onSubmit={handleSubmit(onSubmit, onError)}>
-          <If test={step === 1}>
-            <CadastroBasicoForm
-              register={register}
-              setFormValue={setValue}
-              watch={watch}
-            />
-          </If>
-          <If test={step === 2}>
-            <>
-              <FormStacks
-                values={watch('especialidade', [])}
-                titulo="Especialidade:"
-                stacks={['Frontend', 'Backend', 'Fullstack', ...stacks]}
+      <Row>
+        <Wrapper className="col-sm-12">
+          <Row className="justify-content-around">
+            <Stepper active={step === 1 ? true : false} step="1" />
+            <Stepper active={step === 2 ? true : false} step="2" />
+            <Stepper active={step === 3 ? true : false} step="3" />
+          </Row>
+          <Form autoComplete="off" onSubmit={handleSubmit(onSubmit, onError)}>
+            <If test={step === 1}>
+              <CadastroBasicoForm
+                register={register}
                 setFormValue={setValue}
-                field="especialidade"
-                max={1}
+                watch={watch}
               />
+            </If>
+            <If test={step === 2}>
+              <>
+                <FormStacks
+                  watchedValue={watch('especialidade', [])}
+                  titulo="Especialidade:"
+                  stacks={['Frontend', 'Backend', 'Fullstack', ...stacks]}
+                  placeholder="Selecione sua especialidade"
+                  setFormValue={setValue}
+                  field="especialidade"
+                />
+                <FormStacks
+                  watchedValue={watch('stacksComExperiencia', [])}
+                  titulo="Stacks com experiência:"
+                  stacks={stacks}
+                  isMulti
+                  placeholder="Selecione"
+                  setFormValue={setValue}
+                  field="stacksComExperiencia"
+                />
+              </>
+            </If>
+            <If test={step === 3}>
               <FormStacks
-                values={watch('stacksComExperiencia', [])}
-                titulo="Stacks com experiência:"
+                isMulti
+                watchedValue={watch('stacksAprender', [])}
+                titulo="Stacks que deseja aprender:"
+                placeholder="Selecione"
                 stacks={stacks}
                 setFormValue={setValue}
-                field="stacksComExperiencia"
+                field="stacksAprender"
               />
-            </>
-          </If>
-          <If test={step === 3}>
-            <FormStacks
-              values={watch('stacksAprender', [])}
-              titulo="Stacks que deseja aprender:"
-              stacks={stacks}
-              setFormValue={setValue}
-              field="stacksAprender"
-            />
-          </If>
-          <Row className="justify-content-center container-button">
-            <Col md={6} hidden={step === 1}>
-              <Button type="button" onClick={() => anterior()}>
-                Anterior
-              </Button>
-            </Col>
+            </If>
+            <Row className="justify-content-center">
+              <Col md={6} hidden={step === 1}>
+                <Button type="button" onClick={() => anterior()}>
+                  Anterior
+                </Button>
+              </Col>
 
-            <Col md={6} hidden={step === 3}>
-              <Button type="submit">Continuar</Button>
-            </Col>
+              <Col md={6} hidden={step === 3}>
+                <Button type="submit">Continuar</Button>
+              </Col>
 
-            <Col md={6} hidden={step !== 3}>
-              <Button type="submit">Finalizar</Button>
-            </Col>
-          </Row>
-        </Form>
-      </Wrapper>
+              <Col md={6} hidden={step !== 3}>
+                <Button type="submit">Finalizar</Button>
+              </Col>
+            </Row>
+          </Form>
+        </Wrapper>
+      </Row>
     </Container>
   )
 }

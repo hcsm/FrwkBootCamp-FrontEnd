@@ -1,77 +1,95 @@
 // @flow
 import React, { useState } from 'react'
-import { FieldValues, UseFormSetValue } from 'react-hook-form'
+import { FieldValues, UseFormRegister, UseFormSetValue } from 'react-hook-form'
+import Select, { MultiValue, StylesConfig } from 'react-select'
 import styled from 'styled-components'
+
 type Props = {
   stacks: string[]
   titulo: string
+  watchedValue: any
   setFormValue: UseFormSetValue<FieldValues>
   field: string
-  values?: string[]
-  max?: number
-}
-interface Istack {
-  selecionada: boolean
+  placeholder: string
+  isMulti?: true
 }
 
-const StackButton = styled.button<Istack>`
-  display: inline-block;
-  font-weight: thin;
-  text-align: center;
-  border-radius: 3px;
-  border: 1pt solid #24006f;
-  color: ${props => (props.selecionada ? '#0af585' : '#24006f')};
-  font-size: .95em;
-  padding: 0.25em 1em;
-  background: ${props => (props.selecionada ? '#24006f' : 'transparent')};
-  margin: 5px;
-`
+interface Istack {
+  label: string
+  value: string
+}
+
 const StacksBox = styled.div`
   border: 2pt solid #0af585;
   padding: 0.5em;
   z-index: 1;
 `
+const colourStyles: StylesConfig<Istack, true> = {
+  control: styles => ({
+    ...styles,
+    border: '2pt solid #0af585',
+    backgroundColor: 'white',
+    padding: '0.5em',
+    caretColor: 'transparent',
+  }),
+  multiValue: (styles, { data }) => {
+    return {
+      ...styles,
+      border: '1pt solid #24006f',
+      borderRadius: '3px',
+      backgroundColor: '#24006f',
+      padding: '0.25em 0.6em',
+    }
+  },
+  singleValue: (styles, { data }) => ({
+    ...styles,
+    border: '1pt solid #24006f',
+    borderRadius: '3px',
+    color: '#0af585',
+    backgroundColor: '#24006f',
+    padding: '0.25em 2em',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+  }),
+  multiValueLabel: (styles, { data }) => ({
+    ...styles,
+    color: '#0af585',
+    textAlign: 'center',
+  }),
+  multiValueRemove: (styles, { data }) => ({
+    ...styles,
+    color: '#0af585',
+    ':hover': {
+      backgroundColor: '#0af58388',
+      color: 'white',
+    },
+  }),
+}
+
 export const FormStacks = ({
   stacks,
   titulo,
   setFormValue,
   field,
-  values,
-  max,
+  placeholder,
+  isMulti,
+  watchedValue,
 }: Props) => {
-  const [selecionadas, setSelecionadas] = useState<string[]>(values || [])
-  const toggle = (stack: string) => {
-    if (selecionadas.includes(stack)) {
-      const newArray = selecionadas.filter(s => s !== stack)
-      setSelecionadas(newArray)
-      setFormValue(field, newArray)
-    } else if(!max || (max && selecionadas.length < max)){
-      const newArray = [...selecionadas, stack]
-      setSelecionadas([...selecionadas, stack])
-      setFormValue(field, newArray)
-    }
-  }
-  const selecionada = (stack: string) => {
-    return selecionadas.includes(stack)
-  }
-  const mostrarStacks = () => {
-    return stacks.map(stack => (
-      <StackButton
-        type="button"
-        key={stack}
-        selecionada={selecionada(stack)}
-        onClick={() => toggle(stack)}
-      >
-        {stack}
-      </StackButton>
-    ))
+  const selected = (values: MultiValue<Istack>) => {
+    setFormValue(field, values)
   }
   return (
     <div className="mb-3">
       <h4 className="mb-2">{titulo}</h4>
-      <StacksBox className="d-flex flex-wrap justify-content-center">
-        {mostrarStacks()}
-      </StacksBox>
+      <Select
+        styles={colourStyles}
+        closeMenuOnSelect={false}
+        isMulti={isMulti}
+        placeholder={placeholder}
+        options={stacks.map(v => ({ value: v, label: v }))}
+        onChange={values => selected(values)}
+        defaultValue={watchedValue}
+      />
     </div>
   )
 }
