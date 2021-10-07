@@ -35,8 +35,7 @@ export const CadastroBasicoForm = ({
         name="inicioEmail"
         error={errors?.inicioEmail}
       />
-      <Input error={errors?.senha} register={register} type="password" label="Senha" name="senha" />
-      <Input error={errors?.confirmarSenha} register={register} type="password" label="Confirme sua senha" name="confirmarSenha" />
+
       <Input error={errors?.nome} register={register} type="text" label="Nome" name="nome" />
       <InputCep
         value={watch('cep', '')}
@@ -71,6 +70,8 @@ export const CadastroBasicoForm = ({
         name="telefone"
         error={errors?.telefone}
       />
+       <Input error={errors?.senha} register={register} type="password" label="Senha" name="senha" />
+      <Input error={errors?.confirmarSenha} register={register} type="password" label="Confirme sua senha" name="confirmarSenha" />
     </>
   )
 }

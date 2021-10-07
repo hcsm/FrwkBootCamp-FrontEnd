@@ -4,12 +4,14 @@ import React, { useState } from 'react'
 // import { setLocale } from 'yup';
 import { Col, Row } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
+import { useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
 import styled from 'styled-components'
 import * as yup from 'yup'
+import { RootState } from '../../app/store'
+import If from '../../components/If'
 import { Stepper } from '../../components/Stepper'
 import { CadastroType } from '../../types/cadastro'
-import If from '../../components/If'
 import { CadastroBasicoForm } from './CadastroBasicoForm'
 import { FormStacks } from './components/FormStacks'
 
@@ -86,17 +88,9 @@ export const Cadastro = (props: Props) => {
   const onError = (errors: object) => {
     Object.values(errors).map(e => (e ? toast.error(e.message) : false))
   }
-  const stacks = [
-    'Java',
-    '.NET',
-    'Angular',
-    'Docker',
-    'JavaScript',
-    'TypeScript',
-    'C#',
-    'Go lang',
-    'Azure',
-  ]
+  const stacks = useSelector((state: RootState) => state.stack.list);
+  const especialidade = useSelector((state: RootState) => state.especialidade.list);
+
   return (
     <Container>
       <Row>
@@ -120,7 +114,7 @@ export const Cadastro = (props: Props) => {
                 <FormStacks
                   watchedValue={watch('especialidade', [])}
                   titulo="Especialidade:"
-                  stacks={['Frontend', 'Backend', 'Fullstack', ...stacks]}
+                  stacks={especialidade}
                   placeholder="Selecione sua especialidade"
                   setFormValue={setValue}
                   field="especialidade"
