@@ -83,7 +83,7 @@ export const FormStacks = ({
       <h4 className="mb-2">{titulo}</h4>
       <Select
         styles={colourStyles}
-        closeMenuOnSelect={false}
+        closeMenuOnSelect={!isMulti}
         isMulti={isMulti}
         placeholder={placeholder}
         options={stacks.map(v => ({ value: v, label: v }))}

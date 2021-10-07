@@ -2,7 +2,7 @@ import React from 'react'
 import { Form } from 'react-bootstrap'
 import { FieldValues, UseFormRegister } from 'react-hook-form'
 
-type Props = { options: string[], register: UseFormRegister<FieldValues> }
+type Props = { options: string[], register: UseFormRegister<FieldValues>, name: string }
 
 
 export function Select(props: Props) {
@@ -11,6 +11,6 @@ export function Select(props: Props) {
   })
 
   return (
-    <Form.Select {...props.register("dominio")} style={{ fontSize: '13px' }}>{options}</Form.Select>
+    <Form.Select {...props.register(props.name)} style={{ fontSize: '13px' }}>{options}</Form.Select>
   )
 }

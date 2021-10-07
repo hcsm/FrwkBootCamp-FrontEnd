@@ -2,7 +2,7 @@
 import axios from 'axios'
 import React from 'react'
 import { FloatingLabel, Form } from 'react-bootstrap'
-import { FieldValues, UseFormRegister, UseFormSetValue } from 'react-hook-form'
+import { FieldError, FieldValues, UseFormRegister, UseFormSetValue } from 'react-hook-form'
 import ReactInputMask from 'react-input-mask'
 import { CepType } from '../types/cadastro'
 
@@ -14,6 +14,7 @@ type Props = {
   register: UseFormRegister<FieldValues>
   setFormValue: UseFormSetValue<FieldValues>
   mask?: string
+  error?: FieldError
 }
 
 export const InputCep = (props: Props) => {
@@ -35,7 +36,7 @@ export const InputCep = (props: Props) => {
         mask={props.mask || ''}
         {...register}
       >
-        {() => <Form.Control type={props.type} {...register} />}
+        {() => <Form.Control className={props.error ? 'is-invalid' : ''} type={props.type} {...register} />}
       </ReactInputMask>
     </FloatingLabel>
   )

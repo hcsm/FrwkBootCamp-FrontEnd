@@ -53,8 +53,12 @@ type Props = {}
 export const Cadastro = (props: Props) => {
   const [step, setStep] = useState(1)
   const validatedFields = {
-    nome: yup.string().required('O campo nome é obrigatorio'),
     inicioEmail: yup.string().required('Email invalido'),
+    senha: yup.string().required("Senha é obrigatoria"),
+    confirmarSenha: yup.string().required("Confirme sua senha").oneOf([yup.ref('senha'), null], 'As senhas devem ser iguais'),
+    nome: yup.string().required('O campo nome é obrigatorio'),
+    cidade: yup.string().required('O campo cidade é obrigatorio'),
+    uf: yup.string().required('O campo UF é obrigatorio'),
     cep: yup
       .string()
       .matches(/[0-9]{5}-[0-9]{3}/, 'CEP invalido')
@@ -62,7 +66,7 @@ export const Cadastro = (props: Props) => {
     telefone: yup.string().min(13, 'Telefone invalido'),
   }
   const schema = yup.object(validatedFields).required()
-  const { register, handleSubmit, setValue, watch } = useForm<CadastroType>({
+  const { register, handleSubmit, setValue, watch, formState: { errors } } = useForm<CadastroType>({
     resolver: yupResolver<yup.AnyObjectSchema>(schema),
   })
   const onSubmit = (data: CadastroType) => {
@@ -102,12 +106,13 @@ export const Cadastro = (props: Props) => {
             <Stepper active={step === 2 ? true : false} step="2" />
             <Stepper active={step === 3 ? true : false} step="3" />
           </Row>
-          <Form autoComplete="off" onSubmit={handleSubmit(onSubmit, onError)}>
+          <Form className="needs-validation" autoComplete="off" onSubmit={handleSubmit(onSubmit, onError)}>
             <If test={step === 1}>
               <CadastroBasicoForm
                 register={register}
                 setFormValue={setValue}
                 watch={watch}
+                errors={errors}
               />
             </If>
             <If test={step === 2}>
@@ -121,25 +126,25 @@ export const Cadastro = (props: Props) => {
                   field="especialidade"
                 />
                 <FormStacks
-                  watchedValue={watch('stacksComExperiencia', [])}
+                  watchedValue={watch('stackExperiencia', [])}
                   titulo="Stacks com experiência:"
                   stacks={stacks}
                   isMulti
                   placeholder="Selecione"
                   setFormValue={setValue}
-                  field="stacksComExperiencia"
+                  field="stackExperiencia"
                 />
               </>
             </If>
             <If test={step === 3}>
               <FormStacks
                 isMulti
-                watchedValue={watch('stacksAprender', [])}
+                watchedValue={watch('stackAprender', [])}
                 titulo="Stacks que deseja aprender:"
                 placeholder="Selecione"
                 stacks={stacks}
                 setFormValue={setValue}
-                field="stacksAprender"
+                field="stackAprender"
               />
             </If>
             <Row className="justify-content-center">

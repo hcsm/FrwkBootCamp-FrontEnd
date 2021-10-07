@@ -1,6 +1,6 @@
 import React from 'react'
 import { FloatingLabel, Form } from 'react-bootstrap'
-import { FieldValues, UseFormRegister } from 'react-hook-form'
+import { FieldError, FieldValues, UseFormRegister } from 'react-hook-form'
 import ReactInputMask from 'react-input-mask'
 
 type Props = {
@@ -11,6 +11,7 @@ type Props = {
   value?: string
   readOnly?: boolean | false
   mask?: string
+  error?: FieldError
 }
 export function Input(props: Props) {
   const register = props.register(props.name)
@@ -25,6 +26,7 @@ export function Input(props: Props) {
       >
         {() => (
           <Form.Control
+            className={props.error ? 'is-invalid' : ''}
             type={props.type}
             {...register}
             readOnly={props.readOnly}

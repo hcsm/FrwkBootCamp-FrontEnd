@@ -1,5 +1,7 @@
 export type CadastroType = {
   nome: string;
+  senha: string;
+  confirmarSenha: string;
   email: string;
   inicioEmail: string;
   dominio: string;
@@ -8,8 +10,9 @@ export type CadastroType = {
   uf: string;
   telefone: string;
   especialidade: string[];
-  stacksComExperiencia : string[];
-  stacksAprender : string[];
+  stackExperiencia : string[];
+  stackAprender : string[];
+  foto: any;
 }
 
 export type CepType = {
