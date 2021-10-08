@@ -5,7 +5,7 @@ import Select, { MultiValue, StylesConfig } from 'react-select'
 import styled from 'styled-components'
 
 type Props = {
-  stacks: string[]
+  stacks: object[]
   titulo: string
   watchedValue: any
   setFormValue: UseFormSetValue<FieldValues>
@@ -86,7 +86,7 @@ export const FormStacks = ({
         closeMenuOnSelect={!isMulti}
         isMulti={isMulti}
         placeholder={placeholder}
-        options={stacks.map(v => ({ value: v, label: v }))}
+        options={stacks}
         onChange={values => selected(values)}
         defaultValue={watchedValue}
       />

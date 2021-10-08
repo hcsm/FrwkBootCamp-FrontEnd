@@ -1,19 +1,20 @@
 // @flow
 import { yupResolver } from '@hookform/resolvers/yup'
 import React, { useState } from 'react'
-// import { setLocale } from 'yup';
 import { Col, Row } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
-import { useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
 import styled from 'styled-components'
 import * as yup from 'yup'
-import { RootState } from '../../app/store'
 import If from '../../components/If'
 import { Stepper } from '../../components/Stepper'
+import { useGetEspecialidadesQuery } from '../../services/especialidades'
+import { useGetStacksQuery } from '../../services/stacks'
 import { CadastroType } from '../../types/cadastro'
 import { CadastroBasicoForm } from './CadastroBasicoForm'
 import { FormStacks } from './components/FormStacks'
+
+type Props = {}
 
 const Wrapper = styled.section`
   position: relative;
@@ -51,13 +52,16 @@ const Form = styled.form`
   position: relative;
   height: calc(100% - 95px);
 `
-type Props = {}
+
 export const Cadastro = (props: Props) => {
   const [step, setStep] = useState(1)
   const validatedFields = {
     inicioEmail: yup.string().required('Email invalido'),
-    senha: yup.string().required("Senha é obrigatoria"),
-    confirmarSenha: yup.string().required("Confirme sua senha").oneOf([yup.ref('senha'), null], 'As senhas devem ser iguais'),
+    senha: yup.string().required('Senha é obrigatoria'),
+    confirmarSenha: yup
+      .string()
+      .required('Confirme sua senha')
+      .oneOf([yup.ref('senha'), null], 'As senhas devem ser iguais'),
     nome: yup.string().required('O campo nome é obrigatorio'),
     cidade: yup.string().required('O campo cidade é obrigatorio'),
     uf: yup.string().required('O campo UF é obrigatorio'),
@@ -68,7 +72,13 @@ export const Cadastro = (props: Props) => {
     telefone: yup.string().min(13, 'Telefone invalido'),
   }
   const schema = yup.object(validatedFields).required()
-  const { register, handleSubmit, setValue, watch, formState: { errors } } = useForm<CadastroType>({
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    watch,
+    formState: { errors },
+  } = useForm<CadastroType>({
     resolver: yupResolver<yup.AnyObjectSchema>(schema),
   })
   const onSubmit = (data: CadastroType) => {
@@ -88,9 +98,8 @@ export const Cadastro = (props: Props) => {
   const onError = (errors: object) => {
     Object.values(errors).map(e => (e ? toast.error(e.message) : false))
   }
-  const stacks = useSelector((state: RootState) => state.stack.list);
-  const especialidade = useSelector((state: RootState) => state.especialidade.list);
-
+  const stacks = setStacks()
+  const especialidade = setEspecialidade()
   return (
     <Container>
       <Row>
@@ -100,7 +109,11 @@ export const Cadastro = (props: Props) => {
             <Stepper active={step === 2 ? true : false} step="2" />
             <Stepper active={step === 3 ? true : false} step="3" />
           </Row>
-          <Form className="needs-validation" autoComplete="off" onSubmit={handleSubmit(onSubmit, onError)}>
+          <Form
+            className="needs-validation"
+            autoComplete="off"
+            onSubmit={handleSubmit(onSubmit, onError)}
+          >
             <If test={step === 1}>
               <CadastroBasicoForm
                 register={register}
@@ -161,4 +174,19 @@ export const Cadastro = (props: Props) => {
       </Row>
     </Container>
   )
+}
+
+function setStacks() {
+  const { data, isSuccess } = useGetStacksQuery('')
+  if (isSuccess) {
+    return JSON.parse(data)
+  }
+  return []
+}
+function setEspecialidade() {
+  const { data, isSuccess } = useGetEspecialidadesQuery('')
+  if (isSuccess) {
+    return JSON.parse(data)
+  }
+  return []
 }
