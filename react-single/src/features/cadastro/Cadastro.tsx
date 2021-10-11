@@ -177,14 +177,17 @@ export const Cadastro = (props: Props) => {
 }
 
 function setStacks() {
-  const { data, isSuccess } = selectStacks(null)
+  const { data, isSuccess, isError } = selectStacks(null)
+  if (isError) {
+    toast.error('Algo deu errado')
+  }
   if (isSuccess) {
     return JSON.parse(data)
   }
   return []
 }
 function setEspecialidade() {
-  const { data, error, isSuccess, isError } = selectEspecialidades(null)
+  const { data, isSuccess, isError } = selectEspecialidades(null)
   if (isError) {
     toast.error('Algo deu errado')
   }
