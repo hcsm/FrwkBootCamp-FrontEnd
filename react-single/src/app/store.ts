@@ -1,51 +1,27 @@
-import {
-  configureStore,
-  Action,
-  createSlice,
-  ThunkAction,
-} from '@reduxjs/toolkit'
+import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit'
+import { setupListeners } from '@reduxjs/toolkit/query/react'
 import { useDispatch } from 'react-redux'
-
-const INITIAL_STACKS = [
-  'Java',
-  '.NET',
-  'Angular',
-  'Docker',
-  'JavaScript',
-  'TypeScript',
-  'C#',
-  'Go lang',
-  'Azure',
-]
-
-const especialidade = createSlice({
-  name: 'especialidade',
-  initialState: {
-    list: ['Frontend', 'Backend', 'Fullstack', ...INITIAL_STACKS],
-  },
-  reducers: {},
-})
-
-const stacks = createSlice({
-  name: 'stacks',
-  initialState: {
-    list: INITIAL_STACKS,
-  },
-  reducers: {},
-})
-
-// export const { } = stacks.actions
-// export const { } = especialidade.actions
-
-export const stacksReducer = stacks.reducer
-export const especialidadeReducer = especialidade.reducer
+import { especialidadeApi } from '../services/especialidades'
+import { stacksApi } from '../services/stacks'
 
 const store = configureStore({
   reducer: {
-    stack: stacksReducer,
-    especialidade: especialidadeReducer,
+    [stacksApi.reducerPath]: stacksApi.reducer,
+    [especialidadeApi.reducerPath]: especialidadeApi.reducer,
   },
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware().concat([
+      stacksApi.middleware,
+      especialidadeApi.middleware,
+    ]),
+  devTools: process.env.NODE_ENV !== 'production',
 })
+
+setupListeners(store.dispatch)
+
+store.dispatch(stacksApi.util.prefetch('getStacks', null, {}))
+
+store.dispatch(especialidadeApi.util.prefetch('getEspecialidades', null, {}))
 
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch

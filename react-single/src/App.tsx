@@ -1,12 +1,11 @@
-import React from 'react'
-import { ToastContainer } from 'react-toastify'
-import { Cadastro } from './features/cadastro/Cadastro'
-
-import 'react-toastify/dist/ReactToastify.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { GlobalStyle } from './styles/global'
-import store from './app/store'
+import React from 'react'
 import { Provider } from 'react-redux'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import store from './app/store'
+import { Cadastro } from './features/cadastro/Cadastro'
+import { GlobalStyle } from './styles/global'
 
 function App() {
   return (
