@@ -2,6 +2,7 @@
 import React from 'react'
 import { FieldValues, UseFormSetValue } from 'react-hook-form'
 import Select, { MultiValue, StylesConfig } from 'react-select'
+import { SubTitle } from '../../../styles/global'
 
 type Props = {
   stacks: object[]
@@ -74,7 +75,7 @@ export const FormStacks = ({
   }
   return (
     <div className="mb-3">
-      <h4 className="mb-2">{titulo}</h4>
+      <SubTitle>{titulo}</SubTitle>
       <Select
         styles={colourStyles}
         closeMenuOnSelect={!isMulti}

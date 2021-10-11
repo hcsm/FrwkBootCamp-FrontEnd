@@ -84,3 +84,7 @@ input:focus {
     font-size: 3em !important;
   }
 }
+
+.is-invalid{
+  border: 1pt solid red !important;
+}

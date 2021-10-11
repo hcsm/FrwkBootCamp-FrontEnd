@@ -4,7 +4,7 @@ import Box from '@material-ui/core/Box'
 import Step from '@material-ui/core/Step'
 import StepLabel from '@material-ui/core/StepLabel'
 import Stepper from '@material-ui/core/Stepper'
-import React, { useState } from 'react'
+import React from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import * as yup from 'yup'
@@ -16,12 +16,17 @@ import { selectEspecialidades } from '../../services/especialidades'
 import { selectStacks } from '../../services/stacks'
 import { Button, Logo } from '../../styles/global'
 import { CadastroType } from '../../types/cadastro'
+import { selectEspecialidades } from './../../services/especialidades'
+import { selectStacks } from './../../services/stacks'
 import './Cadastro.css'
 import { FormStacks } from './components/FormStacks'
 
 type Props = {}
 export const Cadastro = (props: Props) => {
-  const [step, setStep] = useState(1)
+  const steps = ['Registro', 'Dados Pessoais', 'Experiência', 'Aprender']
+
+  const [activeStep, setActiveStep] = React.useState(0)
+  const [skipped, setSkipped] = React.useState(new Set<number>())
   const validatedFields = {
     inicioEmail: yup.string().required('Email invalido'),
     senha: yup.string().required('Senha é obrigatoria'),
@@ -36,7 +41,7 @@ export const Cadastro = (props: Props) => {
       .string()
       .matches(/[0-9]{5}-[0-9]{3}/, 'CEP invalido')
       .required('CEP invalido'),
-    telefone: yup.string().min(13, 'Telefone invalido'),
+    telefone: yup.string().matches(/(\(?\d{2}\)?\s)?(\d{4,5}\-\d{3})/, 'Telefone invalido'),
   }
   const schema = yup.object(validatedFields).required()
   const {
@@ -44,46 +49,46 @@ export const Cadastro = (props: Props) => {
     handleSubmit,
     setValue,
     watch,
+    trigger,
     formState: { errors },
   } = useForm<CadastroType>({
     resolver: yupResolver<yup.AnyObjectSchema>(schema),
+    mode: "onBlur"
   })
   const onSubmit = (data: CadastroType) => {
-    if (step === 1 || step === 2) {
-      proximo()
-    } else {
-      data.email = data.inicioEmail + data.dominio
-    }
+    data.email = data.inicioEmail + data.dominio;
+    console.log(data)
   }
-  const proximo = () => {
-    setStep(step + 1)
-  }
-
   const onError = (errors: object) => {
+    console.log(errors)
     Object.values(errors).map(e => (e ? toast.error(e.message) : false))
   }
-
-  const especialidades = getEspecialidade()
   const stacks = getStacks()
-  //Inicio
-  const steps = ['Registro', 'Dados Pessoais', 'Experiência', 'Aprender']
-
-  const [activeStep, setActiveStep] = React.useState(0)
-  const [skipped, setSkipped] = React.useState(new Set<number>())
+  const especialidade = getEspecialidades()
 
   const isStepSkipped = (step: number) => {
     return skipped.has(step)
   }
-
-  const handleNext = () => {
-    let newSkipped = skipped
-    if (isStepSkipped(activeStep)) {
-      newSkipped = new Set(newSkipped.values())
-      newSkipped.delete(activeStep)
+  const isCurrentFormValid = async (activeStep: number) => {
+    toast.dismiss();
+    if (activeStep === 0) {
+      return await trigger(['inicioEmail', 'senha', 'confirmarSenha'])
+    } else if (activeStep === 1) {
+      return await trigger(['nome', 'cidade', 'uf', 'cep', 'telefone'])
+    }else {
+      return true;
     }
-
-    setActiveStep(prevActiveStep => prevActiveStep + 1)
-    setSkipped(newSkipped)
+  }
+  const handleNext = async () => {
+    if (await isCurrentFormValid(activeStep)) {
+      let newSkipped = skipped
+      if (isStepSkipped(activeStep)) {
+        newSkipped = new Set(newSkipped.values())
+        newSkipped.delete(activeStep)
+      }
+      setActiveStep(prevActiveStep => prevActiveStep + 1)
+      setSkipped(newSkipped)
+    }
   }
 
   const handleBack = () => {
@@ -111,7 +116,6 @@ export const Cadastro = (props: Props) => {
             )
           })}
         </Stepper>
-
         <React.Fragment>
           <form
             className="needs-validation form"
@@ -120,11 +124,11 @@ export const Cadastro = (props: Props) => {
           >
             <If test={activeStep === 0}>
               <InputEmail
+                error={errors?.inicioEmail}
                 register={register}
                 type="text"
                 placeholder="Email frameworker"
                 name="inicioEmail"
-                error={errors?.inicioEmail}
               />
               <Input
                 error={errors?.senha}
@@ -226,13 +230,18 @@ export const Cadastro = (props: Props) => {
             >
               <Button
                 color="inherit"
+                type="button"
                 hidden={activeStep === 0}
                 onClick={handleBack}
               >
                 Voltar
               </Button>
               <Box sx={{ flex: '1 1 auto' }} />
-              <Button onClick={handleNext} hidden={activeStep === 3}>
+              <Button
+                type="button"
+                onClick={handleNext}
+                hidden={activeStep === 3}
+              >
                 Avançar
               </Button>
               <Button type="submit" hidden={activeStep !== 3}>
@@ -256,7 +265,7 @@ function getStacks() {
   }
   return []
 }
-function getEspecialidade() {
+function getEspecialidades() {
   const { data, isSuccess, isError } = selectEspecialidades(null)
   if (isError) {
     toast.error('Algo deu errado')

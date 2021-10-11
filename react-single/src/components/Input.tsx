@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FloatingLabel, Form } from 'react-bootstrap'
 import { FieldError, FieldValues, UseFormRegister } from 'react-hook-form'
 import ReactInputMask from 'react-input-mask'
+import { useToastError } from '../hooks/hooks'
 
 type Props = {
   type: string
@@ -15,6 +16,9 @@ type Props = {
 }
 export function Input(props: Props) {
   const register = props.register(props.name)
+  useEffect(() => {
+    useToastError(props?.error?.message)
+  }, [props?.error])
   return (
     <FloatingLabel className="mb-3" label={props.label}>
       <ReactInputMask
