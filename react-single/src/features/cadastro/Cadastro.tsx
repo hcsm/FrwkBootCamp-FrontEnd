@@ -64,7 +64,7 @@ export const Cadastro = (props: Props) => {
     Object.values(errors).map(e => (e ? toast.error(e.message) : false))
   }
   const stacks = getStacks()
-  const especialidade = getEspecialidades()
+  const especialidades = getEspecialidades()
 
   const isStepSkipped = (step: number) => {
     return skipped.has(step)
