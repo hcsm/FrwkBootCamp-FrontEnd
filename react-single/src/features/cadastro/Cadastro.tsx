@@ -6,10 +6,8 @@ import StepLabel from '@material-ui/core/StepLabel'
 import Stepper from '@material-ui/core/Stepper'
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
 import * as yup from 'yup'
-import { RootState } from '../../app/store'
 import If from '../../components/If'
 import { Input } from '../../components/Input'
 import { InputCep } from '../../components/InputCep'
@@ -95,7 +93,7 @@ export const Cadastro = (props: Props) => {
   return (
     <div className="content">
       <div className="wrapper">
-        <Logo>Framebook</Logo>
+        <Logo className="logo">Framebook</Logo>
         <Stepper activeStep={activeStep}>
           {steps.map((label, index) => {
             const stepProps: { completed?: boolean } = {}
@@ -259,7 +257,7 @@ function getStacks() {
   return []
 }
 function getEspecialidade() {
-  const { data, error, isSuccess, isError } = selectEspecialidades(null)
+  const { data, isSuccess, isError } = selectEspecialidades(null)
   if (isError) {
     toast.error('Algo deu errado')
   }

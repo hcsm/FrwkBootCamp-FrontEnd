@@ -67,3 +67,20 @@ input:focus {
   display: flex !important;
   width: 100%;
 }
+
+@media only screen and (max-width: 940px) {
+  .background {
+    display: none;
+  }
+  .wrapper {
+    width: 100vw;
+  }
+}
+@media only screen and (max-width: 540px) {
+  .css-16ubnlw-MuiStepLabel-labelContainer {
+    display: none;
+  }
+  .logo {
+    font-size: 3em !important;
+  }
+}
