@@ -1,26 +1,23 @@
 // @flow
 import { yupResolver } from '@hookform/resolvers/yup'
+import Box from '@material-ui/core/Box'
+import Step from '@material-ui/core/Step'
+import StepLabel from '@material-ui/core/StepLabel'
+import Stepper from '@material-ui/core/Stepper'
 import React, { useState } from 'react'
-import { Col, Row } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 import { useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
-import styled from 'styled-components'
 import * as yup from 'yup'
 import { RootState } from '../../app/store'
 import If from '../../components/If'
-import { CadastroType } from '../../types/cadastro'
-import { FormStacks } from './components/FormStacks'
-import Box from '@material-ui/core/Box'
-import Stepper from '@material-ui/core/Stepper'
-import Step from '@material-ui/core/Step'
-import StepLabel from '@material-ui/core/StepLabel'
-import Typography from '@material-ui/core/Typography'
 import { Input } from '../../components/Input'
 import { InputCep } from '../../components/InputCep'
 import { InputEmail } from '../../components/InputEmail'
 import { Button, Logo } from '../../styles/global'
+import { CadastroType } from '../../types/cadastro'
 import './Cadastro.css'
+import { FormStacks } from './components/FormStacks'
 
 type Props = {}
 export const Cadastro = (props: Props) => {
@@ -56,15 +53,12 @@ export const Cadastro = (props: Props) => {
       proximo()
     } else {
       data.email = data.inicioEmail + data.dominio
-      console.log(data)
     }
   }
   const proximo = () => {
     setStep(step + 1)
   }
-  const anterior = () => {
-    setStep(step - 1)
-  }
+
   const onError = (errors: object) => {
     Object.values(errors).map(e => (e ? toast.error(e.message) : false))
   }
@@ -96,10 +90,6 @@ export const Cadastro = (props: Props) => {
 
   const handleBack = () => {
     setActiveStep(prevActiveStep => prevActiveStep - 1)
-  }
-
-  const handleReset = () => {
-    setActiveStep(0)
   }
 
   return (

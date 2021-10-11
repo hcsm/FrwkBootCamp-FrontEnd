@@ -16,7 +16,7 @@ fetch("https://run.mocky.io/v3/b0ae8a06-fed8-4bce-94ce-8d76b33e86fc")
     data.applications.forEach((application) => {
       registerApplication({
         name: application.name,
-        app: () => System.import(application.package),
+        app: () => import(application.package),
         activeWhen: application.exact
           ? (location) => location.pathname === application.activeWhen
           : [application.activeWhen],

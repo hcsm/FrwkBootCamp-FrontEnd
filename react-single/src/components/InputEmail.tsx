@@ -1,9 +1,8 @@
 // @flow
 import React from 'react'
 import { Form, InputGroup } from 'react-bootstrap'
-import { FieldValues, UseFormRegister } from 'react-hook-form'
+import { FieldValues, UseFormRegister, FieldError } from 'react-hook-form'
 import { Select } from './Select'
-import { FieldError } from 'react-hook-form'
 type Props = {
   type: string
   placeholder: string

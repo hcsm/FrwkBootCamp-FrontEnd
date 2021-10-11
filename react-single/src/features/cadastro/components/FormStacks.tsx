@@ -1,8 +1,7 @@
 // @flow
-import React, { useState } from 'react'
-import { FieldValues, UseFormRegister, UseFormSetValue } from 'react-hook-form'
+import React from 'react'
+import { FieldValues, UseFormSetValue } from 'react-hook-form'
 import Select, { MultiValue, StylesConfig } from 'react-select'
-import styled from 'styled-components'
 
 type Props = {
   stacks: string[]
@@ -19,11 +18,6 @@ interface Istack {
   value: string
 }
 
-const StacksBox = styled.div`
-  border: 2pt solid #0af585;
-  padding: 0.5em;
-  z-index: 1;
-`
 const colourStyles: StylesConfig<Istack, true> = {
   control: styles => ({
     ...styles,
