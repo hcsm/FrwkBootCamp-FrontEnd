@@ -1,7 +1,6 @@
 // @flow
 import { yupResolver } from '@hookform/resolvers/yup'
 import React, { useState } from 'react'
-// import { setLocale } from 'yup';
 import { Col, Row } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 import { useSelector } from 'react-redux'
@@ -10,54 +9,29 @@ import styled from 'styled-components'
 import * as yup from 'yup'
 import { RootState } from '../../app/store'
 import If from '../../components/If'
-import { Stepper } from '../../components/Stepper'
 import { CadastroType } from '../../types/cadastro'
-import { CadastroBasicoForm } from './CadastroBasicoForm'
 import { FormStacks } from './components/FormStacks'
+import Box from '@material-ui/core/Box'
+import Stepper from '@material-ui/core/Stepper'
+import Step from '@material-ui/core/Step'
+import StepLabel from '@material-ui/core/StepLabel'
+import Typography from '@material-ui/core/Typography'
+import { Input } from '../../components/Input'
+import { InputCep } from '../../components/InputCep'
+import { InputEmail } from '../../components/InputEmail'
+import { Button, Logo } from '../../styles/global'
+import './Cadastro.css'
 
-const Wrapper = styled.section`
-  position: relative;
-  z-index: 1;
-  background: #ffffff;
-  max-width: 460px;
-  min-height: 100vh;
-  margin: 5px auto;
-  padding: 25px;
-  text-align: center;
-  border-radius: 15px;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-`
-const Container = styled.div`
-  width: 560px;
-  margin: auto;
-`
-const Button = styled.button`
-  display: inline-block;
-  font-weight: thin;
-  text-align: center;
-  border-radius: 3px;
-  border: 1pt solid #24006f;
-  color: #24006f;
-  font-size: 1em;
-  padding: 0.25em 1em;
-  background: transparent;
-  margin-top: 10px;
-  &:hover {
-    background-color: #24006f;
-    color: #0af585;
-  }
-`
-const Form = styled.form`
-  position: relative;
-  height: calc(100% - 95px);
-`
 type Props = {}
 export const Cadastro = (props: Props) => {
   const [step, setStep] = useState(1)
   const validatedFields = {
     inicioEmail: yup.string().required('Email invalido'),
-    senha: yup.string().required("Senha é obrigatoria"),
-    confirmarSenha: yup.string().required("Confirme sua senha").oneOf([yup.ref('senha'), null], 'As senhas devem ser iguais'),
+    senha: yup.string().required('Senha é obrigatoria'),
+    confirmarSenha: yup
+      .string()
+      .required('Confirme sua senha')
+      .oneOf([yup.ref('senha'), null], 'As senhas devem ser iguais'),
     nome: yup.string().required('O campo nome é obrigatorio'),
     cidade: yup.string().required('O campo cidade é obrigatorio'),
     uf: yup.string().required('O campo UF é obrigatorio'),
@@ -68,7 +42,13 @@ export const Cadastro = (props: Props) => {
     telefone: yup.string().min(13, 'Telefone invalido'),
   }
   const schema = yup.object(validatedFields).required()
-  const { register, handleSubmit, setValue, watch, formState: { errors } } = useForm<CadastroType>({
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    watch,
+    formState: { errors },
+  } = useForm<CadastroType>({
     resolver: yupResolver<yup.AnyObjectSchema>(schema),
   })
   const onSubmit = (data: CadastroType) => {
@@ -88,28 +68,134 @@ export const Cadastro = (props: Props) => {
   const onError = (errors: object) => {
     Object.values(errors).map(e => (e ? toast.error(e.message) : false))
   }
-  const stacks = useSelector((state: RootState) => state.stack.list);
-  const especialidade = useSelector((state: RootState) => state.especialidade.list);
+  const stacks = useSelector((state: RootState) => state.stack.list)
+  const especialidade = useSelector(
+    (state: RootState) => state.especialidade.list
+  )
+
+  //Inicio
+  const steps = ['Registro', 'Dados Pessoais', 'Experiência', 'Aprender']
+
+  const [activeStep, setActiveStep] = React.useState(0)
+  const [skipped, setSkipped] = React.useState(new Set<number>())
+
+  const isStepSkipped = (step: number) => {
+    return skipped.has(step)
+  }
+
+  const handleNext = () => {
+    let newSkipped = skipped
+    if (isStepSkipped(activeStep)) {
+      newSkipped = new Set(newSkipped.values())
+      newSkipped.delete(activeStep)
+    }
+
+    setActiveStep(prevActiveStep => prevActiveStep + 1)
+    setSkipped(newSkipped)
+  }
+
+  const handleBack = () => {
+    setActiveStep(prevActiveStep => prevActiveStep - 1)
+  }
+
+  const handleReset = () => {
+    setActiveStep(0)
+  }
 
   return (
-    <Container>
-      <Row>
-        <Wrapper className="col-sm-12">
-          <Row className="justify-content-around">
-            <Stepper active={step === 1 ? true : false} step="1" />
-            <Stepper active={step === 2 ? true : false} step="2" />
-            <Stepper active={step === 3 ? true : false} step="3" />
-          </Row>
-          <Form className="needs-validation" autoComplete="off" onSubmit={handleSubmit(onSubmit, onError)}>
-            <If test={step === 1}>
-              <CadastroBasicoForm
+    <div className="content">
+      <div className="wrapper">
+        <Logo>Framebook</Logo>
+        <Stepper activeStep={activeStep}>
+          {steps.map((label, index) => {
+            const stepProps: { completed?: boolean } = {}
+            const labelProps: {
+              optional?: React.ReactNode
+            } = {}
+
+            if (isStepSkipped(index)) {
+              stepProps.completed = false
+            }
+            return (
+              <Step key={label} {...stepProps}>
+                <StepLabel {...labelProps}>{label}</StepLabel>
+              </Step>
+            )
+          })}
+        </Stepper>
+
+        <React.Fragment>
+          <form
+            className="needs-validation form"
+            autoComplete="off"
+            onSubmit={handleSubmit(onSubmit, onError)}
+          >
+            <If test={activeStep === 0}>
+              <InputEmail
                 register={register}
-                setFormValue={setValue}
-                watch={watch}
-                errors={errors}
+                type="text"
+                placeholder="Email frameworker"
+                name="inicioEmail"
+                error={errors?.inicioEmail}
+              />
+              <Input
+                error={errors?.senha}
+                register={register}
+                type="password"
+                label="Senha"
+                name="senha"
+              />
+              <Input
+                error={errors?.confirmarSenha}
+                register={register}
+                type="password"
+                label="Confirme sua senha"
+                name="confirmarSenha"
               />
             </If>
-            <If test={step === 2}>
+            <If test={activeStep === 1}>
+              <Input
+                error={errors?.nome}
+                register={register}
+                type="text"
+                label="Nome"
+                name="nome"
+              />
+              <Input
+                value={watch('telefone', '')}
+                mask={'(99) 9 9999-9999'}
+                register={register}
+                type="text"
+                label="Telefone"
+                name="telefone"
+                error={errors?.telefone}
+              />
+              <InputCep
+                value={watch('cep', '')}
+                mask="99999-999"
+                register={register}
+                type="text"
+                label="CEP"
+                name="cep"
+                error={errors?.cep}
+                setFormValue={setValue}
+              />
+              <Input
+                register={register}
+                type="text"
+                label="Cidade"
+                name="cidade"
+                error={errors?.cidade}
+              />
+              <Input
+                register={register}
+                type="text"
+                label="UF"
+                name="uf"
+                error={errors?.uf}
+              />
+            </If>
+            <If test={activeStep === 2}>
               <>
                 <FormStacks
                   watchedValue={watch('especialidade', [])}
@@ -130,7 +216,7 @@ export const Cadastro = (props: Props) => {
                 />
               </>
             </If>
-            <If test={step === 3}>
+            <If test={activeStep === 3}>
               <FormStacks
                 isMulti
                 watchedValue={watch('stackAprender', [])}
@@ -141,24 +227,34 @@ export const Cadastro = (props: Props) => {
                 field="stackAprender"
               />
             </If>
-            <Row className="justify-content-center">
-              <Col md={6} hidden={step === 1}>
-                <Button type="button" onClick={() => anterior()}>
-                  Anterior
-                </Button>
-              </Col>
-
-              <Col md={6} hidden={step === 3}>
-                <Button type="submit">Continuar</Button>
-              </Col>
-
-              <Col md={6} hidden={step !== 3}>
-                <Button type="submit">Finalizar</Button>
-              </Col>
-            </Row>
-          </Form>
-        </Wrapper>
-      </Row>
-    </Container>
+            <Box
+              className="btn-acoes"
+              sx={{
+                display: 'flex',
+                flexDirection: 'row',
+                pt: 2,
+                position: 'relative',
+              }}
+            >
+              <Button
+                color="inherit"
+                hidden={activeStep === 0}
+                onClick={handleBack}
+              >
+                Voltar
+              </Button>
+              <Box sx={{ flex: '1 1 auto' }} />
+              <Button onClick={handleNext} hidden={activeStep === 3}>
+                Avançar
+              </Button>
+              <Button type="submit" hidden={activeStep !== 3}>
+                Finalizar
+              </Button>
+            </Box>
+          </form>
+        </React.Fragment>
+      </div>
+      <div className="background" />
+    </div>
   )
 }

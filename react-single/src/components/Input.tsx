@@ -22,7 +22,7 @@ export function Input(props: Props) {
         onChange={register.onChange}
         onBlur={register.onBlur}
         readOnly={props.readOnly}
-        defaultValue ={props?.value}
+        defaultValue={props?.value}
       >
         {() => (
           <Form.Control
