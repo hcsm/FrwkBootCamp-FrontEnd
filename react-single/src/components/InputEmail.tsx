@@ -1,9 +1,8 @@
 // @flow
 import React from 'react'
 import { Form, InputGroup } from 'react-bootstrap'
-import { FieldValues, UseFormRegister } from 'react-hook-form'
+import { FieldError, FieldValues, UseFormRegister } from 'react-hook-form'
 import { Select } from './Select'
-import { FieldError } from 'react-hook-form';
 type Props = {
   type: string
   placeholder: string
@@ -22,7 +21,7 @@ export const InputEmail = (props: Props) => {
         type={props.type}
         {...props.register(props.name)}
       />
-      <Select options={options} register={props.register} name="dominio"/>
+      <Select options={options} register={props.register} name="dominio" />
     </InputGroup>
   )
 }

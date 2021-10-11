@@ -1,5 +1,3 @@
-import { type } from 'os'
-
 export type CadastroType = {
   nome: string
   senha: string

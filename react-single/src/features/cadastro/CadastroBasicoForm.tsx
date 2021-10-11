@@ -24,7 +24,7 @@ export const CadastroBasicoForm = ({
   register,
   setFormValue,
   watch,
-  errors
+  errors,
 }: Props) => {
   return (
     <>
@@ -36,7 +36,13 @@ export const CadastroBasicoForm = ({
         error={errors?.inicioEmail}
       />
 
-      <Input error={errors?.nome} register={register} type="text" label="Nome" name="nome" />
+      <Input
+        error={errors?.nome}
+        register={register}
+        type="text"
+        label="Nome"
+        name="nome"
+      />
       <InputCep
         value={watch('cep', '')}
         mask="99999-999"
@@ -63,15 +69,27 @@ export const CadastroBasicoForm = ({
       />
       <Input
         value={watch('telefone', '')}
-        mask={ "(99) 9 9999-9999"}
+        mask={'(99) 9 9999-9999'}
         register={register}
         type="text"
         label="Telefone"
         name="telefone"
         error={errors?.telefone}
       />
-       <Input error={errors?.senha} register={register} type="password" label="Senha" name="senha" />
-      <Input error={errors?.confirmarSenha} register={register} type="password" label="Confirme sua senha" name="confirmarSenha" />
+      <Input
+        error={errors?.senha}
+        register={register}
+        type="password"
+        label="Senha"
+        name="senha"
+      />
+      <Input
+        error={errors?.confirmarSenha}
+        register={register}
+        type="password"
+        label="Confirme sua senha"
+        name="confirmarSenha"
+      />
     </>
   )
 }

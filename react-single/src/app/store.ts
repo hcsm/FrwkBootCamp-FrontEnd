@@ -19,6 +19,10 @@ const store = configureStore({
 
 setupListeners(store.dispatch)
 
+store.dispatch(stacksApi.util.prefetch('getStacks', null, {}))
+
+store.dispatch(especialidadeApi.util.prefetch('getEspecialidades', null, {}))
+
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch
 export type AppThunk = ThunkAction<void, RootState, null, Action<string>>

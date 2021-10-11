@@ -8,8 +8,8 @@ import styled from 'styled-components'
 import * as yup from 'yup'
 import If from '../../components/If'
 import { Stepper } from '../../components/Stepper'
-import { useGetEspecialidadesQuery } from '../../services/especialidades'
-import { useGetStacksQuery } from '../../services/stacks'
+import { selectEspecialidades } from '../../services/especialidades'
+import { selectStacks } from '../../services/stacks'
 import { CadastroType } from '../../types/cadastro'
 import { CadastroBasicoForm } from './CadastroBasicoForm'
 import { FormStacks } from './components/FormStacks'
@@ -177,14 +177,17 @@ export const Cadastro = (props: Props) => {
 }
 
 function setStacks() {
-  const { data, isSuccess } = useGetStacksQuery('')
+  const { data, isSuccess } = selectStacks(null)
   if (isSuccess) {
     return JSON.parse(data)
   }
   return []
 }
 function setEspecialidade() {
-  const { data, isSuccess } = useGetEspecialidadesQuery('')
+  const { data, error, isSuccess, isError } = selectEspecialidades(null)
+  if (isError) {
+    toast.error('Algo deu errado')
+  }
   if (isSuccess) {
     return JSON.parse(data)
   }
