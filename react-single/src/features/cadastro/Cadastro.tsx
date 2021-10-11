@@ -14,6 +14,8 @@ import If from '../../components/If'
 import { Input } from '../../components/Input'
 import { InputCep } from '../../components/InputCep'
 import { InputEmail } from '../../components/InputEmail'
+import { selectEspecialidades } from '../../services/especialidades'
+import { selectStacks } from '../../services/stacks'
 import { Button, Logo } from '../../styles/global'
 import { CadastroType } from '../../types/cadastro'
 import './Cadastro.css'
@@ -62,11 +64,9 @@ export const Cadastro = (props: Props) => {
   const onError = (errors: object) => {
     Object.values(errors).map(e => (e ? toast.error(e.message) : false))
   }
-  const stacks = useSelector((state: RootState) => state.stack.list)
-  const especialidade = useSelector(
-    (state: RootState) => state.especialidade.list
-  )
 
+  const especialidades = getEspecialidade()
+  const stacks = getStacks()
   //Inicio
   const steps = ['Registro', 'Dados Pessoais', 'Experiência', 'Aprender']
 
@@ -190,7 +190,7 @@ export const Cadastro = (props: Props) => {
                 <FormStacks
                   watchedValue={watch('especialidade', [])}
                   titulo="Especialidade:"
-                  stacks={especialidade}
+                  stacks={especialidades}
                   placeholder="Selecione sua especialidade"
                   setFormValue={setValue}
                   field="especialidade"
@@ -247,4 +247,24 @@ export const Cadastro = (props: Props) => {
       <div className="background" />
     </div>
   )
+}
+function getStacks() {
+  const { data, isError, isSuccess } = selectStacks(null)
+  if (isError) {
+    toast.error('Algo deu errado')
+  }
+  if (isSuccess) {
+    return JSON.parse(data)
+  }
+  return []
+}
+function getEspecialidade() {
+  const { data, error, isSuccess, isError } = selectEspecialidades(null)
+  if (isError) {
+    toast.error('Algo deu errado')
+  }
+  if (isSuccess) {
+    return JSON.parse(data)
+  }
+  return []
 }
