@@ -16,8 +16,6 @@ import { selectEspecialidades } from '../../services/especialidades'
 import { selectStacks } from '../../services/stacks'
 import { Button, Logo } from '../../styles/global'
 import { CadastroType } from '../../types/cadastro'
-import { selectEspecialidades } from './../../services/especialidades'
-import { selectStacks } from './../../services/stacks'
 import './Cadastro.css'
 import { FormStacks } from './components/FormStacks'
 
