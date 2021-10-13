@@ -13,7 +13,7 @@ type Props = {
 }
 
 export const InputEmail = (props: Props) => {
-  const options = ['@frwk.com.br', '@frameworksystem.com'];
+  const options = ['@frwk.com.br', '@frameworksystem.com']
   useEffect(() => {
     useToastError(props?.error?.message)
   }, [props?.error])
@@ -29,4 +29,3 @@ export const InputEmail = (props: Props) => {
     </InputGroup>
   )
 }
-

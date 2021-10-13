@@ -85,7 +85,7 @@ input:focus {
   }
 }
 
-.is-invalid{
+.is-invalid {
   border: 1pt solid red !important;
 }
 @media only screen and (max-width: 940px) {
