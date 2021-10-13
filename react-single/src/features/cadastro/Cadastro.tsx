@@ -12,6 +12,7 @@ import If from '../../components/If'
 import { Input } from '../../components/Input'
 import { InputCep } from '../../components/InputCep'
 import { InputEmail } from '../../components/InputEmail'
+import { InputProfileImage } from '../../components/InputProfileImage'
 import { selectEspecialidades } from '../../services/especialidades'
 import { selectStacks } from '../../services/stacks'
 import { Button, Logo } from '../../styles/global'
@@ -39,7 +40,9 @@ export const Cadastro = (props: Props) => {
       .string()
       .matches(/[0-9]{5}-[0-9]{3}/, 'CEP invalido')
       .required('CEP invalido'),
-    telefone: yup.string().matches(/(\(?\d{2}\)?\s)?(\d{4,5}\-\d{3})/, 'Telefone invalido'),
+    telefone: yup
+      .string()
+      .matches(/(\(?\d{2}\)?\s)?(\d{4,5}\-\d{3})/, 'Telefone invalido'),
   }
   const schema = yup.object(validatedFields).required()
   const {
@@ -51,10 +54,10 @@ export const Cadastro = (props: Props) => {
     formState: { errors },
   } = useForm<CadastroType>({
     resolver: yupResolver<yup.AnyObjectSchema>(schema),
-    mode: "onBlur"
+    mode: 'onBlur',
   })
   const onSubmit = (data: CadastroType) => {
-    data.email = data.inicioEmail + data.dominio;
+    data.email = data.inicioEmail + data.dominio
     console.log(data)
   }
   const onError = (errors: object) => {
@@ -68,13 +71,13 @@ export const Cadastro = (props: Props) => {
     return skipped.has(step)
   }
   const isCurrentFormValid = async (activeStep: number) => {
-    toast.dismiss();
+    toast.dismiss()
     if (activeStep === 0) {
       return await trigger(['inicioEmail', 'senha', 'confirmarSenha'])
     } else if (activeStep === 1) {
       return await trigger(['nome', 'cidade', 'uf', 'cep', 'telefone'])
-    }else {
-      return true;
+    } else {
+      return true
     }
   }
   const handleNext = async () => {
@@ -144,6 +147,14 @@ export const Cadastro = (props: Props) => {
               />
             </If>
             <If test={activeStep === 1}>
+              <InputProfileImage
+                register={register}
+                setFormValue={setValue}
+                type="image"
+                name="foto"
+                value={watch('foto', '')}
+                color="#0af585"
+              />
               <Input
                 error={errors?.nome}
                 register={register}
