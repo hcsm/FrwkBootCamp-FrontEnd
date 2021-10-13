@@ -1,6 +1,6 @@
 // @flow
 import axios from 'axios'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { FloatingLabel, Form } from 'react-bootstrap'
 import {
   FieldError,
@@ -9,7 +9,6 @@ import {
   UseFormSetValue,
 } from 'react-hook-form'
 import ReactInputMask from 'react-input-mask'
-import { useToastError } from '../hooks/hooks'
 import { CepType } from '../types/cadastro'
 
 type Props = {
@@ -35,9 +34,6 @@ export const InputCep = (props: Props) => {
   const register = props.register(props.name, {
     onChange: e => searchCep(e.target.value),
   })
-  useEffect(() => {
-    useToastError(props?.error?.message)
-  }, [props?.error])
   return (
     <FloatingLabel className="mb-3" label={props.label}>
       <ReactInputMask

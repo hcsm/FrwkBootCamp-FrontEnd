@@ -1,0 +1,452 @@
+{
+  "cadastro": [
+  ],
+  "perfil": [
+  ],
+  "sendfoto": [],
+  "refreshtoken": [],
+  "especialidades": [
+    {
+      "value": "Backend",
+      "label": "Backend"
+    },
+    {
+      "value": "Frontend",
+      "label": "Frontend"
+    },
+    {
+      "value": "DevOps",
+      "label": "DevOps"
+    },
+    {
+      "value": ".NET C#",
+      "label": ".NET C#"
+    },
+    {
+      "value": "Angular",
+      "label": "Angular"
+    },
+    {
+      "value": "Docker",
+      "label": "Docker"
+    },
+    {
+      "value": "JavaScript",
+      "label": "JavaScript"
+    },
+    {
+      "value": "TypeScript",
+      "label": "TypeScript"
+    },
+    {
+      "value": "C#",
+      "label": "C#"
+    },
+    {
+      "value": "Go lang",
+      "label": "Go lang"
+    },
+    {
+      "value": "Azure",
+      "label": "Azure"
+    },
+    {
+      "value": "UI/UX",
+      "label": "UI/UX"
+    },
+    {
+      "value": "CRM Dynamics",
+      "label": "CRM Dynamics"
+    },
+    {
+      "value": "QA",
+      "label": "QA"
+    },
+    {
+      "value": "Selenium",
+      "label": "Selenium"
+    },
+    {
+      "value": "Capybara",
+      "label": "Capybara"
+    },
+    {
+      "value": "Appium",
+      "label": "Appium"
+    },
+    {
+      "value": ".NET 5",
+      "label": ".NET 5"
+    },
+    {
+      "value": "Desing Thinking",
+      "label": "Desing Thinking"
+    },
+    {
+      "value": "MongoDB",
+      "label": "MongoDB"
+    },
+    {
+      "value": "Python",
+      "label": "Python"
+    },
+    {
+      "value": "Cassandra",
+      "label": "Cassandra"
+    },
+    {
+      "value": "MySQL",
+      "label": "MySQL"
+    },
+    {
+      "value": "Redis",
+      "label": "Redis"
+    },
+    {
+      "value": "C++",
+      "label": "C++"
+    },
+    {
+      "value": "AngularJS",
+      "label": "AngularJS"
+    },
+    {
+      "value": "Django",
+      "label": "Django"
+    },
+    {
+      "value": "Node.js",
+      "label": "Node.js"
+    },
+    {
+      "value": "Oracle DB",
+      "label": "Oracle DB"
+    },
+    {
+      "value": "Android",
+      "label": "Android"
+    },
+    {
+      "value": "Objective-C",
+      "label": "Objective-C"
+    },
+    {
+      "value": "Ionic",
+      "label": "Ionic"
+    },
+    {
+      "value": "SQL Server",
+      "label": "SQL Server"
+    },
+    {
+      "value": "PHP",
+      "label": "PHP"
+    },
+    {
+      "value": "PostgreSQL",
+      "label": "PostgreSQL"
+    },
+    {
+      "value": "ReactJS",
+      "label": "ReactJS"
+    },
+    {
+      "value": "Flask",
+      "label": "Flask"
+    },
+    {
+      "value": "React Native",
+      "label": "React Native"
+    },
+    {
+      "value": "HTML",
+      "label": "HTML"
+    },
+    {
+      "value": "JavaScript",
+      "label": "JavaScript"
+    },
+    {
+      "value": "C#",
+      "label": "C#"
+    },
+    {
+      "value": "Laravel",
+      "label": "Laravel"
+    },
+    {
+      "value": "AWS",
+      "label": "AWS"
+    },
+    {
+      "value": ".NET",
+      "label": ".NET"
+    },
+    {
+      "value": ".NET CORE",
+      "label": ".NET CORE"
+    },
+    {
+      "value": "Swift",
+      "label": "Swift"
+    },
+    {
+      "value": "Kotlin",
+      "label": "Kotlin"
+    },
+    {
+      "value": "Google Clound Plataform (GCP)",
+      "label": "PostgreSQL"
+    },
+    {
+      "value": "Flutter",
+      "label": "Flutter"
+    },
+    {
+      "value": "Ruby",
+      "label": "Ruby"
+    },
+    {
+      "value": "Outsystems",
+      "label": "Outsystems"
+    },
+    {
+      "value": "Salesforce",
+      "label": "Salesforce"
+    },
+    {
+      "value": "PL/SQL",
+      "label": "PL/SQL"
+    },
+    {
+      "value": "Kafka",
+      "label": "Kafka"
+    },
+    {
+      "value": "Kubernetes",
+      "label": "Kubernetes"
+    }
+  ],
+  "stacks": [
+    {
+      "value": "Backend",
+      "label": "Backend"
+    },
+    {
+      "value": "Frontend",
+      "label": "Frontend"
+    },
+    {
+      "value": "DevOps",
+      "label": "DevOps"
+    },
+    {
+      "value": ".NET C#",
+      "label": ".NET C#"
+    },
+    {
+      "value": "Angular",
+      "label": "Angular"
+    },
+    {
+      "value": "Docker",
+      "label": "Docker"
+    },
+    {
+      "value": "JavaScript",
+      "label": "JavaScript"
+    },
+    {
+      "value": "TypeScript",
+      "label": "TypeScript"
+    },
+    {
+      "value": "C#",
+      "label": "C#"
+    },
+    {
+      "value": "Go lang",
+      "label": "Go lang"
+    },
+    {
+      "value": "Azure",
+      "label": "Azure"
+    },
+    {
+      "value": "UI/UX",
+      "label": "UI/UX"
+    },
+    {
+      "value": "CRM Dynamics",
+      "label": "CRM Dynamics"
+    },
+    {
+      "value": "QA",
+      "label": "QA"
+    },
+    {
+      "value": "Selenium",
+      "label": "Selenium"
+    },
+    {
+      "value": "Capybara",
+      "label": "Capybara"
+    },
+    {
+      "value": "Appium",
+      "label": "Appium"
+    },
+    {
+      "value": ".NET 5",
+      "label": ".NET 5"
+    },
+    {
+      "value": "Desing Thinking",
+      "label": "Desing Thinking"
+    },
+    {
+      "value": "MongoDB",
+      "label": "MongoDB"
+    },
+    {
+      "value": "Python",
+      "label": "Python"
+    },
+    {
+      "value": "Cassandra",
+      "label": "Cassandra"
+    },
+    {
+      "value": "MySQL",
+      "label": "MySQL"
+    },
+    {
+      "value": "Redis",
+      "label": "Redis"
+    },
+    {
+      "value": "C++",
+      "label": "C++"
+    },
+    {
+      "value": "AngularJS",
+      "label": "AngularJS"
+    },
+    {
+      "value": "Django",
+      "label": "Django"
+    },
+    {
+      "value": "Node.js",
+      "label": "Node.js"
+    },
+    {
+      "value": "Oracle DB",
+      "label": "Oracle DB"
+    },
+    {
+      "value": "Android",
+      "label": "Android"
+    },
+    {
+      "value": "Objective-C",
+      "label": "Objective-C"
+    },
+    {
+      "value": "Ionic",
+      "label": "Ionic"
+    },
+    {
+      "value": "SQL Server",
+      "label": "SQL Server"
+    },
+    {
+      "value": "PHP",
+      "label": "PHP"
+    },
+    {
+      "value": "PostgreSQL",
+      "label": "PostgreSQL"
+    },
+    {
+      "value": "ReactJS",
+      "label": "ReactJS"
+    },
+    {
+      "value": "Flask",
+      "label": "Flask"
+    },
+    {
+      "value": "React Native",
+      "label": "React Native"
+    },
+    {
+      "value": "HTML",
+      "label": "HTML"
+    },
+    {
+      "value": "JavaScript",
+      "label": "JavaScript"
+    },
+    {
+      "value": "C#",
+      "label": "C#"
+    },
+    {
+      "value": "Laravel",
+      "label": "Laravel"
+    },
+    {
+      "value": "AWS",
+      "label": "AWS"
+    },
+    {
+      "value": ".NET",
+      "label": ".NET"
+    },
+    {
+      "value": ".NET CORE",
+      "label": ".NET CORE"
+    },
+    {
+      "value": "Swift",
+      "label": "Swift"
+    },
+    {
+      "value": "Kotlin",
+      "label": "Kotlin"
+    },
+    {
+      "value": "Google Clound Plataform (GCP)",
+      "label": "PostgreSQL"
+    },
+    {
+      "value": "Flutter",
+      "label": "Flutter"
+    },
+    {
+      "value": "Ruby",
+      "label": "Ruby"
+    },
+    {
+      "value": "Outsystems",
+      "label": "Outsystems"
+    },
+    {
+      "value": "Salesforce",
+      "label": "Salesforce"
+    },
+    {
+      "value": "PL/SQL",
+      "label": "PL/SQL"
+    },
+    {
+      "value": "Kafka",
+      "label": "Kafka"
+    },
+    {
+      "value": "Kubernetes",
+      "label": "Kubernetes"
+    }
+  ]
+}

@@ -1,4 +1,5 @@
 export type CadastroType = {
+  id: number
   nome: string
   senha: string
   confirmarSenha: string
@@ -13,6 +14,7 @@ export type CadastroType = {
   stackExperiencia: string[]
   stackAprender: string[]
   foto: any
+  ativo: boolean
 }
 
 export type CepType = {

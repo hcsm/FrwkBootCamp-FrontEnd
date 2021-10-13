@@ -1,8 +1,7 @@
 // @flow
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Form, InputGroup } from 'react-bootstrap'
-import { FieldValues, UseFormRegister, FieldError } from 'react-hook-form'
-import { useToastError } from '../hooks/hooks'
+import { FieldError, FieldValues, UseFormRegister } from 'react-hook-form'
 import { Select } from './Select'
 type Props = {
   type: string
@@ -13,10 +12,8 @@ type Props = {
 }
 
 export const InputEmail = (props: Props) => {
-  const options = ['@frwk.com.br', '@frameworksystem.com'];
-  useEffect(() => {
-    useToastError(props?.error?.message)
-  }, [props?.error])
+  const options = ['@frwk.com.br', '@frameworksystem.com']
+
   return (
     <InputGroup className="mb-3">
       <Form.Control
@@ -29,4 +26,3 @@ export const InputEmail = (props: Props) => {
     </InputGroup>
   )
 }
-

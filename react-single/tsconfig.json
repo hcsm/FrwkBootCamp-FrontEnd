@@ -18,6 +18,6 @@
     "isolatedModules": true
   },
   "files": ["src/frameworker-frameworker.tsx"],
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "server.js"],
   "exclude": ["src/**/*.test*"]
 }

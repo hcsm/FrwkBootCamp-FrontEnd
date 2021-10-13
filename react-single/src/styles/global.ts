@@ -40,8 +40,8 @@ export const Logo = styled.h1`
   text-shadow: 0px 0px 28px rgb(228 228 228 / 40%);
 `
 export const SubTitle = styled.h4`
-color: #fff;
-font-weight: 700;
-margin-bottom: 20px;
-text-shadow: 0px 0px 28px rgb(228 228 228 / 40%);
+  color: #fff;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-shadow: 0px 0px 28px rgb(228 228 228 / 40%);
 `
