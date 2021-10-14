@@ -62,7 +62,7 @@ export const FormCadastro = ({ activeStep, next, back }: Props) => {
       method = 'put'
     }
     dados.email = dados.inicioEmail + dados.dominio
-    const { inicioEmail, dominio, cep, ...cadastro } = dados
+    const { foto, inicioEmail, dominio, cep, ...cadastro } = dados
     axios({
       url: `${BASE_URL}/cadastro/${dados.id ?? ''}`,
       method: method,
