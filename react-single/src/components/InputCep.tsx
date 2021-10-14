@@ -10,6 +10,7 @@ import {
 } from 'react-hook-form'
 import ReactInputMask from 'react-input-mask'
 import { CepType } from '../types/cadastro'
+import { useAxios } from './../hooks/hooks'
 
 type Props = {
   type: string
@@ -46,6 +47,7 @@ export const InputCep = (props: Props) => {
             className={props.error ? 'is-invalid' : ''}
             type={props.type}
             {...register}
+            defaultValue={props?.value}
           />
         )}
       </ReactInputMask>

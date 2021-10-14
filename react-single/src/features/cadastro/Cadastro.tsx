@@ -7,9 +7,7 @@ import axios from 'axios'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
-import {
-  useAppSelector
-} from '../../app/store'
+import { useAppSelector } from '../../app/store'
 import If from '../../components/If'
 import { InputProfileImage } from '../../components/InputProfileImage'
 import { BASE_URL } from '../../services/Enums'
@@ -20,6 +18,8 @@ import { CadastroType } from '../../types/cadastro'
 import './Cadastro.css'
 import { FormCadastro } from './components/FormCadastro'
 import { FormStacks } from './components/FormStacks'
+import { FormFoto } from './components/FormFoto'
+import { FormButtons } from './components/FormButtons'
 
 type Props = {}
 export const Cadastro = (props: Props) => {
@@ -35,13 +35,7 @@ export const Cadastro = (props: Props) => {
   const [activeStep, setActiveStep] = React.useState(0)
   const [skipped, setSkipped] = React.useState(new Set<number>())
 
-  const {
-    register,
-    handleSubmit,
-    setValue,
-    watch,
-    formState: { errors },
-  } = useForm<CadastroType>({
+  const { handleSubmit, setValue, watch } = useForm<CadastroType>({
     mode: 'onBlur',
   })
   const onSubmit = (data: CadastroType) => {
@@ -61,13 +55,17 @@ export const Cadastro = (props: Props) => {
   }
 
   const handleNext = async () => {
-    let newSkipped = skipped
-    if (isStepSkipped(activeStep)) {
-      newSkipped = new Set(newSkipped.values())
-      newSkipped.delete(activeStep)
+    if (activeStep === 4) {
+      handleSubmit(onSubmit, onError)()
+    } else {
+      let newSkipped = skipped
+      if (isStepSkipped(activeStep)) {
+        newSkipped = new Set(newSkipped.values())
+        newSkipped.delete(activeStep)
+      }
+      setActiveStep(prevActiveStep => prevActiveStep + 1)
+      setSkipped(newSkipped)
     }
-    setActiveStep(prevActiveStep => prevActiveStep + 1)
-    setSkipped(newSkipped)
   }
   const handleBack = () => {
     setActiveStep(prevActiveStep => prevActiveStep - 1)
@@ -101,21 +99,9 @@ export const Cadastro = (props: Props) => {
               back={handleBack}
             />
           </If>
-          <form
-            className="needs-validation form"
-            autoComplete="off"
-            onSubmit={handleSubmit(onSubmit, onError)}
-          >
+          <form className="needs-validation form" autoComplete="off">
             <If test={activeStep === 2}>
-              <SubTitle>Faça upload da sua melhor foto (opcional)</SubTitle>
-              <InputProfileImage
-                register={register}
-                setFormValue={setValue}
-                type="image"
-                name="foto"
-                value={watch('foto', '')}
-                color="#0af585"
-              />
+              <FormFoto back={handleBack} next={handleNext} />
             </If>
             <If test={activeStep === 3}>
               <FormStacks
@@ -147,37 +133,14 @@ export const Cadastro = (props: Props) => {
                 field="stackAprender"
               />
             </If>
-            <Box
-              className="btn-acoes"
-              sx={{
-                display: 'flex',
-                flexDirection: 'row',
-                pt: 2,
-                position: 'relative',
-              }}
-            >
-              <Button
-                color="inherit"
-                type="button"
-                hidden={activeStep === 0 || activeStep === 1}
-                onClick={handleBack}
-              >
-                Voltar
-              </Button>
-              <Box sx={{ flex: '1 1 auto' }} />
-              <Button
-                type="button"
-                onClick={handleNext}
-                hidden={
-                  activeStep === 0 || activeStep === 1 || activeStep === 4
-                }
-              >
-                Avançar
-              </Button>
-              <Button type="submit" hidden={activeStep !== 4}>
-                Finalizar
-              </Button>
-            </Box>
+            <If test={activeStep === 3 || activeStep === 4}>
+              <FormButtons
+                back={handleBack}
+                onSubmit={handleNext}
+                isSubmit={activeStep === 4}
+                labelSubmit="Finalizar"
+              />
+            </If>
           </form>
         </React.Fragment>
       </div>

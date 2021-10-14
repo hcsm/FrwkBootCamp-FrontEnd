@@ -13,8 +13,13 @@ export type CadastroType = {
   especialidade: string[]
   stackExperiencia: string[]
   stackAprender: string[]
-  foto: any
+  foto: userFoto
   ativo: boolean
+}
+
+export type userFoto = {
+  id: number
+  value?: string
 }
 
 export type CepType = {

@@ -9,6 +9,8 @@ type Props = {
   name: string
   register: UseFormRegister<FieldValues>
   error?: FieldError
+  value?: string
+  dominio?: string
 }
 
 export const InputEmail = (props: Props) => {
@@ -21,8 +23,14 @@ export const InputEmail = (props: Props) => {
         placeholder={props.placeholder}
         type={props.type}
         {...props.register(props.name)}
+        defaultValue={props.value}
       />
-      <Select options={options} register={props.register} name="dominio" />
+      <Select
+        options={options}
+        register={props.register}
+        name="dominio"
+        value={props?.dominio}
+      />
     </InputGroup>
   )
 }

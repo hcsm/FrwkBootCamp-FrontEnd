@@ -6,6 +6,7 @@ type Props = {
   options: string[]
   register: UseFormRegister<FieldValues>
   name: string
+  value?: string
 }
 
 export function Select(props: Props) {
@@ -18,7 +19,11 @@ export function Select(props: Props) {
   })
 
   return (
-    <Form.Select {...props.register(props.name)} style={{ fontSize: '13px' }}>
+    <Form.Select
+      defaultValue={props?.value}
+      {...props.register(props.name)}
+      style={{ fontSize: '13px' }}
+    >
       {options}
     </Form.Select>
   )

@@ -10,6 +10,7 @@ import Cropper from 'react-easy-crop'
 import { Area, Point } from 'react-easy-crop/types'
 import { FieldValues, UseFormSetValue } from 'react-hook-form'
 import styled from 'styled-components'
+import { DEFAULT_PHOTO } from '../../services/Enums'
 
 const ModalBody = styled(Modal.Body)`
   min-height: 400px;
@@ -40,6 +41,8 @@ type Props = {
   show: boolean
   onHide: () => void
   setFormValue: UseFormSetValue<FieldValues>
+  name: string
+  value?: string
 }
 
 const UploaderModal = (props: Props) => {
@@ -49,7 +52,7 @@ const UploaderModal = (props: Props) => {
 
   const { setFormValue, ...modalProps } = props
 
-  const [image, setImage] = useState<any>(undefined)
+  const [image, setImage] = useState<any>(props.value)
 
   const [croppedArea, setCroppedArea] = useState<Area>({
     x: 0,
@@ -138,14 +141,14 @@ const UploaderModal = (props: Props) => {
   const finishLoading = async () => {
     if (image) {
       const srcImage = await getCroppedImg(image, croppedArea)
-      setFormValue('foto', srcImage)
+      setFormValue(props.name, srcImage)
     }
     props.onHide()
   }
 
   useEffect(() => {
     if (props.show) {
-      setImage(undefined)
+      setImage(props.value)
       triggerFileSelectPopup()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -190,7 +193,7 @@ const UploaderModal = (props: Props) => {
         </ModalBody>
         <Modal.Footer>
           <Button onClick={() => triggerFileSelectPopup()}>
-            Escolher imagem
+            Escolher outra imagem
           </Button>
           <Button onClick={() => finishLoading()}>Pronto</Button>
         </Modal.Footer>

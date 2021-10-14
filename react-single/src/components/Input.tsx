@@ -31,6 +31,7 @@ export function Input(props: Props) {
             type={props.type}
             {...register}
             readOnly={props.readOnly}
+            defaultValue={props?.value}
           />
         )}
       </ReactInputMask>

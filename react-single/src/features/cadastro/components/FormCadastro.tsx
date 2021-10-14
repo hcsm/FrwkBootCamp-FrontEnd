@@ -1,9 +1,9 @@
 // @flow
 import { yupResolver } from '@hookform/resolvers/yup'
-import Box from '@material-ui/core/Box'
-import axios from 'axios'
+import axios, { Method } from 'axios'
+import { error } from 'console'
 import * as React from 'react'
-import { useForm } from 'react-hook-form'
+import { FieldError, useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import * as yup from 'yup'
 import { setUser, useAppDispatch } from '../../../app/store'
@@ -11,10 +11,10 @@ import If from '../../../components/If'
 import { Input } from '../../../components/Input'
 import { InputCep } from '../../../components/InputCep'
 import { InputEmail } from '../../../components/InputEmail'
-import { InputProfileImage } from '../../../components/InputProfileImage'
 import { BASE_URL } from '../../../services/Enums'
-import { Button } from '../../../styles/global'
 import { CadastroType } from '../../../types/cadastro'
+import { useAppSelector } from './../../../app/store'
+import { FormButtons } from './FormButtons'
 
 type Props = {
   activeStep: number
@@ -23,6 +23,7 @@ type Props = {
 }
 export const FormCadastro = ({ activeStep, next, back }: Props) => {
   const dispatch = useAppDispatch()
+  const authUser = useAppSelector(state => state.authUser)
   const validatedFields = {
     inicioEmail: yup.string().required('Email invalido'),
     senha: yup.string().required('Senha é obrigatoria'),
@@ -51,15 +52,24 @@ export const FormCadastro = ({ activeStep, next, back }: Props) => {
     formState: { errors },
   } = useForm<CadastroType>({
     resolver: yupResolver<yup.AnyObjectSchema>(schema),
+    defaultValues: authUser?.data,
     mode: 'onBlur',
   })
   const onSubmit = (dados: CadastroType) => {
+    let method: Method = 'post'
+    if (authUser?.data?.id) {
+      dados.id = authUser.data.id
+      method = 'put'
+    }
     dados.email = dados.inicioEmail + dados.dominio
     const { inicioEmail, dominio, cep, ...cadastro } = dados
-    axios
-      .post(`${BASE_URL}/cadastro`, cadastro)
+    axios({
+      url: `${BASE_URL}/cadastro/${dados.id ?? ''}`,
+      method: method,
+      data: cadastro,
+    })
       .then(resp => {
-        dispatch(setUser(resp.data))
+        dispatch(setUser({ inicioEmail, dominio, cep, ...resp.data }))
         next()
       })
       .catch(error => toast.error('Falha em comunicar com o servidor'))
@@ -75,7 +85,7 @@ export const FormCadastro = ({ activeStep, next, back }: Props) => {
     ) {
       next()
     } else if (activeStep === 0) {
-      Object.values(errors).map(e => (e ? toast.error(e.message) : false))
+      onError(errors)
       return false
     } else {
       handleSubmit(onSubmit, onError)()
@@ -91,6 +101,8 @@ export const FormCadastro = ({ activeStep, next, back }: Props) => {
           type="text"
           placeholder="Email frameworker"
           name="inicioEmail"
+          value={watch('inicioEmail')}
+          dominio={watch('dominio')}
         />
         <Input
           error={errors?.senha}
@@ -98,6 +110,7 @@ export const FormCadastro = ({ activeStep, next, back }: Props) => {
           type="password"
           label="Senha"
           name="senha"
+          value={watch('senha')}
         />
         <Input
           error={errors?.confirmarSenha}
@@ -105,6 +118,7 @@ export const FormCadastro = ({ activeStep, next, back }: Props) => {
           type="password"
           label="Confirme sua senha"
           name="confirmarSenha"
+          value={watch('confirmarSenha')}
         />
       </If>
       <If test={activeStep === 1}>
@@ -114,9 +128,10 @@ export const FormCadastro = ({ activeStep, next, back }: Props) => {
           type="text"
           label="Nome"
           name="nome"
+          value={watch('nome')}
         />
         <Input
-          value={watch('telefone', '')}
+          value={watch('telefone')}
           mask={'(99) 9 9999-9999'}
           register={register}
           type="text"
@@ -125,7 +140,7 @@ export const FormCadastro = ({ activeStep, next, back }: Props) => {
           error={errors?.telefone}
         />
         <InputCep
-          value={watch('cep', '')}
+          value={watch('cep')}
           mask="99999-999"
           register={register}
           type="text"
@@ -140,6 +155,7 @@ export const FormCadastro = ({ activeStep, next, back }: Props) => {
           label="Cidade"
           name="cidade"
           error={errors?.cidade}
+          value={watch('cidade')}
         />
         <Input
           register={register}
@@ -147,30 +163,14 @@ export const FormCadastro = ({ activeStep, next, back }: Props) => {
           label="UF"
           name="uf"
           error={errors?.uf}
+          value={watch('uf')}
         />
       </If>
-      <Box
-        className="btn-acoes"
-        sx={{
-          display: 'flex',
-          flexDirection: 'row',
-          pt: 2,
-          position: 'relative',
-        }}
-      >
-        <Button
-          color="inherit"
-          type="button"
-          hidden={activeStep === 0}
-          onClick={async () => await back()}
-        >
-          Voltar
-        </Button>
-        <Box sx={{ flex: '1 1 auto' }} />
-        <Button type="button" onClick={async () => await checkValid()}>
-          Avançar
-        </Button>
-      </Box>
+      <FormButtons
+        hideBack={activeStep === 0}
+        back={back}
+        onSubmit={checkValid}
+      />
     </form>
   )
 }

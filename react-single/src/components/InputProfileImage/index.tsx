@@ -28,7 +28,6 @@ const AvatarImage = styled.div<{ value: string }>`
       ),
       url(${props => props.value});
     color: ${props => {
-      console.warn(props)
       return props.color
     }};
   }
@@ -53,7 +52,6 @@ type Props = {
 export const InputProfileImage = (props: Props) => {
   props.register(props.name)
   const [modalShow, setModalShow] = React.useState(false)
-
   return (
     <Container className="mb-3">
       <AvatarImage
@@ -67,6 +65,8 @@ export const InputProfileImage = (props: Props) => {
         show={modalShow}
         onHide={() => setModalShow(false)}
         setFormValue={props.setFormValue}
+        name={props.name}
+        value={props.value}
       />
     </Container>
   )
