@@ -10,7 +10,6 @@ import Cropper from 'react-easy-crop'
 import { Area, Point } from 'react-easy-crop/types'
 import { FieldValues, UseFormSetValue } from 'react-hook-form'
 import styled from 'styled-components'
-import { DEFAULT_PHOTO } from '../../services/Enums'
 
 const ModalBody = styled(Modal.Body)`
   min-height: 400px;
