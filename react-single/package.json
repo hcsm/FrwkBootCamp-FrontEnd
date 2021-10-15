@@ -2,7 +2,9 @@
   "version": "0.1.0",
   "name": "@frameworker/frameworker",
   "scripts": {
-    "start": "webpack serve --port 8500",
+    "start":  "concurrently --kill-others \"yarn start-json-server\" \"yarn start-webpack-server\"",
+    "start-webpack-server": "webpack serve --port 8500",
+    "start-json-server": "node server.js",
     "start:standalone": "webpack serve --port 8500 --env standalone",
     "build": "concurrently yarn:build:*",
     "build:webpack": "webpack --mode=production",
