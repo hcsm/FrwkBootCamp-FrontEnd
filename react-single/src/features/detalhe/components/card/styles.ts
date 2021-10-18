@@ -7,6 +7,9 @@ export const WrapperCard = styled.div`
 `
 
 export const Header = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   height: 314px;
 `
 
@@ -20,10 +23,9 @@ export const Body = styled.div`
   border-top-right-radius: 100px;
 `
 
-export const WrapperImage = styled.div`
+export const WrapperImage = styled.img`
   height: 141px;
   width: 141px;
-  margin: 0 auto;
   border-radius: 141px;
   background-color: #FFF;
 `
@@ -51,7 +53,7 @@ export const Button = styled.button`
 `
 
 export const WrapperStacksBox = styled.div`
-  width: 188px;
+  width: 220px;
   min-height: 121px;
   border: 1px solid #0AF585;
   border-radius: 17px;
