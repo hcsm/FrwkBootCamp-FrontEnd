@@ -12,7 +12,7 @@ const Routes = (props: Props) => {
       <Route exact path="/home" component={Home} />
       <Route path="/cadastro" component={Cadastro} />
       <Route path="/detalhe" component={Detalhe} />
-      <Redirect from="*" to="/" />
+      <Redirect from="*" to="/home" />
     </Switch>
   )
 }
