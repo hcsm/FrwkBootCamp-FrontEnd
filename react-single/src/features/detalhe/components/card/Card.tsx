@@ -27,7 +27,7 @@ export const Card = (props: Props) => {
         <WrapperImage />
         <WrapperTitle>
           <Title>
-            João Marcos Everton santos cruz
+            João Marcos
             <Button>
               <IconCircle color="white" borderColor="#7900DF" icon="Edit" backgroundColor="#7900DF" hasShadow/>
             </Button>
