@@ -1,165 +1,170 @@
 // @flow
-import { yupResolver } from '@hookform/resolvers/yup'
-import React, { useState } from 'react'
-// import { setLocale } from 'yup';
-import { Col, Row } from 'react-bootstrap'
+import Box from '@material-ui/core/Box'
+import Step from '@material-ui/core/Step'
+import StepLabel from '@material-ui/core/StepLabel'
+import Stepper from '@material-ui/core/Stepper'
+import axios from 'axios'
+import React from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
-import styled from 'styled-components'
-import * as yup from 'yup'
-import { Stepper } from '../../components/Stepper'
-import { CadastroType } from '../../types/cadastro'
+import { useAppSelector } from '../../app/store'
 import If from '../../components/If'
-import { CadastroBasicoForm } from './CadastroBasicoForm'
+import { InputProfileImage } from '../../components/InputProfileImage'
+import { BASE_URL } from '../../services/Enums'
+import { selectEspecialidades } from '../../services/especialidades'
+import { selectStacks } from '../../services/stacks'
+import { Button, Logo, SubTitle } from '../../styles/global'
+import { CadastroType } from '../../types/cadastro'
+import './Cadastro.css'
+import { FormCadastro } from './components/FormCadastro'
 import { FormStacks } from './components/FormStacks'
+import { FormFoto } from './components/FormFoto'
+import { FormButtons } from './components/FormButtons'
 
-const Wrapper = styled.section`
-  position: relative;
-  z-index: 1;
-  background: #ffffff;
-  max-width: 460px;
-  min-height: 100vh;
-  margin: 5px auto;
-  padding: 25px;
-  text-align: center;
-  border-radius: 15px;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-`
-const Container = styled.div`
-  width: 560px;
-  margin: auto;
-`
-const Button = styled.button`
-  display: inline-block;
-  font-weight: thin;
-  text-align: center;
-  border-radius: 3px;
-  border: 1pt solid #24006f;
-  color: #24006f;
-  font-size: 1em;
-  padding: 0.25em 1em;
-  background: transparent;
-  margin-top: 10px;
-  &:hover {
-    background-color: #24006f;
-    color: #0af585;
-  }
-`
-const Form = styled.form`
-  position: relative;
-  height: calc(100% - 95px);
-`
 type Props = {}
 export const Cadastro = (props: Props) => {
-  const [step, setStep] = useState(1)
-  const validatedFields = {
-    nome: yup.string().required('O campo nome é obrigatorio'),
-    inicioEmail: yup.string().required('Email invalido'),
-    cep: yup
-      .string()
-      .matches(/[0-9]{5}-[0-9]{3}/, 'CEP invalido')
-      .required('CEP invalido'),
-    telefone: yup.string().min(13, 'Telefone invalido'),
-  }
-  const schema = yup.object(validatedFields).required()
-  const { register, handleSubmit, setValue, watch } = useForm<CadastroType>({
-    resolver: yupResolver<yup.AnyObjectSchema>(schema),
+  const state = useAppSelector(state => state)
+  const steps = [
+    'Registro',
+    'Dados Pessoais',
+    'Foto',
+    'Experiência',
+    'Aprender',
+  ]
+
+  const [activeStep, setActiveStep] = React.useState(0)
+  const [skipped, setSkipped] = React.useState(new Set<number>())
+
+  const { handleSubmit, setValue, watch } = useForm<CadastroType>({
+    mode: 'onBlur',
   })
   const onSubmit = (data: CadastroType) => {
-    if (step === 1 || step === 2) {
-      proximo()
-    } else {
-      data.email = data.inicioEmail + data.dominio
-      console.log(data)
-    }
-  }
-  const proximo = () => {
-    setStep(step + 1)
-  }
-  const anterior = () => {
-    setStep(step - 1)
+    data.id = state.authUser.data.id
+    axios.post(`${BASE_URL}/perfil`, data).then(resp => {
+      toast.success('Cadastro completo')
+    })
   }
   const onError = (errors: object) => {
     Object.values(errors).map(e => (e ? toast.error(e.message) : false))
   }
-  const stacks = [
-    'Java',
-    '.NET',
-    'Angular',
-    'Docker',
-    'JavaScript',
-    'TypeScript',
-    'C#',
-    'Go lang',
-    'Azure',
-  ]
+  const stacks = getStacks()
+  const especialidades = getEspecialidades()
+
+  const isStepSkipped = (step: number) => {
+    return skipped.has(step)
+  }
+
+  const handleNext = async () => {
+    if (activeStep === 4) {
+      handleSubmit(onSubmit, onError)()
+    } else {
+      let newSkipped = skipped
+      if (isStepSkipped(activeStep)) {
+        newSkipped = new Set(newSkipped.values())
+        newSkipped.delete(activeStep)
+      }
+      setActiveStep(prevActiveStep => prevActiveStep + 1)
+      setSkipped(newSkipped)
+    }
+  }
+  const handleBack = () => {
+    setActiveStep(prevActiveStep => prevActiveStep - 1)
+  }
   return (
-    <Container>
-      <Row>
-        <Wrapper className="col-sm-12">
-          <Row className="justify-content-around">
-            <Stepper active={step === 1 ? true : false} step="1" />
-            <Stepper active={step === 2 ? true : false} step="2" />
-            <Stepper active={step === 3 ? true : false} step="3" />
-          </Row>
-          <Form autoComplete="off" onSubmit={handleSubmit(onSubmit, onError)}>
-            <If test={step === 1}>
-              <CadastroBasicoForm
-                register={register}
+    <div className="content">
+      <div className="wrapper">
+        <Logo className="logo">Framebook</Logo>
+        <Stepper activeStep={activeStep}>
+          {steps.map((label, index) => {
+            const stepProps: { completed?: boolean } = {}
+            const labelProps: {
+              optional?: React.ReactNode
+            } = {}
+
+            if (isStepSkipped(index)) {
+              stepProps.completed = false
+            }
+            return (
+              <Step key={label} {...stepProps}>
+                <StepLabel {...labelProps}>{label}</StepLabel>
+              </Step>
+            )
+          })}
+        </Stepper>
+        <React.Fragment>
+          <If test={activeStep === 0 || activeStep === 1}>
+            <FormCadastro
+              activeStep={activeStep}
+              next={handleNext}
+              back={handleBack}
+            />
+          </If>
+          <form className="needs-validation form" autoComplete="off">
+            <If test={activeStep === 2}>
+              <FormFoto back={handleBack} next={handleNext} />
+            </If>
+            <If test={activeStep === 3}>
+              <FormStacks
+                watchedValue={watch('especialidade', [])}
+                titulo="Especialidade:"
+                stacks={especialidades}
+                placeholder="Selecione sua especialidade"
                 setFormValue={setValue}
-                watch={watch}
+                field="especialidade"
+              />
+              <FormStacks
+                watchedValue={watch('stackExperiencia', [])}
+                titulo="Stacks com experiência:"
+                stacks={stacks}
+                isMulti
+                placeholder="Selecione"
+                setFormValue={setValue}
+                field="stackExperiencia"
               />
             </If>
-            <If test={step === 2}>
-              <>
-                <FormStacks
-                  watchedValue={watch('especialidade', [])}
-                  titulo="Especialidade:"
-                  stacks={['Frontend', 'Backend', 'Fullstack', ...stacks]}
-                  placeholder="Selecione sua especialidade"
-                  setFormValue={setValue}
-                  field="especialidade"
-                />
-                <FormStacks
-                  watchedValue={watch('stacksComExperiencia', [])}
-                  titulo="Stacks com experiência:"
-                  stacks={stacks}
-                  isMulti
-                  placeholder="Selecione"
-                  setFormValue={setValue}
-                  field="stacksComExperiencia"
-                />
-              </>
-            </If>
-            <If test={step === 3}>
+            <If test={activeStep === 4}>
               <FormStacks
                 isMulti
-                watchedValue={watch('stacksAprender', [])}
+                watchedValue={watch('stackAprender', [])}
                 titulo="Stacks que deseja aprender:"
                 placeholder="Selecione"
                 stacks={stacks}
                 setFormValue={setValue}
-                field="stacksAprender"
+                field="stackAprender"
               />
             </If>
-            <Row className="justify-content-center">
-              <Col md={6} hidden={step === 1}>
-                <Button type="button" onClick={() => anterior()}>
-                  Anterior
-                </Button>
-              </Col>
-
-              <Col md={6} hidden={step === 3}>
-                <Button type="submit">Continuar</Button>
-              </Col>
-
-              <Col md={6} hidden={step !== 3}>
-                <Button type="submit">Finalizar</Button>
-              </Col>
-            </Row>
-          </Form>
-        </Wrapper>
-      </Row>
-    </Container>
+            <If test={activeStep === 3 || activeStep === 4}>
+              <FormButtons
+                back={handleBack}
+                onSubmit={handleNext}
+                isSubmit={activeStep === 4}
+                labelSubmit="Finalizar"
+              />
+            </If>
+          </form>
+        </React.Fragment>
+      </div>
+      <div className="background" />
+    </div>
   )
+}
+function getStacks() {
+  const { data, isError, isSuccess } = selectStacks(null)
+  if (isError) {
+    toast.error('Algo deu errado')
+  }
+  if (isSuccess) {
+    return data
+  }
+  return []
+}
+function getEspecialidades() {
+  const { data, isSuccess, isError } = selectEspecialidades(null)
+  if (isError) {
+    toast.error('Algo deu errado')
+  }
+  if (isSuccess) {
+    return data
+  }
+  return []
 }

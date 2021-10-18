@@ -1,11 +1,11 @@
 // @flow
-import React, { useState } from 'react'
-import { FieldValues, UseFormRegister, UseFormSetValue } from 'react-hook-form'
+import React from 'react'
+import { FieldValues, UseFormSetValue } from 'react-hook-form'
 import Select, { MultiValue, StylesConfig } from 'react-select'
-import styled from 'styled-components'
+import { SubTitle } from '../../../styles/global'
 
 type Props = {
-  stacks: string[]
+  stacks: object[]
   titulo: string
   watchedValue: any
   setFormValue: UseFormSetValue<FieldValues>
@@ -19,11 +19,6 @@ interface Istack {
   value: string
 }
 
-const StacksBox = styled.div`
-  border: 2pt solid #0af585;
-  padding: 0.5em;
-  z-index: 1;
-`
 const colourStyles: StylesConfig<Istack, true> = {
   control: styles => ({
     ...styles,
@@ -32,7 +27,7 @@ const colourStyles: StylesConfig<Istack, true> = {
     padding: '0.5em',
     caretColor: 'transparent',
   }),
-  multiValue: (styles, { data }) => {
+  multiValue: styles => {
     return {
       ...styles,
       border: '1pt solid #24006f',
@@ -41,7 +36,7 @@ const colourStyles: StylesConfig<Istack, true> = {
       padding: '0.25em 0.6em',
     }
   },
-  singleValue: (styles, { data }) => ({
+  singleValue: styles => ({
     ...styles,
     border: '1pt solid #24006f',
     borderRadius: '3px',
@@ -51,12 +46,12 @@ const colourStyles: StylesConfig<Istack, true> = {
     marginLeft: 'auto',
     marginRight: 'auto',
   }),
-  multiValueLabel: (styles, { data }) => ({
+  multiValueLabel: styles => ({
     ...styles,
     color: '#0af585',
     textAlign: 'center',
   }),
-  multiValueRemove: (styles, { data }) => ({
+  multiValueRemove: styles => ({
     ...styles,
     color: '#0af585',
     ':hover': {
@@ -80,13 +75,13 @@ export const FormStacks = ({
   }
   return (
     <div className="mb-3">
-      <h4 className="mb-2">{titulo}</h4>
+      <SubTitle>{titulo}</SubTitle>
       <Select
         styles={colourStyles}
-        closeMenuOnSelect={false}
+        closeMenuOnSelect={!isMulti}
         isMulti={isMulti}
         placeholder={placeholder}
-        options={stacks.map(v => ({ value: v, label: v }))}
+        options={stacks}
         onChange={values => selected(values)}
         defaultValue={watchedValue}
       />

@@ -19,7 +19,6 @@ const Step = styled.section<IStep>`
   margin-bottom: 5vh;
 `
 export function Stepper(props: Props) {
-
   return (
     <>
       <Step active={props.active || false}>{props.step}</Step>
