@@ -13,10 +13,11 @@ export const Header = styled.div`
 export const Body = styled.div`
   display: flex;
   align-items: center;
-  flex-flow: column wrap;
+  flex-flow: column;
   justify-content: space-around;
-  min-height: 550px;
+  min-height: 545px;
   background-color: #13142C;
+  border-top-right-radius: 100px;
 `
 
 export const WrapperImage = styled.div`
@@ -27,8 +28,11 @@ export const WrapperImage = styled.div`
   background-color: #FFF;
 `
 
-export const Title = styled.h2`
-  margin-top: 27px;
+export const WrapperTitle = styled.div`
+  padding: 28px 4px 0px 4px;
+`
+
+export const Title = styled.p`
   text-align: center;
   font-family: Roboto;
   font-size: 20px;
@@ -37,6 +41,13 @@ export const Title = styled.h2`
   line-height: 23px;
   letter-spacing: 0em;
   color: #FFF;
+`
+
+export const Button = styled.button`
+  padding: 0;
+  margin-left: 14px;
+  background-color: transparent;
+  border none;
 `
 
 export const WrapperStacksBox = styled.div`
