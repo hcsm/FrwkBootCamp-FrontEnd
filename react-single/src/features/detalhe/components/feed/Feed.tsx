@@ -10,9 +10,6 @@ type Props = {}
 export const Feed = (props: Props) => {
   return (
     <WrapperFeed>
-      <Cards></Cards>
-      <Cards></Cards>
-      <Cards></Cards>
     </WrapperFeed>
   );
 }
