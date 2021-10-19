@@ -1,8 +1,8 @@
 // @flow
 import * as React from 'react'
 import { Dropdown } from '../../../../../components/Dropdown'
-import { H5 } from '../../../../../styles/global'
 import styled from 'styled-components'
+import { H5 } from '../../../../../styles/global'
 
 type Props = {}
 const StyledLi = styled(H5)`
