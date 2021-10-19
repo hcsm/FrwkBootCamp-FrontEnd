@@ -1,28 +1,28 @@
-import React from 'react'
-import styled from 'styled-components'
+import React, { useState } from 'react'
+
+import { Header } from './components/header/Header'
+import { HeaderAside } from './components/aside/header-aside/HeaderAside'
+import { Stack }  from './components/aside/stack/Stack'
+import { Feed } from './components/feed/Feed'
 
 import {
   WrapperDetail,
   WrapperHeader,
-  WrapperContent,
   WrapperAside,
+  WrapperContent,
   WrapperSection,
 } from './styles'
-
-import { Header } from './components/header/Header'
-import { Card }  from './components/card/Card'
-import { Feed } from './components/feed/Feed'
 
 type Props = {}
 
 export const Detalhe = (props: Props) => {
-
   return (
       <WrapperDetail>
         <WrapperHeader><Header /></WrapperHeader>
         <WrapperContent>
           <WrapperAside>
-            <Card />
+            <HeaderAside />
+            <Stack />
           </WrapperAside>
           <WrapperSection>
             <Feed/>
