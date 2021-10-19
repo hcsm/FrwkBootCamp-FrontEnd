@@ -5,7 +5,7 @@ export const WrapperHeader = styled.div`
   flex-direction: row;
   height: 76px;
   width: 100%;
-  color: #FFF;
+  color: #fff;
   background-color: #070817;
   border-bottom: 1px solid #213054;
 `
@@ -17,35 +17,40 @@ const RowDirection = styled.div`
 
 export const Left = styled(RowDirection)`
   width: 30%;
+  justify-content: center;
+
+  @media (max-width: 850px) {
+    display: none;
+  }
 `
 
 export const Right = styled(RowDirection)`
   justify-content: flex-end;
   width: 70%;
   margin-right: 24px;
+
+  @media (max-width: 850px) {
+    width: 100%;
+  }
 `
 
-export const SearchInput = styled.input`
-  height: 48px;
-  width: 410px;
-  background: #0B0C22;
-  border: 1px solid #213054;
-  box-sizing: border-box;
-  border-radius: 12px;
-  color: #FFF;
-  ::placeholder {
-    color: #FFF;
+export const WrapperSearch = styled.div`
+  min-width: 400px;
+
+  @media (max-width: 650px) {
+    min-width: 100px;
   }
 `
 
 export const HeaderTitle = styled.h1`
-  font-family: Rubik;
-  font-size: 40px;
+  @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap');
+  font-family: 'Rubik', sans-serif;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 500;
+  font-size: 40px;
   line-height: 47px;
-  letter-spacing: 0em;
-  text-align: left;
+  text-align: center;
+  margin: 0;
+
+  text-shadow: 4px 0px 11px rgb(255 255 255);
 `
-
-

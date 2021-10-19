@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { Header } from './components/header/Header'
+import { Header } from './components/header'
 import { HeaderAside } from './components/aside/header-aside/HeaderAside'
 import { Stack }  from './components/aside/stack/Stack'
 import { Feed } from './components/feed/Feed'
