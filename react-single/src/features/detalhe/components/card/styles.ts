@@ -16,7 +16,7 @@ export const Body = styled.div`
   flex-flow: column;
   justify-content: space-around;
   min-height: 545px;
-  background-color: #13142C;
+  background-color: #13142c;
   border-top-right-radius: 100px;
 `
 
@@ -25,7 +25,7 @@ export const WrapperImage = styled.div`
   width: 141px;
   margin: 0 auto;
   border-radius: 141px;
-  background-color: #FFF;
+  background-color: #fff;
 `
 
 export const WrapperTitle = styled.div`
@@ -40,7 +40,7 @@ export const Title = styled.p`
   font-weight: 500;
   line-height: 23px;
   letter-spacing: 0em;
-  color: #FFF;
+  color: #fff;
 `
 
 export const Button = styled.button`
@@ -53,7 +53,7 @@ export const Button = styled.button`
 export const WrapperStacksBox = styled.div`
   width: 188px;
   min-height: 121px;
-  border: 1px solid #0AF585;
+  border: 1px solid #0af585;
   border-radius: 17px;
 `
 
@@ -71,7 +71,7 @@ export const TitleBadge = styled.h2`
   line-height: 20px;
   letter-spacing: 0em;
   text-align: left;
-  color: #0AF585;
+  color: #0af585;
   margin-top: 17px;
   margin-left: 18px;
 `

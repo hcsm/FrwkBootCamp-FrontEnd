@@ -12,26 +12,26 @@ type Props = {
   borderColor?: string
   backgroundColor?: string
   hasShadow?: boolean
+  iconClass?: string
 }
 
 const Circle = styled.div<Props>`
-  .icon{
-  color: ${props => props.color};
-  border: 1pt solid ;
-  border-color: ${props => props.borderColor || 'transparent'};
-  background-color: ${props => props.backgroundColor || 'transparent'};
-  border-radius: 50%;
-  padding: 2px;
-  box-shadow: 0 0 10px ${props => props.hasShadow ? props.backgroundColor : 'transparent'};
-}
+  .icon {
+    color: ${props => props.color};
+    border: 1pt solid;
+    border-color: ${props => props.borderColor || 'transparent'};
+    background-color: ${props => props.backgroundColor || 'transparent'};
+    border-radius: 50%;
+    padding: 2px;
+    box-shadow: 0 0 10px
+      ${props => (props.hasShadow ? props.backgroundColor : 'transparent')};
+  }
 `
 const IconCircle = (props: Props) => {
-  const Icon = React.createElement(Icons[props.icon! as keyof IconType], {className: "icon"})
-  return (
-    <Circle {...props}>
-      {Icon}
-    </Circle>
-  )
+  const Icon = React.createElement(Icons[props.icon! as keyof IconType], {
+    className: `icon ${props.iconClass ?? ''}`,
+  })
+  return <Circle {...props}>{Icon}</Circle>
 }
 
 export default IconCircle
