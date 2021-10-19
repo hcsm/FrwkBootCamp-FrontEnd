@@ -1,6 +1,8 @@
 import React from 'react'
 
-import { WrapperFeed } from './styles'
+import {
+  WrapperFeed,
+} from './styles'
 
 type Props = {}
 
@@ -9,5 +11,5 @@ export const Feed = (props: Props) => {
     <WrapperFeed>
       <p>Componente Feed</p>
     </WrapperFeed>
-  )
+  );
 }

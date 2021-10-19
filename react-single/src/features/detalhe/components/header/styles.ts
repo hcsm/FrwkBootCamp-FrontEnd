@@ -5,7 +5,7 @@ export const WrapperHeader = styled.div`
   flex-direction: row;
   height: 76px;
   width: 100%;
-  color: #fff;
+  color: #FFF;
   background-color: #070817;
   border-bottom: 1px solid #213054;
 `
@@ -28,13 +28,13 @@ export const Right = styled(RowDirection)`
 export const SearchInput = styled.input`
   height: 48px;
   width: 410px;
-  background: #0b0c22;
+  background: #0B0C22;
   border: 1px solid #213054;
   box-sizing: border-box;
   border-radius: 12px;
-  color: #fff;
+  color: #FFF;
   ::placeholder {
-    color: #fff;
+    color: #FFF;
   }
 `
 
@@ -47,3 +47,5 @@ export const HeaderTitle = styled.h1`
   letter-spacing: 0em;
   text-align: left;
 `
+
+

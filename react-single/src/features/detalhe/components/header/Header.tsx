@@ -1,6 +1,12 @@
 import React from 'react'
-import { HeaderTitle, Left, Right, SearchInput, WrapperHeader } from './styles'
-import SidebarRight from '../SidebarRight/index'
+
+import {
+  WrapperHeader,
+  HeaderTitle,
+  Left,
+  Right,
+  SearchInput
+} from './styles'
 
 type Props = {}
 
@@ -10,10 +16,7 @@ export const Header = (props: Props) => {
       <Left>
         <HeaderTitle>Framebook</HeaderTitle>
       </Left>
-      <Right>
-        <SearchInput placeholder="buscar" />
-        <SidebarRight />
-      </Right>
+      <Right><SearchInput placeholder='buscar'/></Right>
     </WrapperHeader>
-  )
+  );
 }

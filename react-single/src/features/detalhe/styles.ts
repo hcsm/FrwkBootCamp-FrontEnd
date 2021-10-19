@@ -15,7 +15,7 @@ export const WrapperContent = styled.div`
 
 export const WrapperAside = styled.aside`
   flex: 2;
-  background-color: #090b20;
+  background-color: #090B20;
 `
 
 export const WrapperSection = styled.aside`

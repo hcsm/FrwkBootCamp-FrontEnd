@@ -45,15 +45,3 @@ export const SubTitle = styled.h4`
   margin-bottom: 20px;
   text-shadow: 0px 0px 28px rgb(228 228 228 / 40%);
 `
-export const H5 = styled.h5`
-  color: white;
-  line-height: 26px;
-  cursor: pointer;
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Safari */
-  -khtml-user-select: none; /* Konqueror HTML */
-  -moz-user-select: none; /* Old versions of Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome, Edge, Opera and Firefox */
-`
