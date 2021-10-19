@@ -8,16 +8,18 @@ export const WrapperHeader = styled.div`
   display: flex;
 `
 
+export const WrapperAside = styled.aside`
+  flex: 2;
+  padding-top: 8px;
+  background-color: #090B20;
+  border-right: 1px solid #213054;
+`
+
 export const WrapperContent = styled.div`
   display: flex;
   background-color: gray;
 `
 
-export const WrapperAside = styled.aside`
-  flex: 2;
-  background-color: #090B20;
-`
-
-export const WrapperSection = styled.aside`
+export const WrapperSection = styled.section`
   flex: 10;
 `

@@ -39,12 +39,36 @@
         {
           "value": "TypeScript",
           "label": "TypeScript"
+        },
+        {
+          "value": "HTML",
+          "label": "HTML"
+        },
+        {
+          "value": "CSS",
+          "label": "CSS"
         }
       ],
       "stackAprender": [
         {
           "value": "Docker",
           "label": "Docker"
+        },
+        {
+          "value": "Kubernetes",
+          "label": "Kubernetes"
+        },
+        {
+          "value": "Sass",
+          "label": "Sass"
+        },
+        {
+          "value": "Scrum",
+          "label": "Scrum"
+        },
+        {
+          "value": "Redux",
+          "label": "Redux"
         }
       ],
       "id": 1

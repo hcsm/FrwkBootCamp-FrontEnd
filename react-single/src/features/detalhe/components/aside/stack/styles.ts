@@ -1,34 +1,21 @@
 import styled from 'styled-components'
 import Chip from '@material-ui/core/Chip'
 
-export const WrapperCard = styled.div`
-  padding-top: 8px;
-  border-right: 1px solid #213054;
-`
-
-export const Header = styled.div`
-  height: 314px;
-`
-
-export const Body = styled.div`
+export const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  flex-flow: column wrap;
+  flex-flow: column;
   justify-content: space-around;
-  min-height: 550px;
+  min-height: 545px;
   background-color: #13142C;
+  border-top-right-radius: 100px;
 `
 
-export const WrapperImage = styled.div`
-  height: 141px;
-  width: 141px;
-  margin: 0 auto;
-  border-radius: 141px;
-  background-color: #FFF;
+export const WrapperTitle = styled.div`
+  padding: 28px 4px 0px 4px;
 `
 
-export const Title = styled.h2`
-  margin-top: 27px;
+export const Title = styled.p`
   text-align: center;
   font-family: Roboto;
   font-size: 20px;
@@ -39,8 +26,15 @@ export const Title = styled.h2`
   color: #FFF;
 `
 
+export const Button = styled.button`
+  padding: 0;
+  margin-left: 14px;
+  background-color: transparent;
+  border none;
+`
+
 export const WrapperStacksBox = styled.div`
-  width: 188px;
+  width: 220px;
   min-height: 121px;
   border: 1px solid #0AF585;
   border-radius: 17px;
