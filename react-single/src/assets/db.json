@@ -9,6 +9,16 @@
       "uf": "MG",
       "email": "victorafonso@frwk.com.br",
       "id": 1
+    },
+    {
+      "senha": "asdf",
+      "confirmarSenha": "asdf",
+      "nome": "Érika Márcia",
+      "telefone": "(99) 4 2882-6431",
+      "cidade": "Ribeirão das Neves",
+      "uf": "MG",
+      "email": "adfa@frwk.com.br",
+      "id": 2
     }
   ],
   "perfil": [

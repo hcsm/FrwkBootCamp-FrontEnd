@@ -1,4 +1,5 @@
 import React from 'react'
+import { Cards } from './Cards/Cards';
 
 import {
   WrapperFeed,
@@ -9,7 +10,6 @@ type Props = {}
 export const Feed = (props: Props) => {
   return (
     <WrapperFeed>
-      <p>Componente Feed</p>
     </WrapperFeed>
   );
 }
