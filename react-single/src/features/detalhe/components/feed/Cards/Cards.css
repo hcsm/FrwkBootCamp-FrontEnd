@@ -1,0 +1,31 @@
+.card {
+    background-color: #070817 !important;
+    border: 3px solid #213054;
+    height: 64vh;
+    width: 20vw;
+    margin: 3%;
+}
+
+.MuiCardHeader-title {
+    font-size: 1.5em !important;
+    font-weight: 550 !important;
+    color: #0AF585;
+    text-shadow: 2px 0px 28px rgb(10 245 133 / 70%);
+}
+
+.MuiCardMedia-img {
+    width: 220px !important;
+    height: 250px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 3%;
+    border: 4px solid #fff;
+}
+.btnDiv{
+    position: absolute;
+    top: 68%;
+    left: 59%;
+}
+.stacks{
+    display: flex;
+}
