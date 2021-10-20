@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardMedia } from "@material-ui/core";
-import { Botao } from "../../../../../components/Botão/Botao";
+import Button from "../../../../../components/Button";
 import { Chip } from "../../../../../components/Chip/Chip";
 import "./Cards.css";
 
@@ -25,7 +25,7 @@ export function Cards(props: Props) {
 
             <CardContent>
                 <div className="btnDiv">
-                    <Botao title="Ver mais"></Botao>
+                    <Button type='submit'>Ver mais</Button>
                 </div>
                 <div className="stacks">
                     {stacks}
