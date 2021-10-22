@@ -11,7 +11,7 @@ export const WrapperHeader = styled.div`
 export const WrapperAside = styled.aside`
   flex: 2;
   padding-top: 8px;
-  background-color: #090B20;
+  background-color: #090b20;
   border-right: 1px solid #213054;
 `
 

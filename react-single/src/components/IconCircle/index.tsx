@@ -1,23 +1,25 @@
 // @flow
 import * as React from 'react'
-import * as Icons from '@material-ui/icons/'
-import * as MaterialDesign from 'react-icons/md'
 import styled from 'styled-components'
+import Icon from '../Icon/index'
 
-type IconType = typeof import('@material-ui/icons/index')
-
-type Props = {
-  icon: string
-  color: string
+interface CommomProps {
+  color?: string
   borderColor?: string
   backgroundColor?: string
   hasShadow?: boolean
+  className?: string
+}
+interface Props extends CommomProps {
+  icon: string
+  onClick?: Function
   iconClass?: string
 }
-
-const Circle = styled.div<Props>`
+const Circle = styled.div<CommomProps>`
+  cursor: pointer;
   .icon {
-    color: ${props => props.color};
+    cursor: pointer;
+    color: ${props => props.color ?? 'white'};
     border: 1pt solid;
     border-color: ${props => props.borderColor || 'transparent'};
     background-color: ${props => props.backgroundColor || 'transparent'};
@@ -28,10 +30,18 @@ const Circle = styled.div<Props>`
   }
 `
 const IconCircle = (props: Props) => {
-  const Icon = React.createElement(Icons[props.icon! as keyof IconType], {
-    className: `icon ${props.iconClass ?? ''}`,
-  })
-  return <Circle {...props}>{Icon}</Circle>
+  return (
+    <Circle
+      onClick={() => (props.onClick ? props.onClick() : false)}
+      className={props.className}
+      color={props.color}
+      hasShadow={props.hasShadow}
+      backgroundColor={props.backgroundColor}
+      borderColor={props.borderColor}
+    >
+      <Icon icon={props.icon} iconClass={props.iconClass} />
+    </Circle>
+  )
 }
 
 export default IconCircle

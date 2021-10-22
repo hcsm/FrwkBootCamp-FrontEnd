@@ -10,14 +10,20 @@ export type CadastroType = {
   cep: string
   uf: string
   telefone: string
-  especialidade: string[]
-  stackExperiencia: string[]
-  stackAprender: string[]
+  especialidade: StacksType | {}
+  stackExperiencia: StacksType[] | []
+  stackAprender: StacksType[] | []
   foto: userFoto
   ativo: boolean
 }
 
-export type userFoto = {
+export interface StacksType {
+  id?: number
+  label: string
+  value: string
+}
+
+export interface userFoto {
   id: number
   value?: string
 }

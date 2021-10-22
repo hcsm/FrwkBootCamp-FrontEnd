@@ -6,16 +6,16 @@ import SearchIcon from '@material-ui/icons/Search'
 
 type Props = {
   value: String
-  setValue: Dispatch<SetStateAction<string>>
+  setValue: any
   placeholder: string
 }
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#213054'
-    }
-  }
+      main: '#213054',
+    },
+  },
 })
 
 const Input = (props: Props) => {
@@ -33,20 +33,23 @@ const Input = (props: Props) => {
           '& .MuiInputBase-root': {
             border: '1px solid #213054',
             boxSizing: 'border-box',
-            borderRadius: '12px'
+            borderRadius: '12px',
           },
           '& input': {
-            backgroundColor: `${backgroundColor}!important`
+            backgroundColor: `${backgroundColor}!important`,
+          },
+          '& .MuiOutlinedInput-notchedOutline': {
+            display: 'none',
           },
           '& .MuiInputBase-input': {
             padding: '11px 14px',
-            borderRadius: '12px'
+            borderRadius: '12px',
           },
-          '& .Mui-focused': {
-            border: 'none'
+          '& .Mui-focused ': {
+            boxShadow: '0 0 20px 0px #213054',
           },
           backgroundColor: `${backgroundColor}`,
-          width: '100%'
+          width: '100%',
         }}
         InputProps={{
           startAdornment: (
@@ -55,17 +58,17 @@ const Input = (props: Props) => {
               disablePointerEvents={true}
               sx={{
                 backgroundColor: `${backgroundColor}!important`,
-                height: '48px'
+                height: '48px',
               }}
             >
               <SearchIcon
                 sx={{
                   backgroundColor: `${backgroundColor}!important`,
-                  color: 'white'
+                  color: 'white',
                 }}
               />
             </InputAdornment>
-          )
+          ),
         }}
       />
     </ThemeProvider>

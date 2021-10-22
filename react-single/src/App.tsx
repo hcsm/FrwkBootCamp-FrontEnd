@@ -8,11 +8,13 @@ import store from './app/store'
 import { especialidadeApi } from './services/especialidades'
 import { stacksApi } from './services/stacks'
 import { GlobalStyle } from './styles/global'
-import Routes from './Routes'
+import Routes from './routes/Routes'
+const voidValue = (function () {})()
+store.dispatch(stacksApi.util.prefetch('getStacks', voidValue, {}))
 
-store.dispatch(stacksApi.util.prefetch('getStacks', null, {}))
-
-store.dispatch(especialidadeApi.util.prefetch('getEspecialidades', null, {}))
+store.dispatch(
+  especialidadeApi.util.prefetch('getEspecialidades', voidValue, {})
+)
 
 function App() {
   return (

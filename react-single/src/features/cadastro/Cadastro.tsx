@@ -105,7 +105,7 @@ export const Cadastro = (props: Props) => {
             </If>
             <If test={activeStep === 3}>
               <FormStacks
-                watchedValue={watch('especialidade', [])}
+                watchedValue={watch('especialidade', {})}
                 titulo="Especialidade:"
                 stacks={especialidades}
                 placeholder="Selecione sua especialidade"
@@ -149,7 +149,7 @@ export const Cadastro = (props: Props) => {
   )
 }
 function getStacks() {
-  const { data, isError, isSuccess } = selectStacks(null)
+  const { data, isError, isSuccess } = selectStacks()
   if (isError) {
     toast.error('Algo deu errado')
   }
@@ -159,7 +159,7 @@ function getStacks() {
   return []
 }
 function getEspecialidades() {
-  const { data, isSuccess, isError } = selectEspecialidades(null)
+  const { data, isSuccess, isError } = selectEspecialidades()
   if (isError) {
     toast.error('Algo deu errado')
   }
