@@ -1,7 +1,8 @@
-import { Card, CardContent, CardHeader, CardMedia } from '@material-ui/core'
-import { Botao } from '../../../../../components/Botão/Botao'
-import { Chip } from '../../../../../components/Chip/Chip'
-import './Cards.css'
+
+import { Card, CardContent, CardHeader, CardMedia } from "@material-ui/core";
+import Button from "../../../../../components/Button";
+import { Chip } from "../../../../../components/Chip/Chip";
+import "./Cards.css";
 
 type Props = {
   stacks: String[]
@@ -27,12 +28,21 @@ export function Cards(props: Props) {
         alt=""
       />
 
-      <CardContent>
-        <div className="btnDiv">
-          <Botao title="Ver mais"></Botao>
-        </div>
-        <div className="stacks">{stacks}</div>
-      </CardContent>
-    </Card>
-  )
+
+    return (
+        <Card className="card">
+            <CardHeader title={props.name} />
+            <CardMedia className="img" component="img" image={props.userFoto.value} alt="" />
+
+            <CardContent>
+                <div className="btnDiv">
+                    <Button type='submit'>Ver mais</Button>
+                </div>
+                <div className="stacks">
+                    {stacks}
+                </div>
+
+            </CardContent>
+        </Card>
+    );
 }

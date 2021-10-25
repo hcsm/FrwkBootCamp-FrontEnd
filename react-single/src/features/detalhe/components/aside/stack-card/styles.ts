@@ -1,5 +1,6 @@
 import styled from 'styled-components'
-import Chip from '@material-ui/core/Chip'
+// import Chip from '@material-ui/core/Chip'
+import { Chip } from '../../../../../components/Chip/Chip'
 
 export const Wrapper = styled.div`
   width: 220px;

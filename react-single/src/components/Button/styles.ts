@@ -1,4 +1,6 @@
-.btn {
+import styled from 'styled-components';
+
+export const Container = styled.button`
   display: inline-block;
   font-weight: thin;
   text-align: center;
@@ -9,8 +11,10 @@
   background: #7900DF;
   box-shadow: 2px 0px 28px rgb(121 0 223 / 70%);
   margin-top: 5px;
-  
-}
-.btn :hover {
-    background: #6400b6;
-}
+
+  &:hover {
+      background: #6400b6;
+  }
+`;
+
+ 
