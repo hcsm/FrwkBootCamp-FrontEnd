@@ -9,11 +9,12 @@ type Props = {
     value: string
     label: string
   }>
+  className?: string
 }
 
 export const StackCard = (props: Props) => {
   return (
-    <Wrapper>
+    <Wrapper className={props.className}>
       <Title>{props.title}</Title>
       <WrapperBadge>
         {

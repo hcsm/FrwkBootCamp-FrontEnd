@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
-export const ListWrapper = styled.div`
+export const CrudWrapper = styled.div`
   background-color: #070817;
-  height: 100%;
+  height: 100vh;
   width: 100%;
 `
 export const AddWrapper = styled.div`

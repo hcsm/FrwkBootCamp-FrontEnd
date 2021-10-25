@@ -1,12 +1,15 @@
 import styled from 'styled-components'
-// import Chip from '@material-ui/core/Chip'
 import { Chip } from '../../../../../components/Chip/Chip'
 
 export const Wrapper = styled.div`
-  width: 220px;
-  min-height: 121px;
   border: 1px solid #0af585;
+  box-sizing: border-box;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   border-radius: 17px;
+  margin: 15px 10px;
+  &:first-child{
+    margin-top: 65px;
+  }
 `
 
 export const WrapperBadge = styled.div`

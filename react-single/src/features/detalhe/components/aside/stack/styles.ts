@@ -2,12 +2,9 @@ import styled from 'styled-components'
 import Chip from '@material-ui/core/Chip'
 
 export const Wrapper = styled.div`
-  display: flex;
-  align-items: center;
-  flex-flow: column;
-  justify-content: space-around;
-  min-height: 545px;
   background-color: #13142c;
+  height: calc(70%);
+  border: 1pt solid #13142c;
   border-top-right-radius: 100px;
 `
 
@@ -30,7 +27,7 @@ export const Button = styled.button`
   padding: 0;
   margin-left: 14px;
   background-color: transparent;
-  border none;
+  border: none;
 `
 
 export const WrapperStacksBox = styled.div`

@@ -2,7 +2,8 @@ import styled from 'styled-components'
 
 export const ListWrapper = styled.div`
   width: 95%;
-  height: 100vh;
+  height: 65%;
+  overflow: auto;
   .list::-webkit-scrollbar {
     width: 10px;
   }

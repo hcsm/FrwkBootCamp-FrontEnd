@@ -26,7 +26,6 @@ const AdminList = ({
   error,
   update,
   remove,
-  querySearch,
 }: Props) => {
   if (isSuccess && data) {
     const rowRenderer = ({ key, index, style }: ListRowProps) => {

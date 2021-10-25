@@ -1,6 +1,7 @@
 // @flow
 import * as React from 'react'
 import { Col } from 'react-bootstrap'
+import IconCircle from '../../../components/IconCircle'
 import If from '../../../components/If'
 import InputSearch from '../../../components/InputSearch'
 import { SubTitle } from '../../../styles/global'
@@ -9,7 +10,7 @@ import AddButton from '../components/AddButton'
 import AdminCard from '../components/AdminCard'
 import AdminList from '../components/AdminList'
 import Loader from '../components/Loader'
-import { AddWrapper, ListWrapper } from './styles'
+import { AddWrapper, CrudWrapper } from './styles'
 type Props = {
   title: string
   fetch: any
@@ -46,25 +47,25 @@ const AdminCrud = ({ title, fetch, create, update, remove }: Props) => {
     }
   }
   return (
-    <>
-      <ListWrapper className="pt-3">
-        <div className="mt-4 w-100 d-flex justify-content-center wrap">
-          <SubTitle>{title}</SubTitle>
-        </div>
-        <div className="mt-5 row justify-content-center">
-          <Col className="" md={7}>
-            <InputSearch
-              placeholder="Buscar..."
-              value={searchInputValue}
-              setValue={async (e: any) => {
-                search(e)
-              }}
-            />
-          </Col>
-          <Col className="ms-4" md={2}>
-            <AddButton onClick={() => toggleIsNew(!isNew)} />
-          </Col>
-        </div>
+    <CrudWrapper className="pt-3">
+      <div className="mt-4 w-100 d-flex justify-content-center wrap">
+        <SubTitle>{title}</SubTitle>
+      </div>
+      <div className="mt-5 row justify-content-center w-100">
+        <Col className="" md={7}>
+          <InputSearch
+            placeholder="Buscar..."
+            value={searchInputValue}
+            setValue={async (e: any) => {
+              search(e)
+            }}
+          />
+        </Col>
+        <Col className="ms-4" md={2}>
+          <AddButton onClick={() => toggleIsNew(!isNew)} />
+        </Col>
+      </div>
+      <Col>
         <If test={isNew}>
           <AddWrapper className="mt-5">
             <AdminCard
@@ -75,6 +76,8 @@ const AdminCrud = ({ title, fetch, create, update, remove }: Props) => {
             />
           </AddWrapper>
         </If>
+      </Col>
+      <If test={!isNew}>
         {values.isLoading || values.isFetching ? (
           <Loader />
         ) : (
@@ -88,8 +91,8 @@ const AdminCrud = ({ title, fetch, create, update, remove }: Props) => {
             remove={remove}
           />
         )}
-      </ListWrapper>
-    </>
+      </If>
+    </CrudWrapper>
   )
 }
 
