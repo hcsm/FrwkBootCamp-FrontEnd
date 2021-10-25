@@ -1,0 +1,106 @@
+.content {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.wrapper {
+  background: #090b20;
+  width: 50vw;
+  height: 100vh;
+  padding: 30px;
+  text-align: center;
+}
+
+.form {
+  position: relative;
+  height: 75%;
+  margin-top: 30px;
+}
+
+.background {
+  background: url('../../assets/cadastro.svg') no-repeat;
+  width: 50vw;
+  height: 100vh;
+}
+
+.css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-active {
+  color: #0af585 !important;
+}
+.css-qivjh0-MuiStepLabel-label.Mui-active {
+  color: #fff !important;
+}
+.css-16ubnlw-MuiStepLabel-labelContainer {
+  color: rgba(255, 255, 255, 0.603) !important;
+}
+.css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root {
+  color: rgba(189, 189, 189, 0.38) !important;
+}
+.css-qivjh0-MuiStepLabel-label.Mui-completed {
+  color: #fff !important;
+}
+.css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-completed {
+  color: #0af585 !important;
+}
+input,
+.form-select {
+  color: #ffffff !important;
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  border: rgba(255, 255, 255, 0.08) !important;
+}
+option {
+  background-color: rgb(39, 39, 39) !important;
+}
+
+label {
+  color: #ffffff !important;
+}
+input:focus {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+.btn-acoes {
+  bottom: 0%;
+  position: absolute !important;
+  justify-content: flex-start;
+  display: flex !important;
+  width: 100%;
+}
+
+@media only screen and (max-width: 940px) {
+  .background {
+    display: none;
+  }
+  .wrapper {
+    width: 100vw;
+  }
+}
+@media only screen and (max-width: 540px) {
+  .css-16ubnlw-MuiStepLabel-labelContainer {
+    display: none;
+  }
+  .logo {
+    font-size: 3em !important;
+  }
+}
+
+.is-invalid {
+  border: 1pt solid red !important;
+}
+@media only screen and (max-width: 940px) {
+  .background {
+    display: none;
+  }
+  .wrapper {
+    width: 100vw;
+  }
+}
+@media only screen and (max-width: 540px) {
+  .css-16ubnlw-MuiStepLabel-labelContainer {
+    display: none;
+  }
+  .logo {
+    font-size: 3em !important;
+  }
+}
