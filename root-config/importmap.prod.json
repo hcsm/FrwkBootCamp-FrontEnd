@@ -1,6 +1,7 @@
 {
   "imports": {
     "@frameworker/root-config": "https://mfe.sfo3.digitaloceanspaces.com/frameworker-root-config.js",
-    "@frameworker/react-single": "https://mfe.sfo3.digitaloceanspaces.com/frameworker-frameworker.js"
+    "@frameworker/react-single": "https://mfe.sfo3.digitaloceanspaces.com/frameworker-frameworker.js",
+    "@frameworker/angular-mfe": "http://localhost:4200/main.js"
   }
 }

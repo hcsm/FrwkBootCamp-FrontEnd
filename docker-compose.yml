@@ -1,16 +1,17 @@
 version: '3.7'
 
 services:
-
   framebook-frontend:
     container_name: framebook-frontend
     build: .
     volumes:
-      - './:/usr/src/app/'
+      - './:/usr/src/app'
       - '/usr/src/app/node_modules'
       - '/usr/src/app/react-single/node_modules'
+      - '/usr/src/app/angular-mfe/node_modules'
       - '/usr/src/app/root-config/node_modules'
     ports:
+      - 4200:4200
       - 9000:9000
       - 8500:8500
       - 3000:3000
@@ -18,5 +19,5 @@ services:
     tty: true        # docker run -t
     environment:
       - CHOKIDAR_USEPOLLING=true # Use polling to watch for file changes in create react app
-    command: yarn start
+    # command: yarn start
     
