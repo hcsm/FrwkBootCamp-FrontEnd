@@ -1,11 +1,6 @@
 import React from 'react'
 
-import {
-  Wrapper,
-  Title,
-  WrapperBadge,
-  Badge,
-} from './styles'
+import { Wrapper, Title, WrapperBadge, Badge } from './styles'
 
 type Props = {
   id: number
@@ -19,7 +14,7 @@ type Props = {
 export const StackCard = (props: Props) => {
   return (
     <Wrapper>
-      <Title>{ props.title }</Title>
+      <Title>{props.title}</Title>
       <WrapperBadge>
         {
           props.stacks.map( ( stack ) => (

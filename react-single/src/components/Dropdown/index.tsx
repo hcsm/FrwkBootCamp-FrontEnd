@@ -5,6 +5,7 @@ import { H5 } from '../../styles/global'
 type Props = {
   children?: ReactNode
   title: string
+  isClosed: boolean
 }
 
 const Title = styled(H5)`
@@ -15,11 +16,11 @@ const Content = styled.div`
   margin-left: 3em;
 `
 export const Dropdown = (props: Props) => {
-  const [isClose, toggleIsClose] = React.useState(true)
+  const [isClose, toggleIsClose] = React.useState(props.isClosed)
   return (
     <li>
       <Title onClick={() => toggleIsClose(!isClose)}>{props.title}</Title>
-      <ul className="list-group" hidden={isClose}>
+      <ul className="list-group list-unstyled" hidden={isClose}>
         <Content>{props.children}</Content>
       </ul>
     </li>

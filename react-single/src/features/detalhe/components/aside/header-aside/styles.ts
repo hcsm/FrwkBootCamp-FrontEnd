@@ -1,17 +1,17 @@
 import styled from 'styled-components'
 
 export const Header = styled.div`
-display: flex;
-flex-direction: column;
-align-items: center;
-height: 314px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 314px;
 `
 
 export const Image = styled.img`
-height: 141px;
-width: 141px;
-border-radius: 141px;
-background-color: #FFF;
+  height: 141px;
+  width: 141px;
+  border-radius: 141px;
+  background-color: #fff;
 `
 
 export const WrapperTitle = styled.div`
@@ -26,7 +26,7 @@ export const Title = styled.p`
   font-weight: 500;
   line-height: 23px;
   letter-spacing: 0em;
-  color: #FFF;
+  color: #fff;
 `
 
 export const Button = styled.button`

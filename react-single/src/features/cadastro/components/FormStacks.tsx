@@ -3,9 +3,10 @@ import React from 'react'
 import { FieldValues, UseFormSetValue } from 'react-hook-form'
 import Select, { MultiValue, StylesConfig } from 'react-select'
 import { SubTitle } from '../../../styles/global'
+import { StacksType } from '../../../types/cadastro'
 
 type Props = {
-  stacks: object[]
+  stacks?: StacksType[]
   titulo: string
   watchedValue: any
   setFormValue: UseFormSetValue<FieldValues>

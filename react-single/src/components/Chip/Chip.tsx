@@ -1,11 +1,14 @@
-import "./Chip.css";
+import './Chip.css'
 
 type Props = {
-    title: String
-};
+  title: String
+}
 
 export function Chip(props: Props) {
-    return (
-        <div className="chip"> <span>{props.title}</span> </div>
-    );
+  return (
+    <div className="chip">
+      {' '}
+      <span>{props.title}</span>{' '}
+    </div>
+  )
 }

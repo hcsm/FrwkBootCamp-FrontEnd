@@ -84,433 +84,540 @@
   "especialidades": [
     {
       "value": "Backend",
-      "label": "Backend"
+      "label": "Backend",
+      "id": 0
     },
     {
       "value": "Frontend",
-      "label": "Frontend"
+      "label": "Frontend",
+      "id": 1
     },
     {
       "value": "DevOps",
-      "label": "DevOps"
+      "label": "DevOps",
+      "id": 2
     },
     {
       "value": ".NET C#",
-      "label": ".NET C#"
+      "label": ".NET C#",
+      "id": 3
     },
     {
       "value": "Angular",
-      "label": "Angular"
+      "label": "Angular",
+      "id": 4
     },
     {
       "value": "Docker",
-      "label": "Docker"
+      "label": "Docker",
+      "id": 5
     },
     {
       "value": "JavaScript",
-      "label": "JavaScript"
+      "label": "JavaScript",
+      "id": 6
     },
     {
       "value": "TypeScript",
-      "label": "TypeScript"
+      "label": "TypeScript",
+      "id": 7
     },
     {
       "value": "C#",
-      "label": "C#"
+      "label": "C#",
+      "id": 8
     },
     {
       "value": "Go lang",
-      "label": "Go lang"
+      "label": "Go lang",
+      "id": 9
     },
     {
       "value": "Azure",
-      "label": "Azure"
+      "label": "Azure",
+      "id": 10
     },
     {
       "value": "UI/UX",
-      "label": "UI/UX"
+      "label": "UI/UX",
+      "id": 11
     },
     {
       "value": "CRM Dynamics",
-      "label": "CRM Dynamics"
+      "label": "CRM Dynamics",
+      "id": 12
     },
     {
       "value": "QA",
-      "label": "QA"
+      "label": "QA",
+      "id": 13
     },
     {
       "value": "Selenium",
-      "label": "Selenium"
+      "label": "Selenium",
+      "id": 14
     },
     {
       "value": "Capybara",
-      "label": "Capybara"
+      "label": "Capybara",
+      "id": 15
     },
     {
       "value": "Appium",
-      "label": "Appium"
+      "label": "Appium",
+      "id": 16
     },
     {
       "value": ".NET 5",
-      "label": ".NET 5"
+      "label": ".NET 5",
+      "id": 17
     },
     {
       "value": "Desing Thinking",
-      "label": "Desing Thinking"
+      "label": "Desing Thinking",
+      "id": 18
     },
     {
       "value": "MongoDB",
-      "label": "MongoDB"
+      "label": "MongoDB",
+      "id": 19
     },
     {
       "value": "Python",
-      "label": "Python"
+      "label": "Python",
+      "id": 20
     },
     {
       "value": "Cassandra",
-      "label": "Cassandra"
+      "label": "Cassandra",
+      "id": 21
     },
     {
       "value": "MySQL",
-      "label": "MySQL"
+      "label": "MySQL",
+      "id": 22
     },
     {
       "value": "Redis",
-      "label": "Redis"
+      "label": "Redis",
+      "id": 23
     },
     {
       "value": "C++",
-      "label": "C++"
+      "label": "C++",
+      "id": 24
     },
     {
       "value": "AngularJS",
-      "label": "AngularJS"
+      "label": "AngularJS",
+      "id": 25
     },
     {
       "value": "Django",
-      "label": "Django"
+      "label": "Django",
+      "id": 26
     },
     {
       "value": "Node.js",
-      "label": "Node.js"
+      "label": "Node.js",
+      "id": 27
     },
     {
       "value": "Oracle DB",
-      "label": "Oracle DB"
+      "label": "Oracle DB",
+      "id": 28
     },
     {
       "value": "Android",
-      "label": "Android"
+      "label": "Android",
+      "id": 29
     },
     {
       "value": "Objective-C",
-      "label": "Objective-C"
+      "label": "Objective-C",
+      "id": 30
     },
     {
       "value": "Ionic",
-      "label": "Ionic"
+      "label": "Ionic",
+      "id": 31
     },
     {
       "value": "SQL Server",
-      "label": "SQL Server"
+      "label": "SQL Server",
+      "id": 32
     },
     {
       "value": "PHP",
-      "label": "PHP"
+      "label": "PHP",
+      "id": 33
     },
     {
       "value": "PostgreSQL",
-      "label": "PostgreSQL"
+      "label": "PostgreSQL",
+      "id": 34
     },
     {
       "value": "ReactJS",
-      "label": "ReactJS"
+      "label": "ReactJS",
+      "id": 35
     },
     {
       "value": "Flask",
-      "label": "Flask"
+      "label": "Flask",
+      "id": 36
     },
     {
       "value": "React Native",
-      "label": "React Native"
+      "label": "React Native",
+      "id": 37
     },
     {
       "value": "HTML",
-      "label": "HTML"
+      "label": "HTML",
+      "id": 38
     },
     {
       "value": "JavaScript",
-      "label": "JavaScript"
+      "label": "JavaScript",
+      "id": 39
     },
     {
       "value": "C#",
-      "label": "C#"
+      "label": "C#",
+      "id": 40
     },
     {
       "value": "Laravel",
-      "label": "Laravel"
+      "label": "Laravel",
+      "id": 41
     },
     {
       "value": "AWS",
-      "label": "AWS"
+      "label": "AWS",
+      "id": 42
     },
     {
       "value": ".NET",
-      "label": ".NET"
+      "label": ".NET",
+      "id": 43
     },
     {
       "value": ".NET CORE",
-      "label": ".NET CORE"
+      "label": ".NET CORE",
+      "id": 44
     },
     {
       "value": "Swift",
-      "label": "Swift"
+      "label": "Swift",
+      "id": 45
     },
     {
       "value": "Kotlin",
-      "label": "Kotlin"
+      "label": "Kotlin",
+      "id": 46
     },
     {
       "value": "Google Clound Plataform (GCP)",
-      "label": "PostgreSQL"
+      "label": "PostgreSQL",
+      "id": 47
     },
     {
       "value": "Flutter",
-      "label": "Flutter"
+      "label": "Flutter",
+      "id": 48
     },
     {
       "value": "Ruby",
-      "label": "Ruby"
+      "label": "Ruby",
+      "id": 49
     },
     {
       "value": "Outsystems",
-      "label": "Outsystems"
+      "label": "Outsystems",
+      "id": 50
     },
     {
       "value": "Salesforce",
-      "label": "Salesforce"
+      "label": "Salesforce",
+      "id": 51
     },
     {
       "value": "PL/SQL",
-      "label": "PL/SQL"
+      "label": "PL/SQL",
+      "id": 52
     },
     {
       "value": "Kafka",
-      "label": "Kafka"
+      "label": "Kafka",
+      "id": 53
     },
     {
       "value": "Kubernetes",
-      "label": "Kubernetes"
+      "label": "Kubernetes",
+      "id": 54
     }
   ],
   "stacks": [
     {
       "value": ".NET C#",
-      "label": ".NET C#"
+      "label": ".NET C#",
+      "id": 3
     },
     {
       "value": "Angular",
-      "label": "Angular"
+      "label": "Angular",
+      "id": 4
     },
     {
       "value": "Docker",
-      "label": "Docker"
+      "label": "Docker",
+      "id": 5
     },
     {
       "value": "JavaScript",
-      "label": "JavaScript"
+      "label": "JavaScript",
+      "id": 6
     },
     {
       "value": "TypeScript",
-      "label": "TypeScript"
+      "label": "TypeScript",
+      "id": 7
     },
     {
       "value": "C#",
-      "label": "C#"
+      "label": "C#",
+      "id": 8
     },
     {
       "value": "Go lang",
-      "label": "Go lang"
+      "label": "Go lang",
+      "id": 9
     },
     {
       "value": "Azure",
-      "label": "Azure"
+      "label": "Azure",
+      "id": 10
     },
     {
       "value": "UI/UX",
-      "label": "UI/UX"
+      "label": "UI/UX",
+      "id": 11
     },
     {
       "value": "CRM Dynamics",
-      "label": "CRM Dynamics"
+      "label": "CRM Dynamics",
+      "id": 12
     },
     {
       "value": "QA",
-      "label": "QA"
+      "label": "QA",
+      "id": 13
     },
     {
       "value": "Selenium",
-      "label": "Selenium"
+      "label": "Selenium",
+      "id": 14
     },
     {
       "value": "Capybara",
-      "label": "Capybara"
+      "label": "Capybara",
+      "id": 15
     },
     {
       "value": "Appium",
-      "label": "Appium"
+      "label": "Appium",
+      "id": 16
     },
     {
       "value": ".NET 5",
-      "label": ".NET 5"
+      "label": ".NET 5",
+      "id": 17
     },
     {
       "value": "Desing Thinking",
-      "label": "Desing Thinking"
+      "label": "Desing Thinking",
+      "id": 18
     },
     {
       "value": "MongoDB",
-      "label": "MongoDB"
+      "label": "MongoDB",
+      "id": 19
     },
     {
       "value": "Python",
-      "label": "Python"
+      "label": "Python",
+      "id": 20
     },
     {
       "value": "Cassandra",
-      "label": "Cassandra"
+      "label": "Cassandra",
+      "id": 21
     },
     {
       "value": "MySQL",
-      "label": "MySQL"
+      "label": "MySQL",
+      "id": 22
     },
     {
       "value": "Redis",
-      "label": "Redis"
+      "label": "Redis",
+      "id": 23
     },
     {
       "value": "C++",
-      "label": "C++"
+      "label": "C++",
+      "id": 24
     },
     {
       "value": "AngularJS",
-      "label": "AngularJS"
+      "label": "AngularJS",
+      "id": 25
     },
     {
       "value": "Django",
-      "label": "Django"
+      "label": "Django",
+      "id": 26
     },
     {
       "value": "Node.js",
-      "label": "Node.js"
+      "label": "Node.js",
+      "id": 27
     },
     {
       "value": "Oracle DB",
-      "label": "Oracle DB"
+      "label": "Oracle DB",
+      "id": 28
     },
     {
       "value": "Android",
-      "label": "Android"
+      "label": "Android",
+      "id": 29
     },
     {
       "value": "Objective-C",
-      "label": "Objective-C"
+      "label": "Objective-C",
+      "id": 30
     },
     {
       "value": "Ionic",
-      "label": "Ionic"
+      "label": "Ionic",
+      "id": 31
     },
     {
       "value": "SQL Server",
-      "label": "SQL Server"
+      "label": "SQL Server",
+      "id": 32
     },
     {
       "value": "PHP",
-      "label": "PHP"
+      "label": "PHP",
+      "id": 33
     },
     {
       "value": "PostgreSQL",
-      "label": "PostgreSQL"
+      "label": "PostgreSQL",
+      "id": 34
     },
     {
       "value": "ReactJS",
-      "label": "ReactJS"
+      "label": "ReactJS",
+      "id": 35
     },
     {
       "value": "Flask",
-      "label": "Flask"
+      "label": "Flask",
+      "id": 36
     },
     {
       "value": "React Native",
-      "label": "React Native"
+      "label": "React Native",
+      "id": 37
     },
     {
       "value": "HTML",
-      "label": "HTML"
+      "label": "HTML",
+      "id": 38
     },
     {
       "value": "JavaScript",
-      "label": "JavaScript"
+      "label": "JavaScript",
+      "id": 39
     },
     {
       "value": "C#",
-      "label": "C#"
+      "label": "C#",
+      "id": 40
     },
     {
       "value": "Laravel",
-      "label": "Laravel"
+      "label": "Laravel",
+      "id": 41
     },
     {
       "value": "AWS",
-      "label": "AWS"
+      "label": "AWS",
+      "id": 42
     },
     {
       "value": ".NET",
-      "label": ".NET"
+      "label": ".NET",
+      "id": 43
     },
     {
       "value": ".NET CORE",
-      "label": ".NET CORE"
+      "label": ".NET CORE",
+      "id": 44
     },
     {
       "value": "Swift",
-      "label": "Swift"
+      "label": "Swift",
+      "id": 45
     },
     {
       "value": "Kotlin",
-      "label": "Kotlin"
+      "label": "Kotlin",
+      "id": 46
     },
     {
       "value": "Google Clound Plataform (GCP)",
-      "label": "PostgreSQL"
+      "label": "PostgreSQL",
+      "id": 47
     },
     {
       "value": "Flutter",
-      "label": "Flutter"
+      "label": "Flutter",
+      "id": 48
     },
     {
       "value": "Ruby",
-      "label": "Ruby"
+      "label": "Ruby",
+      "id": 49
     },
     {
       "value": "Outsystems",
-      "label": "Outsystems"
+      "label": "Outsystems",
+      "id": 50
     },
     {
       "value": "Salesforce",
-      "label": "Salesforce"
+      "label": "Salesforce",
+      "id": 51
     },
     {
       "value": "PL/SQL",
-      "label": "PL/SQL"
+      "label": "PL/SQL",
+      "id": 52
     },
     {
       "value": "Kafka",
-      "label": "Kafka"
+      "label": "Kafka",
+      "id": 53
     },
     {
       "value": "Kubernetes",
-      "label": "Kubernetes"
+      "label": "Kubernetes",
+      "id": 54
     }
   ]
 }

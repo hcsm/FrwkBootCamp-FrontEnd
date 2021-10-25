@@ -1,15 +1,12 @@
 import React from 'react'
-import { Cards } from './Cards/Cards';
+import HomeRoutes from '../../../../routes/HomeRoutes'
+import AdminList from '../../../Admin/AdminCrud'
+import { Cards } from './Cards/Cards'
 
-import {
-  WrapperFeed,
-} from './styles'
+import { WrapperFeed } from './styles'
 
 type Props = {}
 
 export const Feed = (props: Props) => {
-  return (
-    <WrapperFeed>
-    </WrapperFeed>
-  );
+  return <WrapperFeed>Feed</WrapperFeed>
 }
