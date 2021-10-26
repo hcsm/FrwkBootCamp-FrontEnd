@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import Stack from '@material-ui/core/Stack'
-import InputSearch from '../../../../components/InputSearch'
+import InputSearch from './../InputSearch'
 import GithubIcon from '../ButtonGit'
-import NotificationsIcon from './components/NotificationsIcon'
+import NotificationsIcon from '../NotificationsIcon'
 import SidebarRight from '../SidebarRight'
 
 import {
@@ -10,7 +10,7 @@ import {
   Left,
   Right,
   WrapperHeader,
-  WrapperSearch
+  WrapperSearch,
 } from './styles'
 
 type Props = {}
@@ -35,7 +35,7 @@ export const Header = (props: Props) => {
           </WrapperSearch>
 
           <Stack direction="row" spacing={2}>
-            <GithubIcon repository="https://github.com/hcsm/FrwkBootCamp-FrontEnd" />
+            <GithubIcon repository="https://github.com/hcsm/FrwkBootCamp-FrontEnd" height="48px" width="48px" />
             <NotificationsIcon />
             <SidebarRight />
           </Stack>

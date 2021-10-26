@@ -1,23 +1,27 @@
 import React from 'react'
 import { IconButton, Tooltip } from '@material-ui/core'
-import GearIcon from '@material-ui/icons/SettingsOutlined'
+import GitHubIcon from '@material-ui/icons/GitHub'
 
 type Props = {
-  onClick: Function
+  repository: string;
+  height: string;
+  width: string;
 }
 
-const SettingsIcon = (props: Props) => {
+const GithubIcon = (props: Props) => {
   return (
-    <Tooltip title="Configurações" enterDelay={300}>
+    <Tooltip title="Repositório no GitHub" enterDelay={300}>
       <IconButton
-        onClick={props.onClick()}
+        component="a"
         color="inherit"
+        href={props.repository}
         sx={{
           p: '10px',
-          height: '48px',
-          width: '48px',
+          height: props.height,
+          width: props.width,
+          left: '10px',
           border: '1px solid rgb(23, 58, 94)',
-          borderRadius: '10px',
+          borderRadius: '13px',
           color: 'white',
           backgroundColor: '#0B0C22',
           '&:hover': {
@@ -26,10 +30,10 @@ const SettingsIcon = (props: Props) => {
           }
         }}
       >
-        <GearIcon fontSize="small" />
+        <GitHubIcon fontSize="small" />
       </IconButton>
     </Tooltip>
   )
 }
 
-export default SettingsIcon
+export default GithubIcon

@@ -9,8 +9,8 @@ import {
   UseFormSetValue,
 } from 'react-hook-form'
 import ReactInputMask from 'react-input-mask'
-import { CepType } from '../types/cadastro'
-import { useAxios } from './../hooks/hooks'
+import { CepType } from '../../types/cadastro'
+import { useAxios } from './../../hooks'
 
 type Props = {
   type: string

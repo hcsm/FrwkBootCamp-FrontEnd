@@ -2,7 +2,7 @@
 import React from 'react'
 import { Form, InputGroup } from 'react-bootstrap'
 import { FieldError, FieldValues, UseFormRegister } from 'react-hook-form'
-import { Select } from './Select'
+import { Select } from './../Select'
 type Props = {
   type: string
   placeholder: string

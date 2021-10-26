@@ -2,7 +2,7 @@
 import React from 'react'
 import Content from './components/Content'
 import { Drawer } from '@material-ui/core'
-import SettingsIcon from '../header/components/SettingsIcon'
+import SettingsIcon from '../SettingsIcon'
 
 type Props = {}
 

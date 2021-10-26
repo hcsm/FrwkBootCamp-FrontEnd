@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import IconCircle from '../../../../components/IconCircle'
 import db from '../../../../assets/db.json'
 
-import GithubIcon from '../ButtonGit'
+import GithubIcon from '../../../../components/ButtonGit'
 
 import {
   Container,
@@ -27,7 +27,7 @@ const Detail = (props: Props) => {
         <Image src={ sendfoto[0].value } alt='imagem de perfil'/>
           <Name>
            { cadastro[0].nome }
-            <GithubIcon repository="https://github.com/hcsm/FrwkBootCamp-FrontEnd" />
+            <GithubIcon repository="https://github.com/hcsm/FrwkBootCamp-FrontEnd" height="39px" width="39px" />
           </Name>
          
           <Phone>
