@@ -6,7 +6,7 @@ services:
     container_name: framebook-frontend
     build: .
     volumes:
-      - './:/usr/src/app/'
+      - './:/usr/src/app'
       - '/usr/src/app/node_modules'
       - '/usr/src/app/react-single/node_modules'
       - '/usr/src/app/root-config/node_modules'
