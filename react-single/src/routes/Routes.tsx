@@ -1,13 +1,10 @@
 // @flow
 import * as React from 'react'
 import { Redirect, Route, Switch } from 'react-router'
-import { Home } from '../features/Home'
 import { Cadastro } from '../features/cadastro/Cadastro'
 import { Detalhe } from '../features/detalhe/Detalhe'
-import { Home } from './features/Home'
-import { Cadastro } from './features/cadastro/Cadastro'
-import { Detalhe } from './features/detalhe/Detalhe'
-import Profile from './features/Profile'
+import { Home } from '../features/Home'
+import Profile from '../features/Profile'
 
 type Props = {}
 const Routes = (props: Props) => {
