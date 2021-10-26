@@ -19,5 +19,4 @@ services:
     tty: true        # docker run -t
     environment:
       - CHOKIDAR_USEPOLLING=true # Use polling to watch for file changes in create react app
-    # command: yarn start
-    
+    command: yarn start

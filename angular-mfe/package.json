@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "_start": "ng serve",
-    "start": "ng s --project angular-mfe --disable-host-check --port 4200 --live-reload false",
+    "start": "ng s --project angular-mfe --host=0.0.0.0 --port 4200 --live-reload false",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",

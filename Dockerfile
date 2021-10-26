@@ -10,8 +10,8 @@ COPY angular-mfe/package.json ./angular-mfe/
 
 RUN yarn install --network-timeout 1000000
 
-# COPY ./ /usr/src/app
-# RUN yarn bootstrap
+COPY ./ /usr/src/app
+RUN yarn global add @angular/cli @angular-devkit/build-angular && yarn bootstrap
 
 EXPOSE 4200
 EXPOSE 9000
