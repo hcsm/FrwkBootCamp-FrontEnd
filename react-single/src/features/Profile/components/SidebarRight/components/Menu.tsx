@@ -19,7 +19,7 @@ const LiTitle = styled(H5)`
 const Menu = (props: Props) => {
   return (
     <ul className="list-group">
-      <Dropdown title="Editar listas">
+      <Dropdown title="Editar listas" isClosed={false}>
         <StyledLi>Especialidades</StyledLi>
         <StyledLi>Stacks</StyledLi>
       </Dropdown>
