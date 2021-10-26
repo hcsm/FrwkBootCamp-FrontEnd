@@ -1,8 +1,8 @@
 // @flow
 import * as React from 'react'
-import { Dropdown } from '../../../../../components/Dropdown'
+import { Dropdown } from '../../Dropdown'
 import styled from 'styled-components'
-import { H5 } from '../../../../../styles/global'
+import { H5 } from '../../../styles/global'
 import { NavLink } from 'react-router-dom'
 
 type Props = {}

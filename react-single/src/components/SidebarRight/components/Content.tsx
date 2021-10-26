@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react'
 import styled from 'styled-components'
-import IconCircle from '../../../../../components/IconCircle'
+import IconCircle from '../../IconCircle'
 import Menu from './Menu'
 
 type Props = {
