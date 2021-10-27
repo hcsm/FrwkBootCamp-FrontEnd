@@ -23,7 +23,7 @@ const StackCard = (props: Props) => {
       <WrapperBadge>
         {
           props.stacks.map( ( stack ) => (
-              <Badge title={stack.label} />
+              <Badge key={stack.value} title={stack.label} />
             )
           )
         }
