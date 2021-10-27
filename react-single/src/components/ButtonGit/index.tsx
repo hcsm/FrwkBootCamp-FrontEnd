@@ -3,9 +3,9 @@ import { IconButton, Tooltip } from '@material-ui/core'
 import GitHubIcon from '@material-ui/icons/GitHub'
 
 type Props = {
-  repository: string;
-  height: string;
-  width: string;
+  repository: string
+  height: string
+  width: string
 }
 
 const GithubIcon = (props: Props) => {
@@ -19,7 +19,6 @@ const GithubIcon = (props: Props) => {
           p: '10px',
           height: props.height,
           width: props.width,
-          left: '10px',
           border: '1px solid rgb(23, 58, 94)',
           borderRadius: '13px',
           color: 'white',

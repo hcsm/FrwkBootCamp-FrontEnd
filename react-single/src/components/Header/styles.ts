@@ -18,10 +18,6 @@ const RowDirection = styled.div`
 export const Left = styled(RowDirection)`
   width: 30%;
   justify-content: center;
-
-  @media (max-width: 850px) {
-    display: none;
-  }
 `
 
 export const Right = styled(RowDirection)`
@@ -38,7 +34,8 @@ export const WrapperSearch = styled.div`
   min-width: 400px;
 
   @media (max-width: 650px) {
-    min-width: 100px;
+    display: none;
+    /* min-width: 100px; */
   }
 `
 
@@ -53,4 +50,8 @@ export const HeaderTitle = styled.h1`
   margin: 0;
 
   text-shadow: 4px 0px 11px rgb(255 255 255);
+
+  @media (max-width: 850px) {
+    display: none;
+  }
 `

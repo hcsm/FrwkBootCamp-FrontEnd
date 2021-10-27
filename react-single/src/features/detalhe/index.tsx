@@ -1,18 +1,14 @@
-import React, { useState } from 'react'
-
+import React from 'react'
 import { Header } from '../../components/Header'
-import { HeaderAside } from './components/aside/header-aside/HeaderAside'
-import { Stack } from './components/aside/stack/Stack'
-import { Feed } from './components/feed/Feed'
-
+import HomeRoutes from '../../routes/HomeRoutes'
+import { Aside } from './components/aside'
 import {
-  WrapperDetail,
-  WrapperHeader,
   WrapperAside,
   WrapperContent,
-  WrapperSection,
+  WrapperDetail,
+  WrapperHeader,
+  WrapperSection
 } from './styles'
-import HomeRoutes from '../../routes/HomeRoutes'
 
 type Props = {}
 
@@ -24,8 +20,7 @@ export const Detalhe = (props: Props) => {
       </WrapperHeader>
       <WrapperContent>
         <WrapperAside>
-          <HeaderAside />
-          <Stack />
+          <Aside />
         </WrapperAside>
         <WrapperSection>
           <HomeRoutes />
