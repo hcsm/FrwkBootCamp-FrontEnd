@@ -7,7 +7,7 @@ import { setUser, useAppDispatch, useAppSelector } from '../../../app/store'
 import { InputProfileImage } from '../../../components/InputProfileImage'
 import { BASE_URL } from '../../../services/Enums'
 import { SubTitle } from '../../../styles/global'
-import { userFoto } from '../../../types/cadastro'
+import { userFoto } from '../../../types/global'
 import { FormButtons } from './FormButtons'
 
 type Props = {

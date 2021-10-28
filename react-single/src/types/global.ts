@@ -1,4 +1,4 @@
-export type CadastroType = {
+export interface CadastroType {
   id: number
   nome: string
   senha: string
@@ -16,7 +16,9 @@ export type CadastroType = {
   foto: userFoto
   ativo: boolean
 }
-
+export interface UserType extends CadastroType {
+  token?: any
+}
 export type userFoto = {
   id: number
   value?: string

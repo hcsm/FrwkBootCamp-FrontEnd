@@ -13,9 +13,9 @@ type Props = {
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#213054'
-    }
-  }
+      main: '#213054',
+    },
+  },
 })
 
 const Input = (props: Props) => {
@@ -33,20 +33,20 @@ const Input = (props: Props) => {
           '& .MuiInputBase-root': {
             border: '1px solid #213054',
             boxSizing: 'border-box',
-            borderRadius: '12px'
+            borderRadius: '12px',
           },
           '& input': {
-            backgroundColor: `${backgroundColor}!important`
+            backgroundColor: `${backgroundColor}!important`,
           },
           '& .MuiInputBase-input': {
             padding: '11px 14px',
-            borderRadius: '12px'
+            borderRadius: '12px',
           },
           '& .Mui-focused': {
-            border: 'none'
+            border: 'none',
           },
           backgroundColor: `${backgroundColor}`,
-          width: '100%'
+          width: '100%',
         }}
         InputProps={{
           startAdornment: (
@@ -55,17 +55,17 @@ const Input = (props: Props) => {
               disablePointerEvents={true}
               sx={{
                 backgroundColor: `${backgroundColor}!important`,
-                height: '48px'
+                height: '48px',
               }}
             >
               <SearchIcon
                 sx={{
                   backgroundColor: `${backgroundColor}!important`,
-                  color: 'white'
+                  color: 'white',
                 }}
               />
             </InputAdornment>
-          )
+          ),
         }}
       />
     </ThemeProvider>

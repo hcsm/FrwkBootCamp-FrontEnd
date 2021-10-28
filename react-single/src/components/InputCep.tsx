@@ -9,7 +9,7 @@ import {
   UseFormSetValue,
 } from 'react-hook-form'
 import ReactInputMask from 'react-input-mask'
-import { CepType } from '../types/cadastro'
+import { CepType } from '../types/global'
 import { useAxios } from './../hooks/hooks'
 
 type Props = {

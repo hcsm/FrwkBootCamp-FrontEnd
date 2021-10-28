@@ -19,8 +19,8 @@ const NotificationsIcon = (props: Props) => {
           backgroundColor: '#0B0C22',
           '&:hover': {
             backgroundColor: 'rgba(255, 255, 255, 0.08)',
-            color: 'white'
-          }
+            color: 'white',
+          },
         }}
       >
         <Badge

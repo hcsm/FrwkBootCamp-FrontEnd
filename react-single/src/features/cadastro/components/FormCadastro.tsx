@@ -12,7 +12,7 @@ import { Input } from '../../../components/Input'
 import { InputCep } from '../../../components/InputCep'
 import { InputEmail } from '../../../components/InputEmail'
 import { BASE_URL } from '../../../services/Enums'
-import { CadastroType } from '../../../types/cadastro'
+import { CadastroType } from '../../../types/global'
 import { useAppSelector } from './../../../app/store'
 import { FormButtons } from './FormButtons'
 

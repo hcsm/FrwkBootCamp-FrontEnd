@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Container = styled.button`
   display: inline-block;
@@ -8,13 +8,11 @@ export const Container = styled.button`
   color: #ffffff;
   font-size: 1em;
   padding: 0.25em 1em;
-  background: #7900DF;
+  background: #7900df;
   box-shadow: 2px 0px 28px rgb(121 0 223 / 70%);
   margin-top: 5px;
 
   &:hover {
-      background: #6400b6;
+    background: #6400b6;
   }
-`;
-
- 
+`

@@ -4,15 +4,20 @@ import { Provider } from 'react-redux'
 import { HashRouter } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import store from './app/store'
+import store, { setUser } from './app/store'
 import { especialidadeApi } from './services/especialidades'
 import { stacksApi } from './services/stacks'
 import { GlobalStyle } from './styles/global'
 import Routes from './Routes'
+import { UserType } from './types/global'
 
 store.dispatch(stacksApi.util.prefetch('getStacks', null, {}))
 
 store.dispatch(especialidadeApi.util.prefetch('getEspecialidades', null, {}))
+
+window.addEventListener('user-logged-in', (event: CustomEventInit) => {
+  store.dispatch(setUser(event.detail))
+})
 
 function App() {
   return (
