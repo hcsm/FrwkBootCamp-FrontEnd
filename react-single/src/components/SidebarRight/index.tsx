@@ -12,7 +12,7 @@ const SidebarRight = (props: Props) => {
     <>
       <SettingsIcon onClick={() => toggleSidebar} />
       <Drawer
-        sx={{ '& .MuiDrawer-paper': { width: '20%' } }}
+        sx={{ '& .MuiDrawer-paper': { width: '250px' } }}
         anchor="right"
         open={isOpen}
         onClose={() => toggleSidebar(false)}

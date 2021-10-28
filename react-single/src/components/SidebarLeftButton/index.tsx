@@ -23,7 +23,7 @@ const SidebarLeftButton = (props: Props) => {
         onClose={() => toggleSidebar(false)}
       >
         {/* <Content toggle={() => toggleSidebar(!isOpen)} /> */}
-        <Aside />
+        <Aside toggle={() => toggleSidebar(!isOpen)} />
       </Drawer>
     </>
   )

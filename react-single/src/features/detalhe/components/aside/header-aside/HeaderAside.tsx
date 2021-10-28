@@ -1,18 +1,30 @@
 import React, { useState } from 'react'
-
-import IconCircle from '../../../../../components/IconCircle'
 import db from '../../../../../assets/db.json'
+import IconCircle from '../../../../../components/IconCircle'
+import {
+  Button,
+  Header,
+  IconWrapper,
+  Image,
+  Title,
+  WrapperTitle
+} from './styles'
 
-import { Header, Image, WrapperTitle, Title, Button } from './styles'
+type Props = {
+  toggle?: Function | undefined
+}
 
-type Props = {}
-
-export const HeaderAside = (props: Props) => {
+export const HeaderAside = ({ toggle }: Props) => {
   const [data] = useState(db)
   const { sendfoto, cadastro } = data
 
   return (
     <Header>
+      {toggle && (
+        <IconWrapper className="ms-auto pointer" onClick={() => toggle()}>
+          <IconCircle icon="Clear" color="white" />
+        </IconWrapper>
+      )}
       <Image src={sendfoto[0].value} alt="imagem de perfil" />
       <WrapperTitle>
         <Title>

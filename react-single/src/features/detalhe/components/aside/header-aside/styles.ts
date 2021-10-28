@@ -38,3 +38,8 @@ export const Button = styled.button`
   background-color: transparent;
   border: none;
 `
+
+export const IconWrapper = styled.span`
+  font-size: 24px;
+  padding: 0 20px;
+`
