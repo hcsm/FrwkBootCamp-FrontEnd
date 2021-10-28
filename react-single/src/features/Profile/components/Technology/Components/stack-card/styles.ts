@@ -2,9 +2,6 @@ import styled from 'styled-components'
 import { Chip } from '../../../../../../components/Chip/Chip'
 
 export const Wrapper = styled.div`
-  width: 400px;
-  min-height: 100px;
-  top: 100px;
   margin-left: 45px;
 `
 
@@ -24,7 +21,7 @@ export const Title = styled.h4`
   font-weight: normal;
   font-size: 24px;
   line-height: 28px;
-  color: #FFFFFF 
+  color: #FFFFFF;
 `
 
 export const Badge = styled(Chip)`

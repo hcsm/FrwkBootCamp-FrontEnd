@@ -6,29 +6,31 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content: space-around;
   flex-direction: row;
+  flex-wrap: wrap;
 `
 export const BorderHeight = styled.div`
   width: 0px;
   height: 219px;
-  left: 878px;
   margin-top: 58px;
   border: 2px solid #A2A2A2;
+
+  @media(max-width: 800px) {
+    width: 80%;
+    height: 0px;
+    margin-bottom: 58px;
+  }
 `
 
 export const WrapperTitle = styled.div`
   padding: 28px 4px 0px 4px;
 `
 
-export const Title = styled.text`
-  margin-left: 43px;
-  width: 176px;
-  height: 38px;
-  left: 45px;
-  top: 43px;
+export const Title = styled.h2`
+  margin-top: 43px;
+  margin-left: 45px;
   font-family: Roboto;
   font-style: normal;
   font-weight: bold;
-  font-size: 32px;
   line-height: 37px;
   color: #FFFFFF;
 `

@@ -1,19 +1,16 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  display: flex;
+  
 `
 
 export const DetailContainer = styled.div`
   position: relative;
-  width: 363px;
-  height: 586px;
-  left: 69px;
   top: -71px;
   background-color: #0B0C22;
   border: 4px solid #213054;
   box-sizing: border-box;
-  border-radius: 5px; 
+  border-radius: 5px;
 `
 
 export const Image = styled.img`

@@ -15,10 +15,9 @@ type Props = {}
 const Profile = (props: Props) => {
   return (
       <WrapperProfile>
-        <WrapperHeader>
-          <Header />
-        </WrapperHeader>
+        <Header />
         <WrapperBanner/>
+        
         <WrapperContent>
           <Detail/>
           <Technology/>

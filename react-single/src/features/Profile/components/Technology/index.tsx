@@ -1,27 +1,18 @@
 import React, { useState } from 'react'
 
-import db from '../../../../assets/db.json'
 import Stack from './Components/stack'
 
 import {
-  DetailContainer,
-  Technologyes,
+  DetailContainer
 } from './styles'
 
 type Props = {}
 
 const Technology = (props: Props) => {
-  const [ data ] = useState(db)
-  const { sendfoto, cadastro } = data
-
   return (
-    <>
-      <DetailContainer>
-        <Technologyes>
+      <DetailContainer className="col-xl-7 col-11">
           <Stack/>
-        </Technologyes>  
       </DetailContainer>
-    </>
   )
 }
 
