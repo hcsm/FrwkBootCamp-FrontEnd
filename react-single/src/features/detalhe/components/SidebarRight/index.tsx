@@ -1,5 +1,5 @@
 // @flow
-import React from 'react'
+import * as React from 'react'
 // import IconCircle from '../../../../components/IconCircle'
 import Content from './components/Content'
 import { Drawer } from '@material-ui/core'

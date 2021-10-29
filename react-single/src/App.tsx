@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
-import React from 'react'
+import * as React from 'react'
 import { Provider } from 'react-redux'
 import { HashRouter } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'

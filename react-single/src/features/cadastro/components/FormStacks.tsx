@@ -1,5 +1,5 @@
 // @flow
-import React from 'react'
+import * as React from 'react'
 import { FieldValues, UseFormSetValue } from 'react-hook-form'
 import Select, { MultiValue, StylesConfig } from 'react-select'
 import { SubTitle } from '../../../styles/global'

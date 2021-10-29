@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { FloatingLabel, Form } from 'react-bootstrap'
 import { FieldError, FieldValues, UseFormRegister } from 'react-hook-form'
 import ReactInputMask from 'react-input-mask'

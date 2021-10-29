@@ -4,9 +4,8 @@
       <h1 class="title">Framebook</h1>
     </div>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="mx-5 mt-5">
-      <div class="form-floating mb-4">
-        <input type="text" class="form-control {{ loginForm.controls?.email?.errors && loginForm.controls?.email?.touched ? 'is-invalid' : '' }}" id="floatingInput" formControlName="email" >
-        <label for="floatingInput">Email framework</label>
+      <div class="mb-3">
+        <parcel [config]="config" [customProps]="parcelProps" [mountParcel]="mountRootParcel"></parcel>
       </div>
       <div class="form-floating">
         <input type="password" class="form-control {{ loginForm.controls?.password?.errors && loginForm.controls?.password?.touched ? 'is-invalid' : '' }}" id="floatingPassword" formControlName="password">

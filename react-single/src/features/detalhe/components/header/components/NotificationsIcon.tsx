@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { Badge, IconButton, Tooltip } from '@material-ui/core'
 import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone'
 
