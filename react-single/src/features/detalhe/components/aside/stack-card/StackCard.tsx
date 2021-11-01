@@ -5,7 +5,7 @@ import { Wrapper, Title, WrapperBadge, Badge } from './styles'
 type Props = {
   id: number
   title: string
-  stacks: Array<{
+  stacks?: Array<{
     value: string
     label: string
   }>
@@ -18,10 +18,10 @@ export const StackCard = (props: Props) => {
       <Title>{props.title}</Title>
       <WrapperBadge>
         {
-          props.stacks.map( ( stack ) => (
+        props.stacks ? props.stacks.map( ( stack ) => (
               <Badge title={stack.label} />
             )
-          )
+          ) : undefined
         }
       </WrapperBadge>
     </Wrapper>

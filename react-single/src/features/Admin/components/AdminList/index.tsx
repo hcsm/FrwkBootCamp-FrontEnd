@@ -8,6 +8,7 @@ import { StacksType } from '../../../../types/cadastro'
 import { toast } from 'react-toastify'
 import Loader from '../Loader'
 import If from '../../../../components/If'
+import * as Sentry from "@sentry/react"
 
 type Props = {
   data?: StacksType[]
@@ -57,6 +58,7 @@ const AdminList = ({
       </ListWrapper>
     )
   } else if (isError) {
+    Sentry.captureException(isError);
     toast.error('Servidor indisponivel')
   }
   return <></>

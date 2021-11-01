@@ -9,6 +9,7 @@ import { BASE_URL } from '../../../services/Enums'
 import { SubTitle } from '../../../styles/global'
 import { userFoto } from '../../../types/cadastro'
 import { FormButtons } from './FormButtons'
+import * as Sentry from "@sentry/react";
 
 type Props = {
   back: Function
@@ -39,9 +40,10 @@ export const FormFoto = ({ back, next }: Props) => {
           dispatch(setUser({ foto: resp.data }))
           next()
         })
-        .catch(error => {
+        .catch( function (error) {
+          Sentry.captureException(error);
           toast.error('Falha em comunicar com o servidor')
-        })
+       }) 
     } else {
       next()
     }

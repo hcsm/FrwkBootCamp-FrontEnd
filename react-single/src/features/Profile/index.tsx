@@ -5,7 +5,6 @@ import Technology from './components/Technology'
 
 import {
   WrapperProfile,
-  WrapperHeader,
   WrapperBanner,
   WrapperContent,
 } from './styles'

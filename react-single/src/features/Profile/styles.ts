@@ -5,9 +5,6 @@ export const WrapperProfile = styled.div`
   height: 100%;
   width: 100%;
 `
-export const WrapperHeader = styled.div`
-  display: flex;
-`
 export const WrapperBanner = styled.div`
   background-color: #5c0095;
   width: 100%;

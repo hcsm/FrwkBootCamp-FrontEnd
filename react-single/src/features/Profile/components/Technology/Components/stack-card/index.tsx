@@ -10,7 +10,7 @@ import {
 type Props = {
   id: number
   title: string
-  stacks: Array<{
+  stacks?: Array<{
     value: string
     label: string
   }>
@@ -22,10 +22,10 @@ const StackCard = (props: Props) => {
       <Title>{ props.title }</Title>
       <WrapperBadge>
         {
-          props.stacks.map( ( stack ) => (
+          props.stacks ? props.stacks.map( ( stack ) => (
               <Badge key={stack.value} title={stack.label} />
             )
-          )
+          ) : undefined
         }
       </WrapperBadge>
     </Wrapper>
