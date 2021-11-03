@@ -173,8 +173,8 @@
       "id": 17
     },
     {
-      "value": "Desing Thinking",
-      "label": "Desing Thinking",
+      "value": "Design Thinking",
+      "label": "Design Thinking",
       "id": 18
     },
     {
@@ -356,6 +356,11 @@
       "value": "Kubernetes",
       "label": "Kubernetes",
       "id": 54
+    },
+    {
+      "value": ".Atest",
+      "label": ".Atest",
+      "id": 55
     }
   ],
   "stacks": [

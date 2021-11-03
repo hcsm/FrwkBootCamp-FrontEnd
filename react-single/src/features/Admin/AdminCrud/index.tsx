@@ -51,8 +51,8 @@ const AdminCrud = ({ title, fetch, create, update, remove }: Props) => {
       <div className="mt-4 w-100 d-flex justify-content-center wrap">
         <SubTitle>{title}</SubTitle>
       </div>
-      <div className="mt-5 row justify-content-center w-100">
-        <Col className="" md={7}>
+      <div className="mt-5 row justify-content-center mx-0">
+        <Col className="d-flex justify-content-center search" sm={7}>
           <InputSearch
             placeholder="Buscar..."
             value={searchInputValue}
@@ -61,13 +61,12 @@ const AdminCrud = ({ title, fetch, create, update, remove }: Props) => {
             }}
           />
         </Col>
-        <Col className="ms-4" md={2}>
+        <Col className="ms-4 mt-3 mt-sm-0 d-flex justify-content-center" sm={2}>
           <AddButton onClick={() => toggleIsNew(!isNew)} />
         </Col>
       </div>
-      <Col>
         <If test={isNew}>
-          <AddWrapper className="mt-5">
+          <AddWrapper className="mt-5 col-12">
             <AdminCard
               key="new"
               isNew={isNew}
@@ -76,7 +75,6 @@ const AdminCrud = ({ title, fetch, create, update, remove }: Props) => {
             />
           </AddWrapper>
         </If>
-      </Col>
       <If test={!isNew}>
         {values.isLoading || values.isFetching ? (
           <Loader />

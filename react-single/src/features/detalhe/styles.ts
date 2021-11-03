@@ -1,17 +1,14 @@
 import styled from 'styled-components'
 
-export const WrapperDetail = styled.div`
-  background-color: #c2c4e2;
-`
+export const WrapperDetail = styled.div``
 
 export const WrapperHeader = styled.div`
   display: flex;
 `
 
 export const WrapperAside = styled.div`
-  display: flex;
   height: calc(100vh - 76px);
-
+  display: flex;
   @media (max-width: 850px) {
     display: none;
   }
@@ -19,9 +16,11 @@ export const WrapperAside = styled.div`
 
 export const WrapperContent = styled.div`
   display: flex;
-  background-color: gray;
+  width: 100%;
+  height: 100%;
 `
 
 export const WrapperSection = styled.section`
-  flex: 10;
+  height: calc(100vh - 75px);
+  width: 100%;
 `

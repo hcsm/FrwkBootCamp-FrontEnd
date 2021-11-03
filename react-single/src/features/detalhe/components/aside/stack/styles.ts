@@ -3,9 +3,9 @@ import Chip from '@material-ui/core/Chip'
 
 export const Wrapper = styled.div`
   background-color: #13142c;
-  height: calc(70%);
   border: 1pt solid #13142c;
   border-top-right-radius: 100px;
+  height: 70%;
 `
 
 export const WrapperTitle = styled.div`

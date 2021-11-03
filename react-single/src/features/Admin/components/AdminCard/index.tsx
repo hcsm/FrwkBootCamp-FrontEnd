@@ -73,24 +73,23 @@ export const AdminCard = ({
           sx={{
             border: '1pt solid #213054',
             alignItems: 'end',
-            margin: '10px 0',
             width: '100%',
             backgroundColor: ' #0B0C22',
             borderRadius: '10px',
           }}
         >
-          <Row className="mt-2">
-            <Col md={7}>
+          <Row className="mt-2 ">
+            <Col className="d-flex justify-content-center justify-content-md-start" md={7}>
               <CardInput
-                className="ms-2"
+                className="ms-md-2 text-center text-md-start"
                 {...register('label')}
                 defaultValue={currentValue?.label}
                 readOnly={InputReadOnly}
                 placeholder="Digite aqui"
               />
             </Col>
-            <Col md={5}>
-              <div className="d-flex justify-content-end">
+            <Col className="mt-3 mt-md-0" md={5}>
+              <div className="d-flex justify-content-center justify-content-md-end">
                 {iseditOrNew ? (
                   <ConfirmClearButtons submit={submit} clear={clearInput} />
                 ) : (

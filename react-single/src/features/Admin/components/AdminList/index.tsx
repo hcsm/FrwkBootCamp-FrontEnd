@@ -48,7 +48,7 @@ const AdminList = ({
               className="list"
               height={height}
               rowCount={data.length}
-              rowHeight={100}
+              rowHeight={130}
               rowRenderer={rowRenderer}
               width={width}
             />

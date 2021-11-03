@@ -4,7 +4,6 @@ export const Header = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 250px;
   height: 30%;
 `
 
@@ -16,7 +15,7 @@ export const Image = styled.img`
 `
 
 export const WrapperTitle = styled.div`
-  padding: 28px 4px 0px 4px;
+  padding: 10px 4px 0px 4px;
 `
 
 export const Title = styled.p`
