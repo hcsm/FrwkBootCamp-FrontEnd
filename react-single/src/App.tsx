@@ -19,6 +19,8 @@ Sentry.init({
   tracesSampleRate: 1.0,
 });
 
+Sentry.setUser({ email:"exemplo@frwk.com.br" });
+
 const voidValue = (function () {})()
 store.dispatch(stacksApi.util.prefetch('getStacks', voidValue, {}))
 
