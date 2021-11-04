@@ -11,7 +11,7 @@ import {
   Left,
   Right,
   WrapperHeader,
-  WrapperSearch
+  WrapperSearch,
 } from './styles'
 
 type Props = {}

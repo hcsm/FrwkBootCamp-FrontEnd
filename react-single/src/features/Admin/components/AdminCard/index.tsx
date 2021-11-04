@@ -79,7 +79,10 @@ export const AdminCard = ({
           }}
         >
           <Row className="mt-2 ">
-            <Col className="d-flex justify-content-center justify-content-md-start" md={7}>
+            <Col
+              className="d-flex justify-content-center justify-content-md-start"
+              md={7}
+            >
               <CardInput
                 className="ms-md-2 text-center text-md-start"
                 {...register('label')}

@@ -7,7 +7,7 @@ import {
   IconWrapper,
   Image,
   Title,
-  WrapperTitle
+  WrapperTitle,
 } from './styles'
 
 type Props = {

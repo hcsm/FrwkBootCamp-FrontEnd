@@ -21,7 +21,7 @@ export const Title = styled.h4`
   font-weight: normal;
   font-size: 24px;
   line-height: 28px;
-  color: #FFFFFF;
+  color: #ffffff;
 `
 
 export const Badge = styled(Chip)`

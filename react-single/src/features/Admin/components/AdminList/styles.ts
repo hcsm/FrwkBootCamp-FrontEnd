@@ -1,8 +1,16 @@
 import styled from 'styled-components'
 
 export const ListWrapper = styled.div`
-  width:98%;
+  width: 98%;
   height: 58%;
+  @media (max-width: 720px) {
+    & {
+      width: 100%;
+    }
+    .list::-webkit-scrollbar {
+      display: none;
+    }
+  }
   .list::-webkit-scrollbar {
     width: 10px;
   }

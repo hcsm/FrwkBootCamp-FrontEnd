@@ -1,13 +1,11 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
-  
-`
+export const Container = styled.div``
 
 export const DetailContainer = styled.div`
   position: relative;
   top: -71px;
-  background-color: #0B0C22;
+  background-color: #0b0c22;
   border: 4px solid #213054;
   box-sizing: border-box;
   border-radius: 5px;
@@ -31,7 +29,7 @@ export const Name = styled.p`
   font-weight: 500;
   font-size: 32px;
   line-height: 37px;
-  color: #FFFFFF;
+  color: #ffffff;
   text-align: center;
 `
 
@@ -48,7 +46,7 @@ export const Phone = styled.p`
   font-weight: normal;
   font-size: 18px;
   line-height: 21px;
-  color: #FFFFFF;
+  color: #ffffff;
   justify-content: center;
 `
 
@@ -65,7 +63,7 @@ export const City = styled.p`
   font-weight: normal;
   font-size: 18px;
   line-height: 21px;
-  color: #FFFFFF;
+  color: #ffffff;
   justify-content: center;
 `
 
@@ -82,7 +80,6 @@ export const Email = styled.p`
   font-weight: normal;
   font-size: 18px;
   line-height: 21px;
-  color: #FFFFFF;
+  color: #ffffff;
   justify-content: center;
 `
-

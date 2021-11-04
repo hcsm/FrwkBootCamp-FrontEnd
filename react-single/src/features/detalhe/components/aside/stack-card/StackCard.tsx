@@ -17,12 +17,9 @@ export const StackCard = (props: Props) => {
     <Wrapper className={props.className}>
       <Title>{props.title}</Title>
       <WrapperBadge>
-        {
-          props.stacks.map( ( stack ) => (
-              <Badge title={stack.label} />
-            )
-          )
-        }
+        {props.stacks.map(stack => (
+          <Badge title={stack.label} />
+        ))}
       </WrapperBadge>
     </Wrapper>
   )

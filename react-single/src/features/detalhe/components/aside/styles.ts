@@ -5,5 +5,5 @@ export const WrapperAside = styled.aside`
   background-color: #090b20;
   border-right: 1px solid #213054;
   width: 280px;
-  height:100%;
+  height: 100%;
 `

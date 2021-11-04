@@ -12,9 +12,9 @@ export const BorderHeight = styled.div`
   width: 0px;
   height: 219px;
   margin-top: 58px;
-  border: 2px solid #A2A2A2;
+  border: 2px solid #a2a2a2;
 
-  @media(max-width: 800px) {
+  @media (max-width: 800px) {
     width: 80%;
     height: 0px;
     margin-bottom: 58px;
@@ -32,7 +32,7 @@ export const Title = styled.h2`
   font-style: normal;
   font-weight: bold;
   line-height: 37px;
-  color: #FFFFFF;
+  color: #ffffff;
 `
 
 export const Button = styled.button`
@@ -45,7 +45,7 @@ export const Button = styled.button`
 export const WrapperStacksBox = styled.div`
   width: 220px;
   min-height: 121px;
-  border: 1px solid #0AF585;
+  border: 1px solid #0af585;
   border-radius: 17px;
 `
 
@@ -63,7 +63,7 @@ export const TitleBadge = styled.h2`
   line-height: 20px;
   letter-spacing: 0em;
   text-align: left;
-  color: #0AF585;
+  color: #0af585;
   margin-top: 17px;
   margin-left: 18px;
 `

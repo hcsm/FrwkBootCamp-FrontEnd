@@ -61,20 +61,23 @@ const AdminCrud = ({ title, fetch, create, update, remove }: Props) => {
             }}
           />
         </Col>
-        <Col className="ms-4 mt-3 mt-sm-0 d-flex justify-content-center" sm={2}>
+        <Col
+          className="ms-md-4 mt-3 mt-sm-0 d-flex justify-content-center p-0"
+          sm={2}
+        >
           <AddButton onClick={() => toggleIsNew(!isNew)} />
         </Col>
       </div>
-        <If test={isNew}>
-          <AddWrapper className="mt-5 col-12">
-            <AdminCard
-              key="new"
-              isNew={isNew}
-              onClear={() => toggleIsNew(!isNew)}
-              onConfirm={create}
-            />
-          </AddWrapper>
-        </If>
+      <If test={isNew}>
+        <AddWrapper className="mt-5 col-12">
+          <AdminCard
+            key="new"
+            isNew={isNew}
+            onClear={() => toggleIsNew(!isNew)}
+            onConfirm={create}
+          />
+        </AddWrapper>
+      </If>
       <If test={!isNew}>
         {values.isLoading || values.isFetching ? (
           <Loader />

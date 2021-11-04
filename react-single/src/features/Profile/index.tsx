@@ -14,16 +14,16 @@ type Props = {}
 
 const Profile = (props: Props) => {
   return (
-      <WrapperProfile>
-        <Header />
-        <WrapperBanner/>
-        
-        <WrapperContent>
-          <Detail/>
-          <Technology/>
-        </WrapperContent>
-      </WrapperProfile>
+    <WrapperProfile>
+      <Header />
+      <WrapperBanner />
+
+      <WrapperContent>
+        <Detail />
+        <Technology />
+      </WrapperContent>
+    </WrapperProfile>
   )
 }
 
-export default Profile;
+export default Profile

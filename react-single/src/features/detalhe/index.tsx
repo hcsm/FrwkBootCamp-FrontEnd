@@ -7,7 +7,7 @@ import {
   WrapperContent,
   WrapperDetail,
   WrapperHeader,
-  WrapperSection
+  WrapperSection,
 } from './styles'
 
 type Props = {}

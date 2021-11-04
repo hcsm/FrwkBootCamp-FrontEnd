@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   border-radius: 17px;
   margin: 15px 5px;
-  &:first-child{
+  &:first-child {
     margin-top: 65px;
   }
 `

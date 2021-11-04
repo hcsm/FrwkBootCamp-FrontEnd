@@ -15,7 +15,7 @@ const SidebarLeftButton = (props: Props) => {
       </WrapperIcon>
       <Drawer
         sx={{
-          '& .MuiDrawer-paper': { width: '280px',height: '100vh' }
+          '& .MuiDrawer-paper': { width: '280px', height: '100vh' },
         }}
         className=".d-none .d-md-block .d-lg-none"
         anchor="left"
