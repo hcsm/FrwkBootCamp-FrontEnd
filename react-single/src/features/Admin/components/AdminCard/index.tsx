@@ -10,6 +10,7 @@ import { StacksType } from '../../../../types/cadastro'
 import ConfirmClearButtons from './components/ConfirmClearButtons'
 import EditDeleteButtons from './components/EditDeleteButtons'
 import { CardInput } from './styles'
+import * as Sentry from "@sentry/react"
 
 type Props = {
   currentValue?: StacksType
@@ -17,6 +18,7 @@ type Props = {
   onClear?: Function
   onConfirm?: Function
   onRemove?: Function
+  isError?: boolean
 }
 
 type FormValues = {
@@ -29,6 +31,7 @@ export const AdminCard = ({
   onClear,
   onConfirm,
   onRemove,
+  isError,
 }: Props) => {
   const { register, setFocus, getValues, reset } = useForm<FormValues>()
   const [iseditOrNew, setIsEditOrNew] = React.useState(!!isNew)
@@ -57,7 +60,8 @@ export const AdminCard = ({
       onConfirm(obj)
       toggleActions()
       onClear ? onClear() : undefined
-    } else {
+    } else if (isError){
+      Sentry.captureException(isError); 
       toast.error('Valor invalido')
     }
   }
