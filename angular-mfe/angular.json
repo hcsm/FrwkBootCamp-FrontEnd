@@ -78,7 +78,8 @@
               "browserTarget": "angular-mfe:build:production"
             },
             "development": {
-              "browserTarget": "angular-mfe:build:development"
+              "browserTarget": "angular-mfe:build:development",
+              "proxyConfig": "./proxy.conf.js"
             }
           },
           "defaultConfiguration": "development"

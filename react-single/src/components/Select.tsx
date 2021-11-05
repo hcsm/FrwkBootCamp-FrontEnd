@@ -8,7 +8,6 @@ type Props = {
   name: string
   value?: string
   onChange?: Function
-
 }
 
 export function Select(props: Props) {
@@ -19,7 +18,11 @@ export function Select(props: Props) {
       </option>
     )
   })
-  const changeFn = (e : any) =>{if(props.onChange){ props.onChange(e.target.value)}}
+  const changeFn = (e: any) => {
+    if (props.onChange) {
+      props.onChange(e.target.value)
+    }
+  }
 
   const register = props.register ? props.register(props.name) : undefined
   return (

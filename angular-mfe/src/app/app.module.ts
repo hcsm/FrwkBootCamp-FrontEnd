@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ParcelModule } from 'single-spa-angular/parcel';
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +16,8 @@ import { ParcelModule } from 'single-spa-angular/parcel';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    ParcelModule
+    ParcelModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

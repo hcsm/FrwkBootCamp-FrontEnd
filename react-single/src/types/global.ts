@@ -18,6 +18,7 @@ export interface CadastroType {
 }
 export interface UserType extends CadastroType {
   token?: any
+  refreshToken?: any
 }
 export type userFoto = {
   id: number

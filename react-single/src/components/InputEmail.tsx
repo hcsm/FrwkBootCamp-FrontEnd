@@ -19,9 +19,7 @@ export type InputEmailProps = {
 
 export const InputEmail = (props: InputEmailProps) => {
   const options = ['@frwk.com.br', '@frameworksystem.com']
-  const register = props.register
-    ? props.register(props.name)
-    : undefined
+  const register = props.register ? props.register(props.name) : undefined
   const changeFn = (e: any) => {
     if (props.onChange) {
       props.onChange(e.target.value)
@@ -29,23 +27,23 @@ export const InputEmail = (props: InputEmailProps) => {
   }
   return (
     <>
-    <InputGroup className="mb-3">
-      <Form.Control
-        className={props.error ? 'is-invalid' : ''}
-        placeholder={props.placeholder}
-        type={props.type}
-        {...register}
-        defaultValue={props.value}
-        onChange={props.onChange ? changeFn : register?.onChange}
-      />
-      <Select
-        options={options}
-        register={props.register}
-        name="dominio"
-        value={props?.dominio}
-        onChange={props.onSelectChange ? props.onSelectChange : undefined}
-      />
-    </InputGroup>
+      <InputGroup className="mb-3">
+        <Form.Control
+          className={props.error ? 'is-invalid' : ''}
+          placeholder={props.placeholder}
+          type={props.type}
+          {...register}
+          defaultValue={props.value}
+          onChange={props.onChange ? changeFn : register?.onChange}
+        />
+        <Select
+          options={options}
+          register={props.register}
+          name="dominio"
+          value={props?.dominio}
+          onChange={props.onSelectChange ? props.onSelectChange : undefined}
+        />
+      </InputGroup>
     </>
   )
 }

@@ -62,9 +62,9 @@ export const FormCadastro = ({ activeStep, next, back }: Props) => {
       method = 'put'
     }
     dados.email = dados.inicioEmail + dados.dominio
-    const { foto, inicioEmail, dominio, cep, ...cadastro } = dados
+    const { foto, inicioEmail, dominio, cep, confirmarSenha, ...cadastro } = dados
     axios({
-      url: `${BASE_URL}/cadastro/${dados.id ?? ''}`,
+      url: `http://localhost:8004/framebook/professional/`,
       method: method,
       data: cadastro,
     })
@@ -72,7 +72,7 @@ export const FormCadastro = ({ activeStep, next, back }: Props) => {
         dispatch(setUser({ inicioEmail, dominio, cep, ...resp.data }))
         next()
       })
-      .catch(error => toast.error('Falha em comunicar com o servidor'))
+      .catch(error => console.log(error))
   }
   const onError = (errors: object) => {
     Object.values(errors).map(e => (e ? toast.error(e.message) : false))

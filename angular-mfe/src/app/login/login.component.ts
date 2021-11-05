@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { mountRootParcel } from 'single-spa';
 import { Router } from '@angular/router';
 import { config } from './react-input/reactWidget';
+import { LoginService } from './login.service';
 @Component({
   selector: 'login',
   templateUrl: './login.component.html',
@@ -29,24 +30,25 @@ export class LoginComponent implements OnInit {
   loginEventType = 'user-logged-in';
   loginForm = new FormGroup({
     email: new FormControl(null, Validators.required),
-    password: new FormControl(null, Validators.required),
-    token: new FormControl(undefined),
+    senha: new FormControl(null, Validators.required),
   });
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private loginService: LoginService) {}
 
   ngOnInit(): void {}
+
   onSubmit() {
     this.loginForm.markAllAsTouched();
     if (this.loginForm.valid) {
-      this.loginForm.controls.email.setValue(this.loginForm.value.email + this.dominio);
-      //backend login
-      delete this.loginForm.value.password;
-      const loginEvent = new CustomEvent<any>(this.loginEventType, {
-        detail: this.loginForm.value,
+      const values = {...this.loginForm.value}
+      values.email = this.loginForm.value.email + this.dominio;
+      this.loginService.login(values).subscribe((data: any) => {
+        const loginEvent = new CustomEvent<any>(this.loginEventType, {
+          detail: data.user,
+        });
+        window.dispatchEvent(loginEvent);
+        this.router.navigateByUrl('/#/detalhe');
       });
-      window.dispatchEvent(loginEvent);
-      this.router.navigateByUrl('/#/detalhe');
     }
   }
 }
