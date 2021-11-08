@@ -9,15 +9,15 @@ export const stacksApi = createApi({
   tagTypes: ['Stacks'],
   endpoints: builder => ({
     getStacks: builder.query<StacksType[], void>({
-      query: () => '/stacks',
+      query: () => '/stack',
       providesTags: ['Stacks'],
       transformResponse: (response: StacksType[]) => {
-        return response.sort((a, b) => orderData(a.label, b.label))
+        return response.sort((a, b) => orderData(a.nome, b.nome))
       },
     }),
     createStacks: builder.mutation({
       query: payload => ({
-        url: '/stacks',
+        url: '/stack',
         method: 'POST',
         body: payload,
       }),
@@ -29,7 +29,7 @@ export const stacksApi = createApi({
     }),
     updateStacks: builder.mutation({
       query: ({ id, ...payload }) => ({
-        url: `/stacks/${id}`,
+        url: `/stack/${id}`,
         method: 'PUT',
         body: payload,
       }),
@@ -41,7 +41,7 @@ export const stacksApi = createApi({
     }),
     removeStacks: builder.mutation({
       query: id => ({
-        url: `/stacks/${id}`,
+        url: `/stack/${id}`,
         method: 'DELETE',
       }),
       transformResponse: response => {
