@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import { setUser, useAppDispatch, useAppSelector } from '../../../app/store'
 import { InputProfileImage } from '../../../components/InputProfileImage'
-import { BASE_URL } from '../../../services/Enums'
+import { JSON_SERVER_URL } from '../../../services/Enums'
 import { SubTitle } from '../../../styles/global'
 import { userFoto } from '../../../types/cadastro'
 import { FormButtons } from './FormButtons'
@@ -32,7 +32,7 @@ export const FormFoto = ({ back, next }: Props) => {
     }
     if (dados?.foto?.value) {
       axios({
-        url: `${BASE_URL}/sendfoto/${dados.foto.id ?? ''}`,
+        url: `${JSON_SERVER_URL}/sendfoto/${dados.foto.id ?? ''}`,
         method: method,
         data: dados.foto,
       })

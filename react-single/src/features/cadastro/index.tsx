@@ -8,7 +8,8 @@ import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import { useAppSelector } from '../../app/store'
 import If from '../../components/If'
-import { BASE_URL } from '../../services/Enums'
+import { InputProfileImage } from '../../components/InputProfileImage'
+import { BASE_URL, JSON_SERVER_URL } from '../../services/Enums'
 import { selectEspecialidades } from '../../services/especialidades'
 import { selectStacks } from '../../services/stacks'
 import { Logo } from '../../styles/global'
@@ -17,10 +18,13 @@ import './Cadastro.css'
 import { FormButtons } from './components/FormButtons'
 import { FormCadastro } from './components/FormCadastro'
 import { FormFoto } from './components/FormFoto'
-import { FormStacks } from './components/FormStacks'
+import { FormButtons } from './components/FormButtons'
+import { useHistory } from 'react-router-dom'
 
 type Props = {}
 export const Cadastro = (props: Props) => {
+  const history = useHistory()
+
   const state = useAppSelector(state => state)
   const steps = [
     'Registro',
@@ -38,8 +42,9 @@ export const Cadastro = (props: Props) => {
   })
   const onSubmit = (data: CadastroType) => {
     data.id = state.authUser.data.id
-    axios.post(`${BASE_URL}/perfil`, data).then(resp => {
+    axios.post(`${JSON_SERVER_URL}/perfil'`, data).then(resp => {
       toast.success('Cadastro completo')
+      history.push('/detalhe')
     })
   }
   const onError = (errors: object) => {
@@ -152,7 +157,7 @@ function getStacks() {
     toast.error('Algo deu errado')
   }
   if (isSuccess) {
-    return data
+    return data?.map(stack => ({ label: stack.nome, value: stack.id, nome: stack.nome, id: stack.id}))
   }
   return []
 }

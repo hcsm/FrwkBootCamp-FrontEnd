@@ -21,9 +21,10 @@ export interface UserType extends CadastroType {
   refreshToken?: any
 }
 export interface StacksType {
-  id?: number
+  id: string
   label: string
   value: string
+  nome: string 
 }
 
 export interface userFoto {

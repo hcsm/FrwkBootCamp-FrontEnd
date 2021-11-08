@@ -61,14 +61,15 @@ export const FormCadastro = ({ activeStep, next, back }: Props) => {
       method = 'put'
     }
     dados.email = dados.inicioEmail + dados.dominio
-    const { foto, inicioEmail, dominio, cep, confirmarSenha, ...cadastro } = dados
+    const { foto, inicioEmail, dominio, cep, confirmarSenha,  ...cadastro } = dados
+    
     axios({
-      url: `http://localhost:8004/framebook/professional/`,
+      url: `${BASE_URL}/professional`,
       method: method,
       data: cadastro,
     })
       .then(resp => {
-        dispatch(setUser({ inicioEmail, dominio, cep, ...resp.data }))
+        dispatch(setUser({ inicioEmail, dominio, cep, ...cadastro }))
         next()
       })
       .catch( function (error) {
