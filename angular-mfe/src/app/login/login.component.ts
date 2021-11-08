@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
       const values = {...this.loginForm.value}
       values.email = this.loginForm.value.email + this.dominio;
       this.loginService.login(values).subscribe((data: any) => {
+        data.user.nome = data.user.name;
         const loginEvent = new CustomEvent<any>(this.loginEventType, {
           detail: data.user,
         });

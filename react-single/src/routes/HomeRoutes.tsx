@@ -3,16 +3,10 @@ import { Redirect, Route, Switch } from 'react-router'
 import AdminCrud from '../features/Admin/AdminCrud'
 import { Feed } from '../features/detalhe/components/feed/Feed'
 import {
-  useRemoveEspecialidadesMutation,
-  useCreateEspecialidadesMutation,
-  useUpdateEspecialidadesMutation,
-  useGetEspecialidadesQuery,
+  useCreateEspecialidadesMutation, useGetEspecialidadesQuery, useRemoveEspecialidadesMutation, useUpdateEspecialidadesMutation
 } from '../services/especialidades'
 import {
-  useGetStacksQuery,
-  useUpdateStacksMutation,
-  useCreateStacksMutation,
-  useRemoveStacksMutation,
+  useCreateStacksMutation, useGetStacksQuery, useRemoveStacksMutation, useUpdateStacksMutation
 } from '../services/stacks'
 
 type Props = {}
@@ -24,6 +18,7 @@ const HomeRoutes = (props: Props) => {
   const [updateStacks] = useUpdateStacksMutation()
   const [removeStacks] = useRemoveStacksMutation()
   return (
+
     <Switch>
       <Route exact path="/detalhe/especialidades">
         <AdminCrud

@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { Header } from '../../components/Header'
 import HomeRoutes from '../../routes/HomeRoutes'
 import { Aside } from './components/aside'
@@ -7,7 +7,7 @@ import {
   WrapperContent,
   WrapperDetail,
   WrapperHeader,
-  WrapperSection,
+  WrapperSection
 } from './styles'
 
 type Props = {}
@@ -23,7 +23,7 @@ export const Detalhe = (props: Props) => {
           <Aside />
         </WrapperAside>
         <WrapperSection>
-          <HomeRoutes />
+            <HomeRoutes />
         </WrapperSection>
       </WrapperContent>
     </WrapperDetail>

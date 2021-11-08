@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import db from '../../../../../assets/db.json'
+import React from 'react'
+import { RootState, useAppSelector } from '../../../../../app/store'
 import IconCircle from '../../../../../components/IconCircle'
 import {
   Button,
@@ -7,7 +7,7 @@ import {
   IconWrapper,
   Image,
   Title,
-  WrapperTitle,
+  WrapperTitle
 } from './styles'
 
 type Props = {
@@ -15,9 +15,7 @@ type Props = {
 }
 
 export const HeaderAside = ({ toggle }: Props) => {
-  const [data] = useState(db)
-  const { sendfoto, cadastro } = data
-
+  const user =  useAppSelector((state: RootState) => state.authUser.data);
   return (
     <Header>
       {toggle && (
@@ -25,10 +23,10 @@ export const HeaderAside = ({ toggle }: Props) => {
           <IconCircle icon="Clear" color="white" />
         </IconWrapper>
       )}
-      <Image src={sendfoto[0].value} alt="imagem de perfil" />
+      <Image src={user.foto.value} alt="imagem de perfil" />
       <WrapperTitle>
         <Title>
-          {cadastro[0].nome}
+          {user.nome}
           <Button>
             <IconCircle
               color="white"
