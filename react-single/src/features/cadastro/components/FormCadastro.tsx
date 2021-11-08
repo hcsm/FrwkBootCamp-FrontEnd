@@ -1,9 +1,9 @@
 // @flow
 import { yupResolver } from '@hookform/resolvers/yup'
+import * as Sentry from "@sentry/react"
 import axios, { Method } from 'axios'
-import { error } from 'console'
 import * as React from 'react'
-import { FieldError, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import * as yup from 'yup'
 import { setUser, useAppDispatch } from '../../../app/store'
@@ -11,11 +11,9 @@ import If from '../../../components/If'
 import { Input } from '../../../components/Input'
 import { InputCep } from '../../../components/InputCep'
 import { InputEmail } from '../../../components/InputEmail'
-import { BASE_URL } from '../../../services/Enums'
-import { CadastroType } from '../../../types/global'
+import { CadastroType } from '../../../types/cadastro'
 import { useAppSelector } from './../../../app/store'
 import { FormButtons } from './FormButtons'
-import * as Sentry from "@sentry/react";
 
 type Props = {
   activeStep: number
@@ -76,7 +74,7 @@ export const FormCadastro = ({ activeStep, next, back }: Props) => {
       .catch( function (error) {
          Sentry.captureException(error);
          toast.error('Falha em comunicar com o servidor')
-      }) 
+      })
   }
   const onError = (errors: object) => {
     Object.values(errors).map(e => (e ? toast.error(e.message) : false))

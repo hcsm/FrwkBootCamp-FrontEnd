@@ -16,7 +16,10 @@ export type CadastroType = {
   foto: userFoto
   ativo: boolean
 }
-
+export interface UserType extends CadastroType {
+  token?: any
+  refreshToken?: any
+}
 export interface StacksType {
   id?: number
   label: string

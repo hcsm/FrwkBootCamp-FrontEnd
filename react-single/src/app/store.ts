@@ -3,14 +3,14 @@ import {
   configureStore,
   createSlice,
   PayloadAction,
-  ThunkAction,
+  ThunkAction
 } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query/react'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 import { DEFAULT_PHOTO } from '../services/Enums'
 import { especialidadeApi } from '../services/especialidades'
 import { stacksApi } from '../services/stacks'
-import { CadastroType, UserType } from '../types/global'
+import { CadastroType, UserType } from '../types/cadastro'
 
 interface IUser {
   data: CadastroType

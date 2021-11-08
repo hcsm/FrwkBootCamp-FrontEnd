@@ -1,4 +1,5 @@
 // @flow
+import * as Sentry from "@sentry/react"
 import axios, { Method } from 'axios'
 import * as React from 'react'
 import { useForm } from 'react-hook-form'
@@ -7,9 +8,8 @@ import { setUser, useAppDispatch, useAppSelector } from '../../../app/store'
 import { InputProfileImage } from '../../../components/InputProfileImage'
 import { BASE_URL } from '../../../services/Enums'
 import { SubTitle } from '../../../styles/global'
-import { userFoto } from '../../../types/global'
+import { userFoto } from '../../../types/cadastro'
 import { FormButtons } from './FormButtons'
-import * as Sentry from "@sentry/react";
 
 type Props = {
   back: Function
@@ -43,7 +43,7 @@ export const FormFoto = ({ back, next }: Props) => {
         .catch( function (error) {
           Sentry.captureException(error);
           toast.error('Falha em comunicar com o servidor')
-       }) 
+       })
     } else {
       next()
     }

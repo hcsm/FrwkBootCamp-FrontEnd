@@ -1,5 +1,4 @@
 // @flow
-import Box from '@material-ui/core/Box'
 import Step from '@material-ui/core/Step'
 import StepLabel from '@material-ui/core/StepLabel'
 import Stepper from '@material-ui/core/Stepper'
@@ -9,17 +8,16 @@ import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import { useAppSelector } from '../../app/store'
 import If from '../../components/If'
-import { InputProfileImage } from '../../components/InputProfileImage'
 import { BASE_URL } from '../../services/Enums'
 import { selectEspecialidades } from '../../services/especialidades'
 import { selectStacks } from '../../services/stacks'
-import { Button, Logo, SubTitle } from '../../styles/global'
-import { CadastroType } from '../../types/global'
+import { Logo } from '../../styles/global'
+import { CadastroType } from '../../types/cadastro'
 import './Cadastro.css'
-import { FormCadastro } from './components/FormCadastro'
-import { FormStacks } from './components/FormStacks'
-import { FormFoto } from './components/FormFoto'
 import { FormButtons } from './components/FormButtons'
+import { FormCadastro } from './components/FormCadastro'
+import { FormFoto } from './components/FormFoto'
+import { FormStacks } from './components/FormStacks'
 
 type Props = {}
 export const Cadastro = (props: Props) => {
