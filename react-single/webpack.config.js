@@ -10,6 +10,24 @@ module.exports = (webpackConfigEnv, argv) => {
   })
 
   return merge(defaultConfig, {
+    devServer: {
+      proxy: {
+        '/api/**': {
+          target: 'http://localhost:8004',
+          secure: false,
+          pathRewrite: {
+            '^/api': '',
+          },
+        },
+        '/json-server': {
+          target: 'http://localhost:3000',
+          secure: false,
+          pathRewrite: {
+            '^/json-server': '',
+          },
+        },
+      },
+    },
     watchOptions: {
       ignored: '**/db.json',
     },

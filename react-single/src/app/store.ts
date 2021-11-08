@@ -10,7 +10,7 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 import { DEFAULT_PHOTO } from '../services/Enums'
 import { especialidadeApi } from '../services/especialidades'
 import { stacksApi } from '../services/stacks'
-import { CadastroType } from '../types/cadastro'
+import { CadastroType, UserType } from '../types/global'
 
 interface IUser {
   data: CadastroType
@@ -21,7 +21,7 @@ export const userSlice = createSlice({
   name: 'authUser',
   initialState: initial_user,
   reducers: {
-    setUser: (state, action: PayloadAction<Partial<CadastroType>>) => {
+    setUser: (state, action: PayloadAction<Partial<UserType>>) => {
       state.data = { ...state.data, ...action.payload }
     },
   },

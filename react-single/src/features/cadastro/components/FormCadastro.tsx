@@ -12,7 +12,7 @@ import { Input } from '../../../components/Input'
 import { InputCep } from '../../../components/InputCep'
 import { InputEmail } from '../../../components/InputEmail'
 import { BASE_URL } from '../../../services/Enums'
-import { CadastroType } from '../../../types/cadastro'
+import { CadastroType } from '../../../types/global'
 import { useAppSelector } from './../../../app/store'
 import { FormButtons } from './FormButtons'
 import * as Sentry from "@sentry/react";
@@ -63,9 +63,9 @@ export const FormCadastro = ({ activeStep, next, back }: Props) => {
       method = 'put'
     }
     dados.email = dados.inicioEmail + dados.dominio
-    const { foto, inicioEmail, dominio, cep, ...cadastro } = dados
+    const { foto, inicioEmail, dominio, cep, confirmarSenha, ...cadastro } = dados
     axios({
-      url: `${BASE_URL}/cadastro/${dados.id ?? ''}`,
+      url: `http://localhost:8004/framebook/professional/`,
       method: method,
       data: cadastro,
     })

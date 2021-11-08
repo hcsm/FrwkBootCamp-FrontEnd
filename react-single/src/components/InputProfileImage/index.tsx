@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { FieldValues, UseFormRegister, UseFormSetValue } from 'react-hook-form'
 import styled from 'styled-components'
 import UploaderModal from './UploaderModal'

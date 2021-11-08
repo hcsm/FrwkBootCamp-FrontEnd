@@ -1,7 +1,7 @@
 const jsonServer = require('json-server')
 const server = jsonServer.create()
 const router = jsonServer.router('src/assets/db.json')
-const middlewares = jsonServer.defaults([{ noCors: true }])
+const middlewares = jsonServer.defaults() //[{ noCors: true }]
 const port = 3000
 server.use(jsonServer.bodyParser)
 server.use(middlewares)

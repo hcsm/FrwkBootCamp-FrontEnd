@@ -1,10 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
-import React from 'react'
+import * as React from 'react'
 import { Provider } from 'react-redux'
 import { HashRouter } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import store from './app/store'
+import store, { setUser } from './app/store'
 import { especialidadeApi } from './services/especialidades'
 import { stacksApi } from './services/stacks'
 import { GlobalStyle } from './styles/global'
@@ -27,6 +27,10 @@ store.dispatch(stacksApi.util.prefetch('getStacks', voidValue, {}))
 store.dispatch(
   especialidadeApi.util.prefetch('getEspecialidades', voidValue, {})
 )
+
+window.addEventListener('user-logged-in', (event: CustomEventInit) => {
+  store.dispatch(setUser(event.detail))
+})
 
 function App() {
   return (

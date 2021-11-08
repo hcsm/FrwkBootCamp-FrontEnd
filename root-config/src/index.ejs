@@ -46,7 +46,7 @@
     <% if (isLocal) { %>
     <script
       type="systemjs-importmap"
-      src="https://raw.githubusercontent.com/hcsm/FrwkBootCamp-FrontEnd/b544e7acdf1a5d98a64e06c9b9091712f272903e/root-config/importmap.dev.json"
+      src="https://raw.githubusercontent.com/hcsm/FrwkBootCamp-FrontEnd/development/root-config/importmap.dev.json"
     ></script>
     <% } else { %>
     <script
@@ -59,7 +59,7 @@
     If you need to support Angular applications, uncomment the script tag below to ensure only one instance of ZoneJS is loaded
     Learn more about why at https://single-spa.js.org/docs/ecosystem-angular/#zonejs
   -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/zone.js@0.11.3/dist/zone.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/zone.js@0.11.3/dist/zone.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/import-map-overrides@2.2.0/dist/import-map-overrides.js"></script>
     <% if (isLocal) { %>
@@ -78,6 +78,7 @@
     <script>
       System.import("@frameworker/root-config");
       System.import("@frameworker/react-single");
+      System.import("@frameworker/angular-mfe");
     </script>
     <import-map-overrides-full
       show-when-local-storage="devtools"

@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { IconButton, Tooltip } from '@material-ui/core'
 import GearIcon from '@material-ui/icons/SettingsOutlined'
 
