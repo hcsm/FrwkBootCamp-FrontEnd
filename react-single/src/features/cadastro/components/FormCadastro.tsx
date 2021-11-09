@@ -11,6 +11,7 @@ import If from '../../../components/If'
 import { Input } from '../../../components/Input'
 import { InputCep } from '../../../components/InputCep'
 import { InputEmail } from '../../../components/InputEmail'
+import { BASE_URL } from '../../../services/Enums'
 import { CadastroType } from '../../../types/cadastro'
 import { useAppSelector } from './../../../app/store'
 import { FormButtons } from './FormButtons'
@@ -62,7 +63,7 @@ export const FormCadastro = ({ activeStep, next, back }: Props) => {
     }
     dados.email = dados.inicioEmail + dados.dominio
     const { foto, inicioEmail, dominio, cep, confirmarSenha,  ...cadastro } = dados
-    
+
     axios({
       url: `${BASE_URL}/professional`,
       method: method,
@@ -74,11 +75,11 @@ export const FormCadastro = ({ activeStep, next, back }: Props) => {
       })
       .catch( function (error) {
          Sentry.captureException(error);
-         toast.error('Falha em comunicar com o servidor')
+         // toast.error('Falha em comunicar com o servidor')
       })
   }
   const onError = (errors: object) => {
-    Object.values(errors).map(e => (e ? toast.error(e.message) : false))
+    // Object.values(errors).map(e => (e ? // toast.error(e.message) : false))
   }
   const checkValid = async () => {
     toast.dismiss()

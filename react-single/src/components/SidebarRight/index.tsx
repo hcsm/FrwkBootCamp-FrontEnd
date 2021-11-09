@@ -10,14 +10,14 @@ const SidebarRight = (props: Props) => {
   const [isOpen, toggleSidebar] = React.useState(false)
   return (
     <>
-      <SettingsIcon onClick={() => toggleSidebar} />
+      <SettingsIcon onClick={() => toggleSidebar(true)}/>
       <Drawer
         sx={{ '& .MuiDrawer-paper': { width: '250px' } }}
         anchor="right"
         open={isOpen}
         onClose={() => toggleSidebar(false)}
       >
-        <Content toggle={() => toggleSidebar(!isOpen)} />
+        <Content toggle={() => toggleSidebar(false)} />
       </Drawer>
     </>
   )

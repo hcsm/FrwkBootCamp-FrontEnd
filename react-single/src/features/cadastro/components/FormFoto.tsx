@@ -42,7 +42,7 @@ export const FormFoto = ({ back, next }: Props) => {
         })
         .catch( function (error) {
           Sentry.captureException(error);
-          toast.error('Falha em comunicar com o servidor')
+          // toast.error('Falha em comunicar com o servidor')
        })
     } else {
       next()

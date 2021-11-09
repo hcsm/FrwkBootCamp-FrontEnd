@@ -12,7 +12,7 @@ export const stacksApi = createApi({
       query: () => '/stack',
       providesTags: ['Stacks'],
       transformResponse: (response: StacksType[]) => {
-        return response.sort((a, b) => orderData(a.nome, b.nome))
+        return response
       },
     }),
     createStacks: builder.mutation({
@@ -28,8 +28,8 @@ export const stacksApi = createApi({
       invalidatesTags: ['Stacks'],
     }),
     updateStacks: builder.mutation({
-      query: ({ id, ...payload }) => ({
-        url: `/stack/${id}`,
+      query: (payload) => ({
+        url: `/stack`,
         method: 'PUT',
         body: payload,
       }),

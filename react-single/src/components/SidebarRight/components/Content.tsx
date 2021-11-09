@@ -30,15 +30,17 @@ const IconWrapper = styled.span`
 `
 const Content = ({ toggle }: Props) => {
   return (
-    <Container>
-      <Title>
-        <h4>Opções</h4>
-        <IconWrapper className="ms-auto pointer" onClick={() => toggle()}>
-          <IconCircle icon="Clear" color="white" />
-        </IconWrapper>
-      </Title>
-      <Menu />
-    </Container>
+    <>
+      <Container>
+        <Title>
+          <h4>Opções</h4>
+          <IconWrapper className="ms-auto pointer" onClick={() => toggle()}>
+            <IconCircle icon="Clear" color="white" />
+          </IconWrapper>
+        </Title>
+        <Menu />
+      </Container>
+    </>
   )
 }
 

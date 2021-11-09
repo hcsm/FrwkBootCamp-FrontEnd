@@ -8,13 +8,12 @@ import { StacksType } from '../../../../types/cadastro'
 import { toast } from 'react-toastify'
 import Loader from '../Loader'
 import If from '../../../../components/If'
-import * as Sentry from "@sentry/react"
+import * as Sentry from '@sentry/react'
 
 type Props = {
   data?: StacksType[]
   error?: any
   isError?: boolean
-  querySearch?: string
   isSuccess?: boolean
   update: any
   remove: any
@@ -26,12 +25,19 @@ const AdminList = ({
   isError,
   error,
   update,
-  remove,
+  remove
 }: Props) => {
+  const [value, setValue] = React.useState(0) // integer state
+  function useForceUpdate() {
+    return () => setValue(value => value + 1) // update the state to force render
+  }
+  React.useEffect(() => {
+    useForceUpdate()
+  }, [data])
   if (isSuccess && data) {
     const rowRenderer = ({ key, index, style }: ListRowProps) => {
       return (
-        <div key={key} style={style}>
+        <div key={data[index].nome} style={style}>
           <AdminCard
             currentValue={data[index]}
             onConfirm={update}
@@ -40,26 +46,26 @@ const AdminList = ({
         </div>
       )
     }
-
     return (
-      <ListWrapper className="mt-5">
-        <AutoSizer>
+      <ListWrapper className="mt-5" key={value}>
+        <AutoSizer key={value}>
           {({ height, width }) => (
-            <List
-              className="list"
-              height={height}
-              rowCount={data.length}
-              rowHeight={130}
-              rowRenderer={rowRenderer}
-              width={width}
-            />
+              <List
+                className="list"
+                height={height}
+                rowCount={data.length}
+                rowHeight={130}
+                rowRenderer={rowRenderer}
+                width={width}
+                key={value}
+              />
           )}
         </AutoSizer>
       </ListWrapper>
     )
   } else if (isError) {
-    Sentry.captureException(isError);
-    toast.error('Servidor indisponivel')
+    Sentry.captureException(isError)
+    // toast.error('Servidor indisponivel')
   }
   return <></>
 }

@@ -10,7 +10,7 @@ const SettingsIcon = (props: Props) => {
   return (
     <Tooltip title="Configurações" enterDelay={300}>
       <IconButton
-        onClick={props.onClick()}
+        onClick={() => props.onClick()}
         color="inherit"
         sx={{
           p: '10px',

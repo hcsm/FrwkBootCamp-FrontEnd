@@ -13,7 +13,7 @@ export const especialidadeApi = createApi({
       query: () => '/especialidades',
       providesTags: ['Especialidades'],
       transformResponse: (response: StacksType[]) => {
-        return response.sort((a, b) => orderData(a.label, b.label))
+        return response
       },
     }),
     createEspecialidades: builder.mutation({

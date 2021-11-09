@@ -56,13 +56,13 @@ export const AdminCard = ({
   const submit = () => {
     const value = getValues('label')?.trim()
     if (value && onConfirm) {
-      const obj = { value, label: value, id: currentValue?.id }
+      const obj = { nome: value, id: currentValue?.id }
       onConfirm(obj)
       toggleActions()
       onClear ? onClear() : undefined
     } else if (isError){
-      Sentry.captureException(isError); 
-      toast.error('Valor invalido')
+      Sentry.captureException(isError);
+      // toast.error('Valor invalido')
     }
   }
   const remove = () => {
@@ -90,7 +90,7 @@ export const AdminCard = ({
               <CardInput
                 className="ms-md-2 text-center text-md-start"
                 {...register('label')}
-                defaultValue={currentValue?.label}
+                defaultValue={currentValue?.nome}
                 readOnly={InputReadOnly}
                 placeholder="Digite aqui"
               />

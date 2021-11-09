@@ -43,11 +43,11 @@ export const Cadastro = (props: Props) => {
     data.id = state.authUser.data.id
     axios.post(`${JSON_SERVER_URL}/perfil'`, data).then(resp => {
       toast.success('Cadastro completo')
-      history.push('/detalhe')
     })
+    history.push('/detalhe')
   }
   const onError = (errors: object) => {
-    Object.values(errors).map(e => (e ? toast.error(e.message) : false))
+   // Object.values(errors).map(e => (e ? toast.error(e.message) : false))
   }
   const stacks = getStacks()
   const especialidades = getEspecialidades()
@@ -153,7 +153,7 @@ export const Cadastro = (props: Props) => {
 function getStacks() {
   const { data, isError, isSuccess } = selectStacks()
   if (isError) {
-    toast.error('Algo deu errado')
+    // toast.error('Algo deu errado')
   }
   if (isSuccess) {
     return data?.map(stack => ({ label: stack.nome, value: stack.id, nome: stack.nome, id: stack.id}))
@@ -163,7 +163,7 @@ function getStacks() {
 function getEspecialidades() {
   const { data, isSuccess, isError } = selectEspecialidades()
   if (isError) {
-    toast.error('Algo deu errado')
+    // toast.error('Algo deu errado')
   }
   if (isSuccess) {
     return data
