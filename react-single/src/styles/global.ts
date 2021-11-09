@@ -57,3 +57,29 @@ export const H5 = styled.h5`
   user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
 `
+export const DivWithScroll = (name: string) => {
+  return styled.div`
+    @media (max-width: 720px) {
+      & {
+        width: 100%;
+      }
+      ${name}::-webkit-scrollbar {
+        display: none;
+      }
+    }
+    ${name}::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ${name}::-webkit-scrollbar-track {
+      background: #0b0c22;
+      border-radius: 10px;
+      padding: 1px;
+    }
+
+    ${name}::-webkit-scrollbar-thumb {
+      background: #213054;
+      border-radius: 10px;
+    }
+  `
+}

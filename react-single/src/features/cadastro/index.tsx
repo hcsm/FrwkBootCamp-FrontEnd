@@ -7,7 +7,7 @@ import * as React from 'react'
 import { useForm } from 'react-hook-form'
 import { useHistory } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import { useAppSelector } from '../../app/store'
+import { setUser, useAppDispatch, useAppSelector } from '../../app/store'
 import If from '../../components/If'
 import { JSON_SERVER_URL } from '../../services/Enums'
 import { selectEspecialidades } from '../../services/especialidades'
@@ -25,6 +25,7 @@ export const Cadastro = (props: Props) => {
   const history = useHistory()
 
   const state = useAppSelector(state => state)
+  const dispatch = useAppDispatch()
   const steps = [
     'Registro',
     'Dados Pessoais',
@@ -40,8 +41,9 @@ export const Cadastro = (props: Props) => {
     mode: 'onBlur',
   })
   const onSubmit = (data: CadastroType) => {
-    data.id = state.authUser.data.id
-    axios.post(`${JSON_SERVER_URL}/perfil'`, data).then(resp => {
+    data.professionalId = state.authUser.data.professionalId
+    axios.post(`${JSON_SERVER_URL}/perfil`, data).then(resp => {
+      dispatch(setUser(data))
       toast.success('Cadastro completo')
     })
     history.push('/detalhe')

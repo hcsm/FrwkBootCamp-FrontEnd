@@ -1,5 +1,5 @@
 export type CadastroType = {
-  id: number
+  professionalId: number
   nome: string
   senha: string
   confirmarSenha: string
@@ -24,7 +24,7 @@ export interface StacksType {
   id: string
   label: string
   value: string
-  nome: string 
+  nome: string
 }
 
 export interface userFoto {

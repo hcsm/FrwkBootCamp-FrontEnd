@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader, CardMedia } from '@material-ui/core'
 import Button from '../../../../../components/Button'
 import { Chip } from '../../../../../components/Chip/Chip'
 import './Cards.css'
-
+import { DEFAULT_PHOTO } from '../../../../../services/Enums'
 type Props = {
   stacks: String[]
   name: String
@@ -22,7 +22,7 @@ export function Cards(props: Props) {
       <CardMedia
         className="img"
         component="img"
-        image={props.userFoto.value}
+        image={props.userFoto?.value ?? DEFAULT_PHOTO}
         alt=""
       />
 

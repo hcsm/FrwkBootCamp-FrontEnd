@@ -16,7 +16,7 @@ const GithubIcon = (props: Props) => {
         color="inherit"
         href={props.repository}
         sx={{
-          p: '10px',
+          marginLeft: '10px',
           height: props.height,
           width: props.width,
           border: '1px solid rgb(23, 58, 94)',

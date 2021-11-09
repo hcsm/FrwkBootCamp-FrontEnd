@@ -37,7 +37,7 @@ const AdminList = ({
   if (isSuccess && data) {
     const rowRenderer = ({ key, index, style }: ListRowProps) => {
       return (
-        <div key={data[index].nome} style={style}>
+        <div key={data[index].id} style={style}>
           <AdminCard
             currentValue={data[index]}
             onConfirm={update}

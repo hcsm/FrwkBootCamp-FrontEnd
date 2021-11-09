@@ -10,6 +10,7 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 import { DEFAULT_PHOTO } from '../services/Enums'
 import { especialidadeApi } from '../services/especialidades'
 import { stacksApi } from '../services/stacks'
+import { usersApi } from '../services/users'
 import { CadastroType, UserType } from '../types/cadastro'
 
 interface IUser {
@@ -33,6 +34,7 @@ const store = configureStore({
   reducer: {
     [stacksApi.reducerPath]: stacksApi.reducer,
     [especialidadeApi.reducerPath]: especialidadeApi.reducer,
+    [usersApi.reducerPath]: usersApi.reducer,
     [userSlice.name]: userSlice.reducer,
   },
   middleware: getDefaultMiddleware =>

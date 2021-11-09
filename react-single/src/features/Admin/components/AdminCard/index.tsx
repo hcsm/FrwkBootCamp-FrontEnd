@@ -56,7 +56,7 @@ export const AdminCard = ({
   const submit = () => {
     const value = getValues('label')?.trim()
     if (value && onConfirm) {
-      const obj = { nome: value, id: currentValue?.id }
+      const obj = { nome: value, id: currentValue?.id ?? value}
       onConfirm(obj)
       toggleActions()
       onClear ? onClear() : undefined

@@ -5,30 +5,29 @@ import StackCard from '../stack-card'
 import db from '../../../../../../assets/db.json'
 
 import { Wrapper, Title, BorderHeight } from './styles'
+import { useAppSelector } from '../../../../../../app/store'
 
 type Props = {}
 
 const Stack = (props: Props) => {
-  const [data] = useState(db)
-  const { cadastro, perfil } = data
-
+  const authUser = useAppSelector(state => state.authUser.data)
   return (
     <div className="col-12">
       <Title>Tecnologias</Title>
       <Wrapper className="py-4">
         <div className="col-12 col-md-5 ">
           <StackCard
-            id={cadastro[0].id}
+            id={authUser.professionalId}
             title="Tenho experiência"
-            stacks={perfil[0].stackExperiencia}
+            stacks={authUser.stackExperiencia}
           />
         </div>
         <BorderHeight />
         <div className="col-12 col-md-5">
           <StackCard
-            id={cadastro[0].id}
+            id={authUser.professionalId}
             title="Estou estudando"
-            stacks={perfil[0].stackExperiencia}
+            stacks={authUser.stackAprender}
           />
         </div>
       </Wrapper>

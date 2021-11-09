@@ -31,6 +31,8 @@ export const Name = styled.p`
   line-height: 37px;
   color: #ffffff;
   text-align: center;
+  display: flex;
+  justify-content: center;
 `
 
 export const Phone = styled.p`

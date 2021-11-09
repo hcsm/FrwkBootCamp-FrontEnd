@@ -57,8 +57,8 @@ export const FormCadastro = ({ activeStep, next, back }: Props) => {
   })
   const onSubmit = (dados: CadastroType) => {
     let method: Method = 'post'
-    if (authUser?.data?.id) {
-      dados.id = authUser.data.id
+    if (authUser?.data?.professionalId) {
+      dados.professionalId = authUser.data.professionalId
       method = 'put'
     }
     dados.email = dados.inicioEmail + dados.dominio
@@ -70,7 +70,7 @@ export const FormCadastro = ({ activeStep, next, back }: Props) => {
       data: cadastro,
     })
       .then(resp => {
-        dispatch(setUser({ inicioEmail, dominio, cep, ...cadastro }))
+        dispatch(setUser(resp.data))
         next()
       })
       .catch( function (error) {
