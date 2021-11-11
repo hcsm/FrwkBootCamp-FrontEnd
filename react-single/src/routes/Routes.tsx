@@ -12,9 +12,9 @@ const Routes = (props: Props) => {
   return (
     <Switch>
       <PrivateRoute path="/home" component={Home} />
+      <PrivateRoute path="/detalhe" component={Detalhe} />
+      <PrivateRoute path="/perfil" component={Profile} />
       <Route path="/cadastro" component={Cadastro} />
-      <Route path="/detalhe" component={Detalhe} />
-      <Route path="/perfil" component={Profile} />
       <Route
         path="/login"
         component={() => {
