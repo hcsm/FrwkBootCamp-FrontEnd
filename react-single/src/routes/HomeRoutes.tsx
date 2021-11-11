@@ -8,6 +8,7 @@ import {
 import {
   useCreateStacksMutation, useGetStacksQuery, useRemoveStacksMutation, useUpdateStacksMutation
 } from '../services/stacks'
+import { PrivateRoute } from './PrivateRoute'
 
 type Props = {}
 const HomeRoutes = (props: Props) => {
@@ -20,25 +21,32 @@ const HomeRoutes = (props: Props) => {
   return (
 
     <Switch>
-      <Route exact path="/detalhe/especialidades">
-        <AdminCrud
-          title="Especialidades"
-          fetch={useGetEspecialidadesQuery}
-          create={createEspecialidades}
-          update={updateEspecialidades}
-          remove={removeEspecialidades}
-        />
-      </Route>
-      <Route path="/detalhe/stacks">
-        <AdminCrud
-          title="Stacks"
-          fetch={useGetStacksQuery}
-          create={createStacks}
-          update={updateStacks}
-          remove={removeStacks}
-        />
-      </Route>
-      <Route path="/detalhe/feed" component={Feed} />
+      <PrivateRoute
+        exact
+        path="/detalhe/especialidades"
+        component={() =>
+          <AdminCrud
+            title="Especialidades"
+            fetch={useGetEspecialidadesQuery}
+            create={createEspecialidades}
+            update={updateEspecialidades}
+            remove={removeEspecialidades}
+          />
+        }
+      />
+      <PrivateRoute
+        path="/detalhe/stacks"
+        component={() =>
+          <AdminCrud
+            title="Stacks"
+            fetch={useGetStacksQuery}
+            create={createStacks}
+            update={updateStacks}
+            remove={removeStacks}
+          />
+        }
+      />
+      <PrivateRoute path="/detalhe/feed" component={Feed} />
       <Redirect from="*" to="/detalhe/feed" />
     </Switch>
   )
