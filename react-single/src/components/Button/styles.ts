@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Container = styled.button`
   display: inline-block;
-  font-weight: thin;
+  font-weight: lighter;
   text-align: center;
   border-radius: 3px;
   color: #ffffff;

@@ -19,12 +19,12 @@ export const Stack = (props: Props) => {
         className="first"
         id={authUser.professionalId}
         title="Principais stacks"
-        stacks={authUser.stackExperiencia}
+        stacks={authUser?.stackExperiencia?.slice(0,4)}
       />
       <StackCard
         id={authUser.professionalId}
         title="Aprendizado"
-        stacks={authUser.stackAprender}
+        stacks={authUser?.stackAprender?.slice(0,4)}
       />
     </Wrapper>
   )

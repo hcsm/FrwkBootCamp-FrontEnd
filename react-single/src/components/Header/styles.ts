@@ -18,6 +18,10 @@ const RowDirection = styled.div`
 export const Left = styled(RowDirection)`
   width: 30%;
   justify-content: center;
+  & a {
+    text-decoration: none;
+    color: white;
+  }
 `
 
 export const Right = styled(RowDirection)`

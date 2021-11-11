@@ -22,7 +22,7 @@ export const Header = (props: Props) => {
   return (
     <WrapperHeader className="WrapperHeader">
       <Left className="Left">
-        <HeaderTitle className="HeaderTitle">Framebook</HeaderTitle>
+        <a href="/#/detalhe/feed"><HeaderTitle className="HeaderTitle">Framebook</HeaderTitle></a>
         <SidebarLeftButton />
       </Left>
 
