@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { useLocation } from 'react-router'
 import { Header } from '../../components/Header'
 import Detail from './components/Detail'
 import Technology from './components/Technology'

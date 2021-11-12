@@ -42,7 +42,7 @@ const Detail = (props: Partial<UserType>) => {
   return (
     <Container className=" col-xl-4 col-lg-4 col-12 d-flex justify-content-center">
       <DetailContainer>
-        {!(authUser.email === props.email) ? 
+        {authUser.email === props.email ? 
          <div className='d-flex justify-content-end'>
           <Button onClick={() => {handleEdit()}} >
               <IconCircle
