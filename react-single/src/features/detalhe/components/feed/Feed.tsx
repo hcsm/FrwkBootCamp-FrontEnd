@@ -1,9 +1,7 @@
 import * as React from 'react'
-import { RootState, useAppSelector } from '../../../../app/store'
 import InputSearch from '../../../../components/InputSearch'
-import HomeRoutes from '../../../../routes/HomeRoutes'
+import { searchValue } from '../../../../services/Enums'
 import { useGetProfessionalsQuery } from '../../../../services/users'
-import AdminList from '../../../Admin/AdminCrud'
 import { Cards } from './Cards/Cards'
 import { WrapperFeed } from './styles'
 
@@ -14,9 +12,14 @@ export const Feed = (props: Props) => {
   const { data, isError } = useGetProfessionalsQuery()
   
   const renderFeed = () => {
-    return data?.map(user => (
-      <Cards key={user.professionalId} {...user} />
-    ))
+    return data
+      ?.filter(elem =>
+        search && elem ? searchValue(elem, Object.keys(elem), search) : elem
+      )
+      .map(user => (
+        <Cards key={user.professionalId} {...user} />
+      ))
+
   }
   return (
     <WrapperFeed>
@@ -30,17 +33,4 @@ export const Feed = (props: Props) => {
       <div className="list">{renderFeed()}</div>
     </WrapperFeed>
   )
-}
-
-function searchValue(element: any, keys: string[], value: string) {
-  for (let index = 0; index < keys.length; index++) {
-    const key = keys[index]
-    if (
-      element[key]?.toUpperCase()
-      ?.trim()?.includes(value?.toUpperCase()?.trim())
-    ) {
-      return true
-    }
-  }
-  return false
 }

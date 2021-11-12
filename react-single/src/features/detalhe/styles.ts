@@ -10,8 +10,8 @@ export const WrapperHeader = styled.div`
 export const WrapperAside = styled.div`
   height: calc(100vh - 76px);
   display: flex;
-  aside::-webkit-scrollbar{
-        display: none;
+  aside::-webkit-scrollbar {
+    display: none;
   }
   @media (max-width: 850px) {
     display: none;

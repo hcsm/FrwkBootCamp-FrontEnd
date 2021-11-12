@@ -5,11 +5,7 @@ import Technology from './components/Technology'
 import { useLocation } from 'react-router-dom'
 import { useGetProfessionalsQuery } from '../../services/users'
 
-import {
-  WrapperProfile,
-  WrapperBanner,
-  WrapperContent,
-} from './styles'
+import { WrapperProfile, WrapperBanner, WrapperContent } from './styles'
 
 type Props = {}
 

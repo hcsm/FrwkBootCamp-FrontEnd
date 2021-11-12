@@ -20,7 +20,7 @@ type Props = {
 }
 
 const AdminCrud = ({ title, fetch, create, update, remove }: Props) => {
-  const state = fetch();
+  const state = fetch()
 
   const [isNew, toggleIsNew] = React.useState(false)
   const [searchInputValue, setSearchInputValue] = React.useState('')

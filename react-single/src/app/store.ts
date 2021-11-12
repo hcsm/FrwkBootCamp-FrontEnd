@@ -3,7 +3,7 @@ import {
   configureStore,
   createSlice,
   PayloadAction,
-  ThunkAction
+  ThunkAction,
 } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query/react'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
@@ -39,7 +39,7 @@ const store = configureStore({
     getDefaultMiddleware().concat([
       stacksApi.middleware,
       especialidadeApi.middleware,
-      usersApi.middleware
+      usersApi.middleware,
     ]),
   devTools: process.env.NODE_ENV !== 'production',
 })

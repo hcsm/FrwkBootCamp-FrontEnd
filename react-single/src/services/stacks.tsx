@@ -28,7 +28,7 @@ export const stacksApi = createApi({
       invalidatesTags: ['Stacks'],
     }),
     updateStacks: builder.mutation({
-      query: (payload) => ({
+      query: payload => ({
         url: `/stack`,
         method: 'PUT',
         body: payload,

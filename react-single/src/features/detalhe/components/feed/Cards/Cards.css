@@ -33,9 +33,9 @@
   margin: 0 auto;
   justify-content: space-evenly;
 }
-.stacks-title{
+.stacks-title {
   font-weight: 550 !important;
-  color: #F1FCF3;
+  color: #f1fcf3;
   /* text-shadow: 2px 0px 28px rgb(10 245 133 / 70%); */
   text-align: center;
 }

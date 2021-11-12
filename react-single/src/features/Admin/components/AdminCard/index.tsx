@@ -10,7 +10,7 @@ import { StacksType } from '../../../../types/cadastro'
 import ConfirmClearButtons from './components/ConfirmClearButtons'
 import EditDeleteButtons from './components/EditDeleteButtons'
 import { CardInput } from './styles'
-import * as Sentry from "@sentry/react"
+import * as Sentry from '@sentry/react'
 
 type Props = {
   currentValue?: StacksType
@@ -56,12 +56,12 @@ export const AdminCard = ({
   const submit = () => {
     const value = getValues('label')?.trim()
     if (value && onConfirm) {
-      const obj = { nome: value, id: currentValue?.id ?? value}
+      const obj = { nome: value, id: currentValue?.id ?? value }
       onConfirm(obj)
       toggleActions()
       onClear ? onClear() : undefined
-    } else if (isError){
-      Sentry.captureException(isError);
+    } else if (isError) {
+      Sentry.captureException(isError)
       // toast.error('Valor invalido')
     }
   }
