@@ -8,6 +8,7 @@ import { NavLink } from 'react-router-dom'
 type Props = {}
 
 const StyledUl = styled.ul`
+  list-style: none;
   & .styledLi {
     text-decoration: none;
     font-weight: 500;
@@ -34,14 +35,14 @@ const StyledUl = styled.ul`
     color: #0af585;
     padding-left: 4px;
   }
-`
-const LiTitle = styled(H5)`
-  margin: 7px 25px 6px 25px;
+  & .only {
+    margin: 7px 25px 6px 25px;
+  }
 `
 const Menu = (props: Props) => {
   return (
     <StyledUl className="list-group">
-      <Dropdown title="Editar listas" isClosed={false}>
+      <Dropdown title="Gerenciar listas" isClosed={false}>
         <li>
           <NavLink className={active} to="/detalhe/especialidades">
             Especialidades
@@ -53,7 +54,11 @@ const Menu = (props: Props) => {
           </NavLink>
         </li>
       </Dropdown>
-      <LiTitle>Enviar notificação</LiTitle>
+      <li className="only">
+        <NavLink className={active} to="/detalhe/usuarios">
+          Gerenciar usuários
+        </NavLink>
+      </li>
     </StyledUl>
   )
 }

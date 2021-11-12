@@ -7,7 +7,7 @@ import {
   WrapperContent,
   WrapperDetail,
   WrapperHeader,
-  WrapperSection
+  WrapperSection,
 } from './styles'
 
 type Props = {}
@@ -23,7 +23,7 @@ export const Detalhe = (props: Props) => {
           <Aside />
         </WrapperAside>
         <WrapperSection>
-            <HomeRoutes />
+          <HomeRoutes />
         </WrapperSection>
       </WrapperContent>
     </WrapperDetail>

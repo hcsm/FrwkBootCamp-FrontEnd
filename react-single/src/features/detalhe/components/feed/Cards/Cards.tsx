@@ -9,7 +9,7 @@ type Props = {
   stackExperiencia: String[]
   especialidade: String
   name: String
-  userFoto: {
+  UserFoto: {
     id: number
     value?: string
   }
@@ -29,13 +29,13 @@ export function Cards(props: Props) {
       <CardMedia
         className="img"
         component="img"
-        image={props.userFoto?.value ?? DEFAULT_PHOTO}
+        image={props.UserFoto?.value ?? DEFAULT_PHOTO}
         alt=""
       />
 
       <div className="btnDiv">
-          <Button type="submit">Ver mais</Button>
-        </div>
+        <Button type="submit">Ver mais</Button>
+      </div>
       <CardContent>
         <div className="d-flex flex-column">
           <h6 className="stacks-title">Especialidade:</h6>

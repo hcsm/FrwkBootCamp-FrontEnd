@@ -482,16 +482,12 @@
   "refreshtoken": [],
   "especialidades": [
     {
-      "value": "Backend",
-      "label": "Backend",
-      "id": 0,
-      "nome": "Backend"
+      "nome": "Backend",
+      "id": 0
     },
     {
-      "value": "Frontend",
-      "label": "Frontend",
-      "id": 1,
-      "nome": "Frontend"
+      "nome": "FrontendFrontendFrontend",
+      "id": 1
     },
     {
       "value": "DevOps",

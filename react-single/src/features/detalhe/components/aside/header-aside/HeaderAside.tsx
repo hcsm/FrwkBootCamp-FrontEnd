@@ -7,7 +7,7 @@ import {
   IconWrapper,
   Image,
   Title,
-  WrapperTitle
+  WrapperTitle,
 } from './styles'
 
 type Props = {
@@ -15,7 +15,7 @@ type Props = {
 }
 
 export const HeaderAside = ({ toggle }: Props) => {
-  const user =  useAppSelector((state: RootState) => state.authUser.data);
+  const user = useAppSelector((state: RootState) => state.authUser.data)
   return (
     <Header>
       {toggle && (

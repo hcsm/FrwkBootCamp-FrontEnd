@@ -1,5 +1,12 @@
 import * as React from 'react'
-import { Badge, Divider, IconButton, Popover, Tooltip, Typography } from '@material-ui/core'
+import {
+  Badge,
+  Divider,
+  IconButton,
+  Popover,
+  Tooltip,
+  Typography,
+} from '@material-ui/core'
 import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone'
 import NotificationRow from './NotificationRow'
 
@@ -10,39 +17,41 @@ const notifications = [
     id: 0,
     name: 'Jorge Lopes',
     title: 'Titulo da menssagem',
-    message: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos exercitationem nesciunt nostrum amet quod quam blanditiis repellat error distinctio libero excepturi consectetur dolorum laboriosam omnis consequuntur dicta, quae dolore atque.',
+    message:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos exercitationem nesciunt nostrum amet quod quam blanditiis repellat error distinctio libero excepturi consectetur dolorum laboriosam omnis consequuntur dicta, quae dolore atque.',
     time: '4 minutes ago',
   },
   {
     id: 0,
     name: 'Jorge Lopes',
     title: 'Titulo da menssagem',
-    message: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos exercitationem nesciunt nostrum amet quod quam blanditiis repellat error distinctio libero excepturi consectetur dolorum laboriosam omnis consequuntur dicta, quae dolore atque.',
+    message:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos exercitationem nesciunt nostrum amet quod quam blanditiis repellat error distinctio libero excepturi consectetur dolorum laboriosam omnis consequuntur dicta, quae dolore atque.',
     time: '4 minutes ago',
   },
   {
     id: 0,
     name: 'Jorge Lopes',
     title: 'Titulo da menssagem',
-    message: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos exercitationem nesciunt nostrum amet quod quam blanditiis repellat error distinctio libero excepturi consectetur dolorum laboriosam omnis consequuntur dicta, quae dolore atque.',
+    message:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos exercitationem nesciunt nostrum amet quod quam blanditiis repellat error distinctio libero excepturi consectetur dolorum laboriosam omnis consequuntur dicta, quae dolore atque.',
     time: '4 minutes ago',
   },
 ]
-const qdtNotifications = notifications.length;
-
+const qdtNotifications = notifications.length
 
 const NotificationsIcon = (props: Props) => {
-  const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
-  const open = Boolean(anchorEl);
-  const id = open ? 'notifications-popover' : undefined;
+  const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null)
+  const open = Boolean(anchorEl)
+  const id = open ? 'notifications-popover' : undefined
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
+    setAnchorEl(event.currentTarget)
+  }
 
   const handleClose = () => {
-    setAnchorEl(null);
-  };
+    setAnchorEl(null)
+  }
 
   return (
     <>
@@ -87,15 +96,19 @@ const NotificationsIcon = (props: Props) => {
           horizontal: 'right',
         }}
       >
-        <Typography component="div" sx={{ backgroundColor: '#213054', maxWidth: "500px" }} >
-          {
-            notifications.map((notification, index) => (
-              <>
-                <NotificationRow key={`notification-${index}`} {...notification} />
-                {index !== notifications.length - 1 && <Divider />}
-              </>
-            ))
-          }
+        <Typography
+          component="div"
+          sx={{ backgroundColor: '#213054', maxWidth: '500px' }}
+        >
+          {notifications.map((notification, index) => (
+            <>
+              <NotificationRow
+                key={`notification-${index}`}
+                {...notification}
+              />
+              {index !== notifications.length - 1 && <Divider />}
+            </>
+          ))}
         </Typography>
       </Popover>
     </>

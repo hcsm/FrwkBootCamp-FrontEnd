@@ -4,11 +4,7 @@ import { Header } from '../../components/Header'
 import Detail from './components/Detail'
 import Technology from './components/Technology'
 
-import {
-  WrapperProfile,
-  WrapperBanner,
-  WrapperContent,
-} from './styles'
+import { WrapperProfile, WrapperBanner, WrapperContent } from './styles'
 
 type Props = {}
 

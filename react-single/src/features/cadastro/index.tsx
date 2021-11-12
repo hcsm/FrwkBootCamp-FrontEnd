@@ -49,7 +49,7 @@ export const Cadastro = (props: Props) => {
     history.push('/detalhe')
   }
   const onError = (errors: object) => {
-   // Object.values(errors).map(e => (e ? toast.error(e.message) : false))
+    // Object.values(errors).map(e => (e ? toast.error(e.message) : false))
   }
   const stacks = getStacks()
   const especialidades = getEspecialidades()
@@ -158,7 +158,12 @@ function getStacks() {
     // toast.error('Algo deu errado')
   }
   if (isSuccess) {
-    return data?.map(stack => ({ label: stack.nome, value: stack.id, nome: stack.nome, id: stack.id}))
+    return data?.map(stack => ({
+      label: stack.nome,
+      value: stack.id,
+      nome: stack.nome,
+      id: stack.id,
+    }))
   }
   return []
 }

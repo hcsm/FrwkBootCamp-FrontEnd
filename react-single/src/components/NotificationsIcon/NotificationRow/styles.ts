@@ -17,7 +17,7 @@ export const Container = styled.div`
 
 export const Image = styled.img`
   border-radius: 50%;
-  width: 55px; 
+  width: 55px;
   height: 55px;
 `
 
@@ -35,13 +35,13 @@ export const Name = styled.h3`
 
 export const Title = styled.h3`
   font-weight: 500;
-  font-size:15px;
+  font-size: 15px;
 `
 
 export const Message = styled.p<RotateProps>`
   font-weight: 300;
   font-size: 14px;
-  max-height: ${props => (props.$rotate ? "1000px" : "50px")};
+  max-height: ${props => (props.$rotate ? '1000px' : '50px')};
   transition: all 0.5s ease-in;
 
   text-overflow: ellipsis;
@@ -52,6 +52,6 @@ export const IconButtonWrapper = styled.div<RotateProps>`
   align-self: end;
   transform: rotate(0deg);
   transition: all 0.3s ease-out;
-  transform: ${props => (props.$rotate ? `rotate(180deg)` : "")} ;
-  -ms-transform: ${props => (props.$rotate ? `rotate(180deg)` : "")};
+  transform: ${props => (props.$rotate ? `rotate(180deg)` : '')};
+  -ms-transform: ${props => (props.$rotate ? `rotate(180deg)` : '')};
 `

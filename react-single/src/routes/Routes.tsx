@@ -20,7 +20,7 @@ const Routes = (props: Props) => {
         component={() => {
           // redirect to login page (angular)
           window.location.href = window.location.origin + '/login'
-          return (<></>)
+          return <></>
         }}
       />
       <Redirect from="*" to="/home" />

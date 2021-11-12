@@ -1,6 +1,6 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { UserType } from '../types/cadastro';
-import { BASE_URL } from './Enums';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { UserType } from '../types/cadastro'
+import { BASE_URL } from './Enums'
 
 export const usersApi = createApi({
   reducerPath: 'users',
@@ -14,7 +14,7 @@ export const usersApi = createApi({
         return response
       },
     }),
+  }),
 })
-});
 
 export const { useGetProfessionalsQuery } = usersApi
