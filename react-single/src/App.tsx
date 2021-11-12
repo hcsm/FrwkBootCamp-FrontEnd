@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import * as React from 'react'
 import { Provider } from 'react-redux'
 import { HashRouter } from 'react-router-dom'
-import { ToastContainer } from 'react-toastify'
+import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import store, { setUser } from './app/store'
 import { especialidadeApi } from './services/especialidades'
@@ -32,8 +32,10 @@ window.addEventListener('user-logged-in', (event: CustomEventInit) => {
   store.dispatch(setUser(event.detail))
 })
 
+
 function App() {
   return (
+    <>
     <HashRouter>
       <Provider store={store}>
         <div className="App">
@@ -52,6 +54,7 @@ function App() {
         </div>
       </Provider>
     </HashRouter>
+    </>
   )
 }
 

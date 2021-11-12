@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
   mountRootParcel = mountRootParcel;
   loginEventType = 'user-logged-in';
   loginForm = new FormGroup({
-    email: new FormControl(null, Validators.required),
+    email: new FormControl(undefined, Validators.required),
     senha: new FormControl(null, Validators.required),
   });
 
@@ -40,15 +40,18 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.loginForm.markAllAsTouched();
     if (this.loginForm.valid) {
-      const values = {...this.loginForm.value}
+      const values = { ...this.loginForm.value };
       values.email = this.loginForm.value.email + this.dominio;
-      this.loginService.login(values).subscribe((data: any) => {
-        const loginEvent = new CustomEvent<any>(this.loginEventType, {
-          detail: data.user,
-        });
-        window.dispatchEvent(loginEvent);
-        this.router.navigateByUrl('/#/detalhe');
-      });
+      this.loginService.login(values).subscribe(
+        (data: any) => {
+          const loginEvent = new CustomEvent<any>(this.loginEventType, {
+            detail: data.user,
+          });
+          window.dispatchEvent(loginEvent);
+          this.router.navigateByUrl('/#/detalhe');
+        },
+        (error: any) => {this.loginForm.setErrors({ invalid: true })}
+      );
     }
   }
 }

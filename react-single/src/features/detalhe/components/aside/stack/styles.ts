@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   background-color: #13142c;
   border: 1pt solid #13142c;
   border-top-right-radius: 100px;
-  height: 70%;
+  min-height: 70%;
 `
 
 export const WrapperTitle = styled.div`

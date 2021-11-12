@@ -51,3 +51,8 @@
 .color-green {
   color: #0af585 !important;
 }
+.invalid {
+  color: red !important;
+  font-weight: lighter;
+  margin-left: 2px;
+}

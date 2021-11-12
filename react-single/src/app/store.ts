@@ -18,7 +18,7 @@ interface IUser {
 }
 
 const initial_user = <IUser>{ data: { foto: { value: DEFAULT_PHOTO } } }
-export const userSlice = createSlice({
+export const AuthUserSlice = createSlice({
   name: 'authUser',
   initialState: initial_user,
   reducers: {
@@ -28,25 +28,25 @@ export const userSlice = createSlice({
   },
 })
 
-export const { setUser } = userSlice.actions
-
 const store = configureStore({
   reducer: {
     [stacksApi.reducerPath]: stacksApi.reducer,
     [especialidadeApi.reducerPath]: especialidadeApi.reducer,
     [usersApi.reducerPath]: usersApi.reducer,
-    [userSlice.name]: userSlice.reducer,
+    [AuthUserSlice.name]: AuthUserSlice.reducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware().concat([
       stacksApi.middleware,
       especialidadeApi.middleware,
+      usersApi.middleware
     ]),
   devTools: process.env.NODE_ENV !== 'production',
 })
 
 setupListeners(store.dispatch)
 
+export const { setUser } = AuthUserSlice.actions
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch
 export type AppThunk = ThunkAction<void, RootState, null, Action<string>>

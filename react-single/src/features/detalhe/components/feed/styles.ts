@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { DivWithScroll } from '../../../../styles/global'
 
-export const WrapperFeed = styled(DivWithScroll('.list'))`
+export const WrapperFeed = styled(DivWithScroll('&'))`
   background-color: #070817;
   height: calc(100vh - 75px);
   width: 100%;
