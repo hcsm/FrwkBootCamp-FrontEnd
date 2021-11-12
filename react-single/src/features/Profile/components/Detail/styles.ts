@@ -14,14 +14,13 @@ export const DetailContainer = styled.div`
 export const Image = styled.img`
   width: 214px;
   height: 210px;
-  margin-left: 75px;
+  margin-left: 60px;
   margin-top: 20px;
   border-radius: 372.5px;
 `
 
 export const Name = styled.p`
   width: 320px;
-  height: 38px;
   margin-left: 10px;
   margin-top: 28px;
   font-family: Roboto;
@@ -33,6 +32,7 @@ export const Name = styled.p`
   text-align: center;
   display: flex;
   justify-content: center;
+  align-items: center;
 `
 
 export const Phone = styled.p`
@@ -40,7 +40,6 @@ export const Phone = styled.p`
   align-items: center;
   align-content: center;
   width: 320px;
-  height: 21px;
   margin-left: 10px;
   top: 108px;
   font-family: Roboto;
@@ -57,7 +56,6 @@ export const City = styled.p`
   align-items: center;
   align-content: center;
   width: 320px;
-  height: 21px;
   margin-left: 10px;
   top: 155px;
   font-family: Roboto;
@@ -74,7 +72,6 @@ export const Email = styled.p`
   align-items: center;
   align-content: center;
   width: 320px;
-  height: 21px;
   margin-left: 10px;
   top: 200px;
   font-family: Roboto;
@@ -84,4 +81,31 @@ export const Email = styled.p`
   line-height: 21px;
   color: #ffffff;
   justify-content: center;
+`
+export const Button = styled.button`
+  padding: 0;
+  margin-right: 5px;
+  background-color: transparent;
+  border: none;
+  top: 0px;
+  display: flex;
+  margin-left: 5px;
+  margin-top: 5px;
+`
+
+export const Input = styled.input`
+  max-width: 250px;
+  background-color: transparent !important;
+  border: 0 !important;
+  outline: 0;
+
+  & {
+    border-bottom: 1px solid #0af585 !important;
+    background-color: transparent !important;
+  }
+  &[readonly] {
+    background-color: transparent !important;
+    border: 0 !important;
+  }
+ 
 `
