@@ -4,7 +4,6 @@ import HomeRoutes from '../../../../routes/HomeRoutes'
 import { useGetProfessionalsQuery } from '../../../../services/users'
 import AdminList from '../../../Admin/AdminCrud'
 import { Cards } from './Cards/Cards'
-
 import { WrapperFeed } from './styles'
 
 type Props = {}
@@ -13,9 +12,8 @@ export const Feed = (props: Props) => {
   const { data, isError } = useGetProfessionalsQuery()
   const renderFeed = () => {
     return data?.map(user => (
-      <Cards name={user.nome} stacks={['Docker']} userFoto={user.foto} />
+      <Cards key={user.professionalId} {...user} />
     ))
-    // return <Cards name={user.nome} stacks={['Docker']} userFoto={user.foto}/>
   }
   return (
     <WrapperFeed>
