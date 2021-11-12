@@ -2,6 +2,9 @@ import * as React from 'react'
 import { Badge, Divider, IconButton, Popover, Tooltip, Typography } from '@material-ui/core'
 import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone'
 import NotificationRow from './NotificationRow'
+import CloseIcon from '@material-ui/icons/Close';
+
+import { CloseIconWrapper } from './styles'
 
 type Props = {}
 
@@ -88,6 +91,15 @@ const NotificationsIcon = (props: Props) => {
         }}
       >
         <Typography component="div" sx={{ backgroundColor: '#213054', maxWidth: "500px" }} >
+          <CloseIconWrapper>
+            <IconButton
+              onClick={handleClose}
+              aria-label="Close"
+              sx={{ color: "white" }}
+            >
+              <CloseIcon />
+            </IconButton>
+          </CloseIconWrapper>
           {
             notifications.map((notification, index) => (
               <>

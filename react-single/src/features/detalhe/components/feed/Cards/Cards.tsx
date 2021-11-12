@@ -4,18 +4,6 @@ import Button from '../../../../../components/Button'
 import { Chip } from '../../../../../components/Chip/Chip'
 import './Cards.css'
 import { DEFAULT_PHOTO } from '../../../../../services/Enums'
-import { useHistory } from 'react-router'
-
-type Props = {
-  stacksAprender: String[]
-  stackExperiencia: String[]
-  especialidade: String
-  name: String
-  userFoto: {
-    id: number
-    value?: string
-  }
-}  
 import { useHistory } from 'react-router-dom'
 import { UserType } from '../../../../../types/cadastro'
 
@@ -31,7 +19,7 @@ export function Cards(props: Partial<UserType>) {
   }
 
   const stackExperiencia = props.stackExperiencia.map((stack, i) => {
-    return <Chip key={i} title={stack} />
+    return <Chip key={i} title={stack.nome} />
   })
 
   return (
