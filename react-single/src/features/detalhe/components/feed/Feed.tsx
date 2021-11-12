@@ -10,21 +10,16 @@ type Props = {}
 export const Feed = (props: Props) => {
   const [search, setSearch] = React.useState('')
   const { data, isError } = useGetProfessionalsQuery()
+  
   const renderFeed = () => {
     return data
       ?.filter(elem =>
         search && elem ? searchValue(elem, Object.keys(elem), search) : elem
       )
       .map(user => (
-        <Cards
-          key={user.professionalId}
-          name={user.nome}
-          stacksAprender={['DockerDockerDocker', 'Docker', 'Docker', 'Docker']}
-          stackExperiencia={['ReactTS']}
-          especialidade="Front-end"
-          UserFoto={user.foto}
-        />
+        <Cards key={user.professionalId} {...user} />
       ))
+
   }
   return (
     <WrapperFeed>

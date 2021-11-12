@@ -9,6 +9,9 @@ import {
 } from '@material-ui/core'
 import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone'
 import NotificationRow from './NotificationRow'
+import CloseIcon from '@material-ui/icons/Close';
+
+import { CloseIconWrapper } from './styles'
 
 type Props = {}
 
@@ -96,19 +99,25 @@ const NotificationsIcon = (props: Props) => {
           horizontal: 'right',
         }}
       >
-        <Typography
-          component="div"
-          sx={{ backgroundColor: '#213054', maxWidth: '500px' }}
-        >
-          {notifications.map((notification, index) => (
-            <>
-              <NotificationRow
-                key={`notification-${index}`}
-                {...notification}
-              />
-              {index !== notifications.length - 1 && <Divider />}
-            </>
-          ))}
+
+        <Typography component="div" sx={{ backgroundColor: '#213054', maxWidth: "500px" }} >
+          <CloseIconWrapper>
+            <IconButton
+              onClick={handleClose}
+              aria-label="Close"
+              sx={{ color: "white" }}
+            >
+              <CloseIcon />
+            </IconButton>
+          </CloseIconWrapper>
+          {
+            notifications.map((notification, index) => (
+              <>
+                <NotificationRow key={`notification-${index}`} {...notification} />
+                {index !== notifications.length - 1 && <Divider />}
+              </>
+            ))
+          }
         </Typography>
       </Popover>
     </>
