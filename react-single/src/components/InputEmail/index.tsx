@@ -4,7 +4,7 @@ import * as ReactDOM from 'react-dom'
 import { Form, InputGroup } from 'react-bootstrap'
 import { FieldError, FieldValues, UseFormRegister } from 'react-hook-form'
 import singleSpaReact from 'single-spa-react'
-import { Select } from  '../Select'
+import { Select } from '../Select'
 
 export type InputEmailProps = {
   type: string

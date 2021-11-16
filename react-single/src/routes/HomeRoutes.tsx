@@ -1,12 +1,19 @@
 import * as React from 'react'
 import { Redirect, Route, Switch } from 'react-router'
 import AdminCrud from '../features/Admin/AdminCrud'
+import { ManageUsers } from '../features/Admin/ManageUsers'
 import { Feed } from '../features/detalhe/components/feed/Feed'
 import {
-  useCreateEspecialidadesMutation, useGetEspecialidadesQuery, useRemoveEspecialidadesMutation, useUpdateEspecialidadesMutation
+  useCreateEspecialidadesMutation,
+  useGetEspecialidadesQuery,
+  useRemoveEspecialidadesMutation,
+  useUpdateEspecialidadesMutation,
 } from '../services/especialidades'
 import {
-  useCreateStacksMutation, useGetStacksQuery, useRemoveStacksMutation, useUpdateStacksMutation
+  useCreateStacksMutation,
+  useGetStacksQuery,
+  useRemoveStacksMutation,
+  useUpdateStacksMutation,
 } from '../services/stacks'
 import { PrivateRoute } from './PrivateRoute'
 
@@ -19,12 +26,11 @@ const HomeRoutes = (props: Props) => {
   const [updateStacks] = useUpdateStacksMutation()
   const [removeStacks] = useRemoveStacksMutation()
   return (
-
     <Switch>
       <PrivateRoute
         exact
         path="/detalhe/especialidades"
-        component={() =>
+        component={() => (
           <AdminCrud
             title="Especialidades"
             fetch={useGetEspecialidadesQuery}
@@ -32,11 +38,11 @@ const HomeRoutes = (props: Props) => {
             update={updateEspecialidades}
             remove={removeEspecialidades}
           />
-        }
+        )}
       />
       <PrivateRoute
         path="/detalhe/stacks"
-        component={() =>
+        component={() => (
           <AdminCrud
             title="Stacks"
             fetch={useGetStacksQuery}
@@ -44,9 +50,10 @@ const HomeRoutes = (props: Props) => {
             update={updateStacks}
             remove={removeStacks}
           />
-        }
+        )}
       />
       <PrivateRoute path="/detalhe/feed" component={Feed} />
+      <PrivateRoute path="/detalhe/usuarios" component={ManageUsers} />
       <Redirect from="*" to="/detalhe/feed" />
     </Switch>
   )

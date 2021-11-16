@@ -4,6 +4,7 @@ import Button from '../../../../../components/Button'
 import { Chip } from '../../../../../components/Chip/Chip'
 import './Cards.css'
 import { DEFAULT_PHOTO } from '../../../../../services/Enums'
+
 import { useHistory } from 'react-router-dom'
 import { UserType } from '../../../../../types/cadastro'
 
@@ -14,13 +15,13 @@ export function Cards(props: Partial<UserType>) {
     return <Chip key={i} title={stack.nome} />
   }) : []
 
-  async function handleNavigate(id: string): Promise<void> {
-    await history.push({pathname: '/perfil', search: id })
+  function handleNavigate(id: string) {
+    history.push({pathname: '/perfil', search: id, state:'read'})
   }
 
-  const stackExperiencia = props.stackExperiencia.map((stack, i) => {
+  const stackExperiencia = props.stackExperiencia ? props.stackExperiencia.map((stack, i) => {
     return <Chip key={i} title={stack.nome} />
-  })
+  }) : []
 
   return (
     <Card className="card">
@@ -28,18 +29,19 @@ export function Cards(props: Partial<UserType>) {
       <CardMedia
         className="img"
         component="img"
+
         image={props?.foto?.value ?? DEFAULT_PHOTO}
+
         alt=""
       />
-      <CardContent>
-        <div className="btnDiv">
+      <div className="btnDiv">
           <Button onClick={() => {handleNavigate(String(props.professionalId))}}>Ver mais</Button>
-        </div>
+      </div>
       <CardContent>
         <div className="d-flex flex-column">
           <h6 className="stacks-title">Especialidade:</h6>
           <div className="stacks">
-            <Chip key={'especialidade'} title={props.especialidade} />
+            <Chip key={'especialidade'} title='Docker' />
           </div>
         </div>
         <div className="mt-1">

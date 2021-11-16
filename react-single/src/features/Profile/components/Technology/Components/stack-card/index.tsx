@@ -3,7 +3,7 @@ import React from 'react'
 import { Wrapper, Title, WrapperBadge, Badge } from './styles'
 
 type Props = {
-  id: number
+  id: string
   title: string
   stacks?: Array<{
     value: string
@@ -16,12 +16,11 @@ const StackCard = (props: Props) => {
     <Wrapper>
       <Title>{props.title}</Title>
       <WrapperBadge>
-        {
-          props.stacks ? props.stacks.map( ( stack ) => (
+        {props.stacks
+          ? props.stacks.map(stack => (
               <Badge key={stack.value} title={stack.label} />
-            )
-          ) : undefined
-        }
+            ))
+          : undefined}
       </WrapperBadge>
     </Wrapper>
   )

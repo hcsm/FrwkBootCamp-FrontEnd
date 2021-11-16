@@ -1,5 +1,5 @@
 // @flow
-import * as Sentry from "@sentry/react"
+import * as Sentry from '@sentry/react'
 import axios, { Method } from 'axios'
 import * as React from 'react'
 import { useForm } from 'react-hook-form'
@@ -8,7 +8,7 @@ import { setUser, useAppDispatch, useAppSelector } from '../../../app/store'
 import { InputProfileImage } from '../../../components/InputProfileImage'
 import { JSON_SERVER_URL } from '../../../services/Enums'
 import { SubTitle } from '../../../styles/global'
-import { userFoto } from '../../../types/cadastro'
+import { UserFoto } from '../../../types/cadastro'
 import { FormButtons } from './FormButtons'
 
 type Props = {
@@ -16,7 +16,7 @@ type Props = {
   next: Function
 }
 type FormValues = {
-  foto: userFoto
+  foto: UserFoto
 }
 export const FormFoto = ({ back, next }: Props) => {
   const dispatch = useAppDispatch()
@@ -40,10 +40,10 @@ export const FormFoto = ({ back, next }: Props) => {
           dispatch(setUser({ foto: resp.data }))
           next()
         })
-        .catch( function (error) {
-          Sentry.captureException(error);
+        .catch(function (error) {
+          Sentry.captureException(error)
           // toast.error('Falha em comunicar com o servidor')
-       })
+        })
     } else {
       next()
     }

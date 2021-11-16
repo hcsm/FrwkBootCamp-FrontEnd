@@ -1,6 +1,6 @@
 // @flow
 import { yupResolver } from '@hookform/resolvers/yup'
-import * as Sentry from "@sentry/react"
+import * as Sentry from '@sentry/react'
 import axios, { Method } from 'axios'
 import * as React from 'react'
 import { useForm } from 'react-hook-form'
@@ -62,7 +62,8 @@ export const FormCadastro = ({ activeStep, next, back }: Props) => {
       method = 'put'
     }
     dados.email = dados.inicioEmail + dados.dominio
-    const { foto, inicioEmail, dominio, cep, confirmarSenha,  ...cadastro } = dados
+    const { foto, inicioEmail, dominio, cep, confirmarSenha, ...cadastro } =
+      dados
 
     axios({
       url: `${BASE_URL}/professional`,
@@ -73,9 +74,9 @@ export const FormCadastro = ({ activeStep, next, back }: Props) => {
         dispatch(setUser(resp.data))
         next()
       })
-      .catch( function (error) {
-         Sentry.captureException(error);
-         // toast.error('Falha em comunicar com o servidor')
+      .catch(function (error) {
+        Sentry.captureException(error)
+        // toast.error('Falha em comunicar com o servidor')
       })
   }
   const onError = (errors: object) => {

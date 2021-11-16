@@ -25,7 +25,7 @@ const AdminList = ({
   isError,
   error,
   update,
-  remove
+  remove,
 }: Props) => {
   const [value, setValue] = React.useState(0) // integer state
   function useForceUpdate() {
@@ -50,15 +50,15 @@ const AdminList = ({
       <ListWrapper className="mt-5" key={value}>
         <AutoSizer key={value}>
           {({ height, width }) => (
-              <List
-                className="list"
-                height={height}
-                rowCount={data.length}
-                rowHeight={130}
-                rowRenderer={rowRenderer}
-                width={width}
-                key={value}
-              />
+            <List
+              className="list"
+              height={height}
+              rowCount={data.length}
+              rowHeight={130}
+              rowRenderer={rowRenderer}
+              width={width}
+              key={value}
+            />
           )}
         </AutoSizer>
       </ListWrapper>
