@@ -7,5 +7,5 @@ export const DetailContainer = styled.div`
   border-radius: 5px;
   flex-direction: row;
   display: flex;
-  margin: 58px auto;
+  margin: 70px auto;
 `

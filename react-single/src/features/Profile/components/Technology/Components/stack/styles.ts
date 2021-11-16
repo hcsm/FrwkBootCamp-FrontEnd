@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
   justify-content: space-around;
   flex-direction: row;
   flex-wrap: wrap;
+  align-items: flex-start;
 `
 export const BorderHeight = styled.div`
   width: 0px;

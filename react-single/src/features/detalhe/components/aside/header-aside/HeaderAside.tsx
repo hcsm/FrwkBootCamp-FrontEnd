@@ -1,6 +1,8 @@
 import React from 'react'
 import { RootState, useAppSelector } from '../../../../../app/store'
 import IconCircle from '../../../../../components/IconCircle'
+import { useHistory } from 'react-router-dom'
+import { useGetProfessionalsQuery } from '../../../../../services/users'
 import {
   Button,
   Header,
@@ -16,6 +18,19 @@ type Props = {
 
 export const HeaderAside = ({ toggle }: Props) => {
   const user = useAppSelector((state: RootState) => state.authUser.data)
+  const history = useHistory()
+  const { data, isError } = useGetProfessionalsQuery()
+
+  function handleNavigate(email: string) {
+    const UserLogged =  data?.filter(
+        user => String(user.email) === email
+      )[0] 
+
+    history.push({pathname: '/perfil', 
+                  search: UserLogged?.professionalId, 
+                  state: UserLogged?.professionalId===undefined ? 'read' : 'edit'})
+  }
+
   return (
     <Header>
       {toggle && (
@@ -27,7 +42,7 @@ export const HeaderAside = ({ toggle }: Props) => {
       <WrapperTitle>
         <Title>
           {user.nome}
-          <Button>
+          <Button onClick={() => {handleNavigate(String(user.email))}}>
             <IconCircle
               color="white"
               borderColor="#7900DF"

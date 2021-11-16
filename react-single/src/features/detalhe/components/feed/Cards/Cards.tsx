@@ -15,8 +15,8 @@ export function Cards(props: Partial<UserType>) {
     return <Chip key={i} title={stack.nome} />
   }) : []
 
-  async function handleNavigate(id: string): Promise<void> {
-    await history.push({pathname: '/perfil', search: id })
+  function handleNavigate(id: string) {
+    history.push({pathname: '/perfil', search: id, state:'read'})
   }
 
   const stackExperiencia = props.stackExperiencia ? props.stackExperiencia.map((stack, i) => {

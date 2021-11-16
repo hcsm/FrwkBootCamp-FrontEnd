@@ -11,7 +11,7 @@ type Props = {}
 
 const Profile = (props: Props) => {
   let location = useLocation();
-
+  const onlyRead =  (location.state==="read" || location.state===undefined) 
   const { data, isError } = useGetProfessionalsQuery()
 
   const professional =  data?.filter(
@@ -24,7 +24,8 @@ const Profile = (props: Props) => {
       <WrapperBanner />
 
       <WrapperContent>
-        <Detail {...professional} />
+        <Detail props = {professional ? professional : {}}
+                reading = {onlyRead}/>
         <Technology />
       </WrapperContent>
     </WrapperProfile>
