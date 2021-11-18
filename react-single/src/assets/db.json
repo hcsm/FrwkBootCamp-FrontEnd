@@ -21,8 +21,18 @@
       "id": 2
     }
   ],
-  "perfil": [],
-  "sendfoto": [],
+  "perfil": [
+    {
+      "professionalId": "695ad0bc-e436-4f02-a1bf-f88cb69d8d90",
+      "id": 1
+    }
+  ],
+  "sendfoto": [
+    {
+      "value": "https://lh3.googleusercontent.com/a/AATXAJxw16YDu0S2TrkYbncTInsWJtwuBJ13cTD2n2pn=s96-c",
+      "id": 1
+    }
+  ],
   "refreshtoken": [],
   "especialidades": [
     {

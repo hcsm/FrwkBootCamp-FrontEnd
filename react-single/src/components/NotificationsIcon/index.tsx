@@ -25,7 +25,7 @@ const notifications = [
     time: '4 minutes ago',
   },
   {
-    id: 0,
+    id: 1,
     name: 'Jorge Lopes',
     title: 'Titulo da menssagem',
     message:
@@ -33,7 +33,7 @@ const notifications = [
     time: '4 minutes ago',
   },
   {
-    id: 0,
+    id: 2,
     name: 'Jorge Lopes',
     title: 'Titulo da menssagem',
     message:
@@ -112,10 +112,10 @@ const NotificationsIcon = (props: Props) => {
           </CloseIconWrapper>
           {
             notifications.map((notification, index) => (
-              <>
-                <NotificationRow key={`notification-${index}`} {...notification} />
-                {index !== notifications.length - 1 && <Divider />}
-              </>
+              <div key={index}>
+                <NotificationRow key={`notification-${notification.id}`} {...notification} />
+                {index !== notifications.length - 1 && <Divider key={`divider-${index}`} />}
+              </div>
             ))
           }
         </Typography>
