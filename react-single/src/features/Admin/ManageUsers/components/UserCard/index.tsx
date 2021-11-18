@@ -46,12 +46,12 @@ export const UserCard = ({ id, name, foto }: Props) => {
 
   return (
     <Card>
-      <div className="col-12 d-flex align-items-center">
-        <div className="col-12 col-sm-2 d-flex justify-content-center">
+      <div className="d-flex flex-column flex-sm-row align-items-center">
+        <div className="col-sm-2 d-flex justify-content-center mb-2 mb-sm-0">
           <Image src={foto?.value ?? DEFAULT_PHOTO} alt="imagem de perfil" />
         </div>
-        <div className="col-12 col-sm-6 name">{name}</div>
-        <div className="col-12 col-sm-4 d-flex justify-content-end">
+        <div className="col-sm-6 name mb-2 mb-sm-0">{name}</div>
+        <div className="col-sm-4 d-flex justify-content-center justify-content-sm-end">
           <ActionsIcons icons={icons} />
         </div>
       </div>

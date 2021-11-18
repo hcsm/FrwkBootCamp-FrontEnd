@@ -19,7 +19,7 @@ export const Image = styled.img`
   border-radius: 372.5px;
 `
 
-export const Name = styled.p`
+export const Name = styled.div`
   width: 320px;
   margin-left: 10px;
   margin-top: 28px;
@@ -35,13 +35,12 @@ export const Name = styled.p`
   align-items: center;
 `
 
-export const Phone = styled.p`
+export const Phone = styled.div`
   display: flex;
   align-items: center;
   align-content: center;
   width: 320px;
   margin-left: 10px;
-  top: 108px;
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
@@ -49,15 +48,15 @@ export const Phone = styled.p`
   line-height: 21px;
   color: #ffffff;
   justify-content: center;
+  margin-top: 5px;
 `
 
-export const City = styled.p`
+export const City = styled.div`
   display: flex;
   align-items: center;
   align-content: center;
   width: 320px;
   margin-left: 10px;
-  top: 155px;
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
@@ -65,15 +64,15 @@ export const City = styled.p`
   line-height: 21px;
   color: #ffffff;
   justify-content: center;
+  margin-top: 5px;
 `
 
-export const Email = styled.p`
+export const Email = styled.div`
   display: flex;
   align-items: center;
   align-content: center;
   width: 320px;
   margin-left: 10px;
-  top: 200px;
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
@@ -81,13 +80,13 @@ export const Email = styled.p`
   line-height: 21px;
   color: #ffffff;
   justify-content: center;
+  margin-top: 5px;
 `
 export const Button = styled.button`
   padding: 0;
   margin-right: 5px;
   background-color: transparent;
   border: none;
-  top: 0px;
   display: flex;
   margin-left: 5px;
   margin-top: 5px;
@@ -107,5 +106,5 @@ export const Input = styled.input`
     background-color: transparent !important;
     border: 0 !important;
   }
- 
+
 `

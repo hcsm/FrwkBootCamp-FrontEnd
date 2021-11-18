@@ -4,6 +4,7 @@ import { mountRootParcel } from 'single-spa';
 import { Router } from '@angular/router';
 import { config } from './react-input/reactWidget';
 import { LoginService } from './login.service';
+import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
 @Component({
   selector: 'login',
   templateUrl: './login.component.html',
@@ -33,9 +34,21 @@ export class LoginComponent implements OnInit {
     senha: new FormControl(null, Validators.required),
   });
 
-  constructor(private router: Router, private loginService: LoginService) {}
+  constructor(private router: Router, private loginService: LoginService,private authService: SocialAuthService) {}
 
   ngOnInit(): void {}
+
+  signInHandler(): void {
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then((data) => {
+      console.log(data)
+      const obj = {inicioEmail: data.email.split('@')[0], nome: `${data.firstName} ${data.lastName}`, foto: {value: data.photoUrl}}
+      const loginEvent = new CustomEvent<any>(this.loginEventType, {
+        detail: obj,
+      });
+      window.dispatchEvent(loginEvent);
+      this.router.navigateByUrl('/#/cadastro');
+    });
+  }
 
   onSubmit() {
     this.loginForm.markAllAsTouched();
