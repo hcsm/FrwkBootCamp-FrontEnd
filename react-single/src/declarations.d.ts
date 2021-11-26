@@ -1,8 +1,8 @@
+declare module 'react-files'
 declare module '*.html' {
   const rawHtmlFile: string
   export = rawHtmlFile
 }
-
 declare module '*.bmp' {
   const src: string
   export default src

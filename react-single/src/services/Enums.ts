@@ -1,6 +1,6 @@
-export const BASE_URL = 'http://localhost:8004/framebook'
+export const BASE_URL = 'http://localhost:8004/framebook' // '/api'
 export const STACKS_URL = BASE_URL + '/stack'
-export const JSON_SERVER_URL = 'http://localhost:3000'
+export const JSON_SERVER_URL = '/json-server'
 export const orderData = (a: string, b: string) => {
   const textA = a.toUpperCase()
   const textB = b.toUpperCase()

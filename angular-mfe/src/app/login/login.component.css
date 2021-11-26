@@ -35,9 +35,7 @@
 .bg-purple {
   background-color: #090b20;
 }
-.background {
-  background-image: url("../../assets/login-img.svg");
-}
+
 .small {
   color: #fff;
   font-size: 16px;
@@ -56,18 +54,8 @@
   font-weight: lighter;
   margin-left: 2px;
 }
-.google-sign-in {
-  background-color: white;
-  border: 1px solid #D8DDEC;
-  padding: 10px 30px;
-  text-align: center;
-  font-weight: bold;
+
+img {
+  cursor: pointer;
 }
-.google-sign-in  img {
-  float: left;
-  height: 24px;
-  width: 24px;
-}
-.google-sign-in span {
-  vertical-align: middle;
-}
+

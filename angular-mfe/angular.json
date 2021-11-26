@@ -73,6 +73,11 @@
         },
         "serve": {
           "builder": "@angular-builders/custom-webpack:dev-server",
+          "options": {
+            "ssl": true,
+            "sslCert": "../server.crt",
+            "sslKey": "../server.key"
+          },
           "configurations": {
             "production": {
               "browserTarget": "angular-mfe:build:production"

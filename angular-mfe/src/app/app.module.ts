@@ -1,19 +1,24 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-
+import {
+  FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule
+} from 'angularx-social-login';
+import { ParcelModule } from 'single-spa-angular/parcel';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LinkedinLoginComponent } from './login/linkedin-login/linkedin-login.component';
 import { LoginComponent } from './login/login.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { ParcelModule } from 'single-spa-angular/parcel';
-import { HttpClientModule } from '@angular/common/http';
-import {
-  SocialLoginModule,
-  SocialAuthServiceConfig,
-  GoogleLoginProvider,
-} from 'angularx-social-login';
+import { LoaderComponent } from './shared/loader/loader.component';
+
 @NgModule({
-  declarations: [AppComponent, LoginComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    LinkedinLoginComponent,
+    LoaderComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -26,13 +31,17 @@ import {
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {
-        autoLogin: false,
+        autoLogin: true,
         providers: [
           {
             id: GoogleLoginProvider.PROVIDER_ID,
             provider: new GoogleLoginProvider(
-              '143947604415-tkthkfu0geknqpfio12t5vtlb327gqgu.apps.googleusercontent.com'
+              '143947604415-hrk72ddtsvljok9njjjg07k2p7o2gugk.apps.googleusercontent.com'
             ),
+          },
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('619295462760084'),
           },
         ],
       } as SocialAuthServiceConfig,
@@ -40,4 +49,5 @@ import {
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+}

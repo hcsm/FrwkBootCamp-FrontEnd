@@ -49,11 +49,21 @@
       <div>
         <a href="" class="mt-4 small">Esqueceu sua senha?</a>
       </div>
-      <div class="mt-5">
-        <button class="btn btn-block google-sign-in" (click)="signInHandler()" type="button">
-          <img src="https://img.icons8.com/color/24/000000/google-logo.png" alt="google"/>
-          <!-- <span>Continuar com o Google</span> -->
-        </button>
+      <div class="mt-5 d-flex justify-content-center">
+        <img
+          (click)="facebookHandler()"
+          src="https://img.icons8.com/color/32/000000/facebook-new.png"
+        />
+        <img
+          class="mx-4"
+          (click)="googleHandler()"
+          src="https://img.icons8.com/color/32/000000/google-logo.png"
+          alt="google"
+        />
+        <img
+          (click)="linkedInHandler()"
+          src="https://img.icons8.com/color/32/000000/linkedin.png"
+        />
       </div>
       <div class="mt-5 d-flex align-items-baseline justify-content-between">
         <a href="/#/cadastro" class="color-green small">Criar conta</a>
@@ -71,6 +81,36 @@
       col-sm-5
     "
   >
-    <div class="background"></div>
+    <div class="background">
+
+    </div>
   </div>
 </div>
+
+<script>
+  window.fbAsyncInit = function () {
+    FB.init({
+      appId: "619295462760084",
+      cookie: true,
+      xfbml: true,
+      version: "1.0",
+    });
+
+    FB.AppEvents.logPageView();
+  };
+
+  (function (d, s, id) {
+    var js,
+      fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {
+      return;
+    }
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  })(document, "script", "facebook-jssdk");
+  FB.getLoginStatus(function (response) {
+    statusChangeCallback(response);
+  });
+</script>

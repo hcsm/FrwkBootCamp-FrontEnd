@@ -1,7 +1,7 @@
 {
   "imports": {
-    "@frameworker/root-config": "http://localhost:9000/frameworker-root-config.js",
-    "@frameworker/react-single": "http://localhost:8500/frameworker-frameworker.js",
-    "@frameworker/angular-mfe": "http://localhost:4200/main.js"
+    "@frameworker/root-config": "https://localhost:9000/frameworker-root-config.js",
+    "@frameworker/react-single": "https://localhost:8500/frameworker-frameworker.js",
+    "@frameworker/angular-mfe": "https://localhost:4200/main.js"
   }
 }

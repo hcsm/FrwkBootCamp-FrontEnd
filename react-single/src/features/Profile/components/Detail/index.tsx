@@ -17,6 +17,7 @@ import {
 } from './styles'
 import { useAppSelector } from '../../../../app/store'
 import { UserType } from '../../../../types/cadastro'
+import { DropZone } from '../DropZone'
 
 type FormValues = {
   name: string
@@ -35,8 +36,8 @@ const Detail = (props: Props) => {
   const { register, setFocus, getValues, reset } = useForm<FormValues>()
   const [ReadOnly, setReadOnly] = useState(props.reading)
   const [IconName, setIconName] = useState(props.reading ? 'Edit' : 'Check')
-  
-  const name = (getValues('name') === undefined ? props.props.nome : getValues('name')) 
+
+  const name = (getValues('name') === undefined ? props.props.nome : getValues('name'))
 
   function handleEdit() {
     setReadOnly(!ReadOnly)
@@ -47,7 +48,7 @@ const Detail = (props: Props) => {
   return (
     <Container className=" col-xl-4 col-lg-4 col-12 d-flex justify-content-center">
       <DetailContainer>
-        {authUser.email === props.props.email ? 
+        {authUser.email === props.props.email ?
          <div className='d-flex justify-content-end'>
           <Button onClick={() => {handleEdit()}} >
               <IconCircle
@@ -59,20 +60,20 @@ const Detail = (props: Props) => {
               />
             </Button>
           </div>
-          : null    
+          : null
         }
 
         <Image src={props.props?.foto?.value ?? DEFAULT_PHOTO} alt="imagem de perfil" />
         <Name className="ps-2">
-         {!ReadOnly ? 
+         {!ReadOnly ?
            <Input
             {...register('name')}
             defaultValue={props.props.nome}
             readOnly={ReadOnly}
             autoFocus={true}
             /> :
-            name 
-          } 
+            name
+          }
         </Name>
 
         <Phone>
@@ -101,6 +102,10 @@ const Detail = (props: Props) => {
             readOnly={ReadOnly}
           />
         </Email>
+        <div className="m-4">
+
+        <DropZone />
+        </div>
       </DetailContainer>
     </Container>
   )

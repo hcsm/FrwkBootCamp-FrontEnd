@@ -4,7 +4,14 @@
 
 export const environment = {
   production: false,
-  api: "http://localhost:8004/framebook/"
+  api: 'http://localhost:8004/framebook/',
+  linkedin_client_id: '78xsg4u4u9xay1',
+  linkedin_redirect_uri:'https%3A%2F%2Flocalhost%3A9000%2FlinkedinLoginResponse',
+  linkedin_scope: 'r_liteprofile',
+  linkedin_state: '987654321',
+  linkedin_response_type: 'code',
+  linkedin_client_secret:"sBMUZUFbLErvhGoF",
+  loginEventType: 'user-logged-in',
 };
 
 /*

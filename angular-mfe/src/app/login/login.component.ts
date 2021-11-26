@@ -1,10 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { mountRootParcel } from 'single-spa';
 import { Router } from '@angular/router';
-import { config } from './react-input/reactWidget';
+import {
+  FacebookLoginProvider,
+  GoogleLoginProvider,
+  SocialAuthService,
+} from 'angularx-social-login';
+import { mountRootParcel } from 'single-spa';
+import { environment } from './../../environments/environment';
 import { LoginService } from './login.service';
-import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
+import { config } from './react-input/reactWidget';
+
+declare var FB: any;
 @Component({
   selector: 'login',
   templateUrl: './login.component.html',
@@ -28,28 +35,63 @@ export class LoginComponent implements OnInit {
   };
   config = config;
   mountRootParcel = mountRootParcel;
-  loginEventType = 'user-logged-in';
   loginForm = new FormGroup({
     email: new FormControl(undefined, Validators.required),
     senha: new FormControl(null, Validators.required),
   });
 
-  constructor(private router: Router, private loginService: LoginService,private authService: SocialAuthService) {}
+  constructor(
+    private router: Router,
+    private loginService: LoginService,
+    private authService: SocialAuthService
+  ) {}
 
-  ngOnInit(): void {}
-
-  signInHandler(): void {
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then((data) => {
-      console.log(data)
-      const obj = {inicioEmail: data.email.split('@')[0], nome: `${data.firstName} ${data.lastName}`, foto: {value: data.photoUrl}}
-      const loginEvent = new CustomEvent<any>(this.loginEventType, {
-        detail: obj,
+  ngOnInit(): void {
+    (window as any).fbAsyncInit = function () {
+      FB.init({
+        appId: '619295462760084',
+        cookie: true,
+        xfbml: true,
+        version: 'v12.0',
       });
-      window.dispatchEvent(loginEvent);
-      this.router.navigateByUrl('/#/cadastro');
-    });
+      FB.AppEvents.logPageView();
+    };
+    (function (d, s, id) {
+      var js,
+        fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {
+        return;
+      }
+      js = d.createElement(s);
+      js.id = id;
+      (js as any).src = 'https://connect.facebook.net/en_US/sdk.js';
+      fjs.parentNode ? fjs.parentNode.insertBefore(js, fjs) : undefined;
+    })(document, 'script', 'facebook-jssdk');
   }
 
+  googleHandler(): void {
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(this.socialHandler);
+  }
+  linkedInHandler() {
+    const uri = `https://www.linkedin.com/oauth/v2/authorization?response_type=${environment.linkedin_response_type}&state=${environment.linkedin_state}&scope=${environment.linkedin_scope}&client_id=${environment.linkedin_client_id}&redirect_uri=${environment.linkedin_redirect_uri}`;
+    window.open(uri);
+  }
+  facebookHandler() {
+    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(this.socialHandler);
+  }
+  socialHandler(data: any) {
+    const obj = {
+      inicioEmail: data.email.split('@')[0],
+      nome: `${data.firstName} ${data.lastName}`,
+      foto: { value: data.photoUrl },
+      email: data.email,
+    };
+    const loginEvent = new CustomEvent<any>(environment.loginEventType, {
+      detail: obj,
+    });
+    window.dispatchEvent(loginEvent);
+    this.router.navigateByUrl('/#/cadastro');
+  }
   onSubmit() {
     this.loginForm.markAllAsTouched();
     if (this.loginForm.valid) {
@@ -57,13 +99,15 @@ export class LoginComponent implements OnInit {
       values.email = this.loginForm.value.email + this.dominio;
       this.loginService.login(values).subscribe(
         (data: any) => {
-          const loginEvent = new CustomEvent<any>(this.loginEventType, {
+          const loginEvent = new CustomEvent<any>(environment.loginEventType, {
             detail: data.user,
           });
           window.dispatchEvent(loginEvent);
           this.router.navigateByUrl('/#/detalhe');
         },
-        (error: any) => {this.loginForm.setErrors({ invalid: true })}
+        (error: any) => {
+          this.loginForm.setErrors({ invalid: true });
+        }
       );
     }
   }
