@@ -1,19 +1,21 @@
 import * as React from 'react'
 import { Redirect, Route, Switch } from 'react-router'
 import AdminCrud from '../features/Admin/AdminCrud'
+import { ManageUsers } from '../features/Admin/ManageUsers'
 import { Feed } from '../features/detalhe/components/feed/Feed'
 import {
-  useRemoveEspecialidadesMutation,
   useCreateEspecialidadesMutation,
-  useUpdateEspecialidadesMutation,
   useGetEspecialidadesQuery,
+  useRemoveEspecialidadesMutation,
+  useUpdateEspecialidadesMutation,
 } from '../services/especialidades'
 import {
-  useGetStacksQuery,
-  useUpdateStacksMutation,
   useCreateStacksMutation,
+  useGetStacksQuery,
   useRemoveStacksMutation,
+  useUpdateStacksMutation,
 } from '../services/stacks'
+import { PrivateRoute } from './PrivateRoute'
 
 type Props = {}
 const HomeRoutes = (props: Props) => {
@@ -25,25 +27,33 @@ const HomeRoutes = (props: Props) => {
   const [removeStacks] = useRemoveStacksMutation()
   return (
     <Switch>
-      <Route exact path="/detalhe/especialidades">
-        <AdminCrud
-          title="Especialidades"
-          fetch={useGetEspecialidadesQuery}
-          create={createEspecialidades}
-          update={updateEspecialidades}
-          remove={removeEspecialidades}
-        />
-      </Route>
-      <Route path="/detalhe/stacks">
-        <AdminCrud
-          title="Stacks"
-          fetch={useGetStacksQuery}
-          create={createStacks}
-          update={updateStacks}
-          remove={removeStacks}
-        />
-      </Route>
-      <Route path="/detalhe/feed" component={Feed} />
+      <PrivateRoute
+        exact
+        path="/detalhe/especialidades"
+        component={() => (
+          <AdminCrud
+            title="Especialidades"
+            fetch={useGetEspecialidadesQuery}
+            create={createEspecialidades}
+            update={updateEspecialidades}
+            remove={removeEspecialidades}
+          />
+        )}
+      />
+      <PrivateRoute
+        path="/detalhe/stacks"
+        component={() => (
+          <AdminCrud
+            title="Stacks"
+            fetch={useGetStacksQuery}
+            create={createStacks}
+            update={updateStacks}
+            remove={removeStacks}
+          />
+        )}
+      />
+      <PrivateRoute path="/detalhe/feed" component={Feed} />
+      <PrivateRoute path="/detalhe/usuarios" component={ManageUsers} />
       <Redirect from="*" to="/detalhe/feed" />
     </Switch>
   )

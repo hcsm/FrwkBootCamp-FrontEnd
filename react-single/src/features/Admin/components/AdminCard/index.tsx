@@ -10,6 +10,7 @@ import { StacksType } from '../../../../types/cadastro'
 import ConfirmClearButtons from './components/ConfirmClearButtons'
 import EditDeleteButtons from './components/EditDeleteButtons'
 import { CardInput } from './styles'
+import * as Sentry from '@sentry/react'
 
 type Props = {
   currentValue?: StacksType
@@ -17,6 +18,7 @@ type Props = {
   onClear?: Function
   onConfirm?: Function
   onRemove?: Function
+  isError?: boolean
 }
 
 type FormValues = {
@@ -29,6 +31,7 @@ export const AdminCard = ({
   onClear,
   onConfirm,
   onRemove,
+  isError,
 }: Props) => {
   const { register, setFocus, getValues, reset } = useForm<FormValues>()
   const [iseditOrNew, setIsEditOrNew] = React.useState(!!isNew)
@@ -53,12 +56,13 @@ export const AdminCard = ({
   const submit = () => {
     const value = getValues('label')?.trim()
     if (value && onConfirm) {
-      const obj = { value, label: value, id: currentValue?.id }
+      const obj = { nome: value, id: currentValue?.id ?? value }
       onConfirm(obj)
       toggleActions()
       onClear ? onClear() : undefined
-    } else {
-      toast.error('Valor invalido')
+    } else if (isError) {
+      Sentry.captureException(isError)
+      // toast.error('Valor invalido')
     }
   }
   const remove = () => {
@@ -73,24 +77,26 @@ export const AdminCard = ({
           sx={{
             border: '1pt solid #213054',
             alignItems: 'end',
-            margin: '10px 0',
             width: '100%',
             backgroundColor: ' #0B0C22',
             borderRadius: '10px',
           }}
         >
-          <Row className="mt-2">
-            <Col md={7}>
+          <Row className="mt-2 ">
+            <Col
+              className="d-flex justify-content-center justify-content-md-start"
+              md={7}
+            >
               <CardInput
-                className="ms-2"
+                className="ms-md-2 text-center text-md-start"
                 {...register('label')}
-                defaultValue={currentValue?.label}
+                defaultValue={currentValue?.nome}
                 readOnly={InputReadOnly}
                 placeholder="Digite aqui"
               />
             </Col>
-            <Col md={5}>
-              <div className="d-flex justify-content-end">
+            <Col className="mt-3 mt-md-0" md={5}>
+              <div className="d-flex justify-content-center justify-content-md-end">
                 {iseditOrNew ? (
                   <ConfirmClearButtons submit={submit} clear={clearInput} />
                 ) : (

@@ -5,24 +5,26 @@ import { StackCard } from '../stack-card/StackCard'
 import db from '../../../../../assets/db.json'
 
 import { Wrapper } from './styles'
+import { Box } from '@material-ui/system'
+import { useAppSelector } from '../../../../../app/store'
 
 type Props = {}
 
 export const Stack = (props: Props) => {
-  const [data] = useState(db)
-  const { cadastro, perfil } = data
+  const authUser = useAppSelector(state => state.authUser.data)
 
   return (
     <Wrapper>
       <StackCard
-        id={cadastro[0].id}
+        className="first"
+        id={authUser.professionalId}
         title="Principais stacks"
-        stacks={perfil[0].stackExperiencia}
+        stacks={authUser?.stackExperiencia?.slice(0, 4)}
       />
       <StackCard
-        id={cadastro[0].id}
+        id={authUser.professionalId}
         title="Aprendizado"
-        stacks={perfil[0].stackAprender}
+        stacks={authUser?.stackAprender?.slice(0, 4)}
       />
     </Wrapper>
   )

@@ -1,0 +1,116 @@
+<div class="row login">
+  <div class="m-0 p-0 d-flex flex-column bg-purple col-12 col-lg-7">
+    <div class="col-12 mt-5 d-flex justify-content-center">
+      <h1 class="title">Framebook</h1>
+    </div>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="mx-5 mt-5">
+      <div class="mb-3">
+        <parcel
+          [config]="config"
+          [customProps]="parcelProps"
+          [mountParcel]="mountRootParcel"
+        ></parcel>
+        <p
+          *ngIf="
+            loginForm.controls?.email?.errors &&
+            loginForm.controls?.email?.touched
+          "
+          class="invalid"
+        >
+          Email inválido
+        </p>
+      </div>
+      <div class="form-floating">
+        <input
+          type="password"
+          class="form-control {{
+            loginForm.controls?.senha?.errors &&
+            loginForm.controls?.senha?.touched
+              ? 'is-invalid'
+              : ''
+          }}"
+          id="floatingPassword"
+          formControlName="senha"
+        />
+        <label for="floatingPassword">Senha</label>
+      </div>
+      <p
+        *ngIf="
+          loginForm.controls?.senha?.errors &&
+          loginForm.controls?.senha?.touched
+        "
+        class="invalid"
+      >
+        Senha inválida
+      </p>
+      <p *ngIf="loginForm.errors?.invalid" class="invalid mt-1">
+        Usuário ou senha incorretos!
+      </p>
+      <div>
+        <a href="" class="mt-4 small">Esqueceu sua senha?</a>
+      </div>
+      <div class="mt-5 d-flex justify-content-center">
+        <img
+          (click)="facebookHandler()"
+          src="https://img.icons8.com/color/32/000000/facebook-new.png"
+        />
+        <img
+          class="mx-4"
+          (click)="googleHandler()"
+          src="https://img.icons8.com/color/32/000000/google-logo.png"
+          alt="google"
+        />
+        <img
+          (click)="linkedInHandler()"
+          src="https://img.icons8.com/color/32/000000/linkedin.png"
+        />
+      </div>
+      <div class="mt-5 d-flex align-items-baseline justify-content-between">
+        <a href="/#/cadastro" class="color-green small">Criar conta</a>
+        <button type="submit" class="button w-50">Entrar</button>
+      </div>
+    </form>
+  </div>
+  <div
+    class="
+      d-none d-lg-flex
+      justify-content-center
+      align-items-centerS
+      m-0
+      p-0
+      col-sm-5
+    "
+  >
+    <div class="background">
+
+    </div>
+  </div>
+</div>
+
+<script>
+  window.fbAsyncInit = function () {
+    FB.init({
+      appId: "619295462760084",
+      cookie: true,
+      xfbml: true,
+      version: "1.0",
+    });
+
+    FB.AppEvents.logPageView();
+  };
+
+  (function (d, s, id) {
+    var js,
+      fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {
+      return;
+    }
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  })(document, "script", "facebook-jssdk");
+  FB.getLoginStatus(function (response) {
+    statusChangeCallback(response);
+  });
+</script>

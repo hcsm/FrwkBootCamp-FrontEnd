@@ -1,5 +1,6 @@
 // @flow
 import * as React from 'react'
+import { UseQuery } from '@reduxjs/toolkit/dist/query/react/buildHooks'
 import { Col } from 'react-bootstrap'
 import If from '../../../components/If'
 import InputSearch from '../../../components/InputSearch'
@@ -9,7 +10,7 @@ import AddButton from '../components/AddButton'
 import AdminCard from '../components/AdminCard'
 import AdminList from '../components/AdminList'
 import Loader from '../components/Loader'
-import { AddWrapper, ListWrapper } from './styles'
+import { AddWrapper, CrudWrapper } from './styles'
 type Props = {
   title: string
   fetch: any
@@ -19,24 +20,26 @@ type Props = {
 }
 
 const AdminCrud = ({ title, fetch, create, update, remove }: Props) => {
+  const state = fetch()
+
   const [isNew, toggleIsNew] = React.useState(false)
   const [searchInputValue, setSearchInputValue] = React.useState('')
-  const values = fetch()
   const [searchlist, setSearchlist] = React.useState<StacksType[]>([])
 
   const forceReaload = async () => {
-    values.isFetching = true
+    state.isFetching = true
     await sleep(600)
-    values.isFetching = false
+    state.isFetching = false
   }
+
   const search = async (value: string) => {
     setSearchInputValue(value)
     await forceReaload()
-    if (values.data) {
+    if (state.data) {
       setSearchlist(
-        [...values?.data].filter(elem =>
+        [...state?.data].filter(elem =>
           value
-            ? elem.label
+            ? elem.nome
                 .toUpperCase()
                 .trim()
                 .includes(value.toUpperCase().trim())
@@ -46,13 +49,13 @@ const AdminCrud = ({ title, fetch, create, update, remove }: Props) => {
     }
   }
   return (
-    <>
-      <ListWrapper className="pt-3">
+    <If test={state}>
+      <CrudWrapper className="pt-3">
         <div className="mt-4 w-100 d-flex justify-content-center wrap">
           <SubTitle>{title}</SubTitle>
         </div>
-        <div className="mt-5 row justify-content-center">
-          <Col className="" md={7}>
+        <div className="mt-5 row justify-content-center mx-0">
+          <Col className="d-flex justify-content-center search" sm={7}>
             <InputSearch
               placeholder="Buscar..."
               value={searchInputValue}
@@ -61,12 +64,15 @@ const AdminCrud = ({ title, fetch, create, update, remove }: Props) => {
               }}
             />
           </Col>
-          <Col className="ms-4" md={2}>
+          <Col
+            className="ms-md-4 mt-3 mt-sm-0 d-flex justify-content-center p-0"
+            sm={2}
+          >
             <AddButton onClick={() => toggleIsNew(!isNew)} />
           </Col>
         </div>
         <If test={isNew}>
-          <AddWrapper className="mt-5">
+          <AddWrapper className="mt-5 col-12">
             <AdminCard
               key="new"
               isNew={isNew}
@@ -75,21 +81,22 @@ const AdminCrud = ({ title, fetch, create, update, remove }: Props) => {
             />
           </AddWrapper>
         </If>
-        {values.isLoading || values.isFetching ? (
-          <Loader />
-        ) : (
-          <AdminList
-            error={values.error}
-            isError={values.isError}
-            isSuccess={values.isSuccess}
-            querySearch={searchInputValue}
-            data={searchInputValue ? searchlist : values.data}
-            update={update}
-            remove={remove}
-          />
-        )}
-      </ListWrapper>
-    </>
+        <If test={!isNew}>
+          {state.isLoading || state.isFetching ? (
+            <Loader />
+          ) : (
+            <AdminList
+              error={state.error}
+              isError={state.isError}
+              isSuccess={state.isSuccess}
+              data={searchInputValue ? searchlist : state.data}
+              update={update}
+              remove={remove}
+            />
+          )}
+        </If>
+      </CrudWrapper>
+    </If>
   )
 }
 

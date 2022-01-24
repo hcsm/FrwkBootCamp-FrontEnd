@@ -2,18 +2,18 @@ import { createEntityAdapter } from '@reduxjs/toolkit'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { toast } from 'react-toastify'
 import { StacksType } from '../types/cadastro'
-import { BASE_URL, orderData } from './Enums'
+import { BASE_URL, JSON_SERVER_URL, orderData } from './Enums'
 
 export const especialidadeApi = createApi({
   reducerPath: 'especialidades',
-  baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
+  baseQuery: fetchBaseQuery({ baseUrl: JSON_SERVER_URL }),
   tagTypes: ['Especialidades'],
   endpoints: builder => ({
     getEspecialidades: builder.query<StacksType[], void>({
       query: () => '/especialidades',
       providesTags: ['Especialidades'],
       transformResponse: (response: StacksType[]) => {
-        return response.sort((a, b) => orderData(a.label, b.label))
+        return response
       },
     }),
     createEspecialidades: builder.mutation({

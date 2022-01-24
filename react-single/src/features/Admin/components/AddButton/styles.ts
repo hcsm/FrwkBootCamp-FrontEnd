@@ -5,7 +5,6 @@ export const StyledAddButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
   color: #0af585;
   background-color: transparent;
   padding: 0.5em 1em;

@@ -1,12 +1,36 @@
-import React from 'react'
-import HomeRoutes from '../../../../routes/HomeRoutes'
-import AdminList from '../../../Admin/AdminCrud'
+import * as React from 'react'
+import InputSearch from '../../../../components/InputSearch'
+import { searchValue } from '../../../../services/Enums'
+import { useGetProfessionalsQuery } from '../../../../services/users'
 import { Cards } from './Cards/Cards'
-
 import { WrapperFeed } from './styles'
 
 type Props = {}
 
 export const Feed = (props: Props) => {
-  return <WrapperFeed>Feed</WrapperFeed>
+  const [search, setSearch] = React.useState('')
+  const { data, isError } = useGetProfessionalsQuery()
+  
+  const renderFeed = () => {
+    return data
+      ?.filter(elem =>
+        search && elem ? searchValue(elem, Object.keys(elem), search) : elem
+      )
+      .map(user => (
+        <Cards key={user.professionalId} {...user} />
+      ))
+
+  }
+  return (
+    <WrapperFeed>
+      <div className="m-5 d-flex justify-content-center">
+        <InputSearch
+          placeholder="Buscar..."
+          value={search}
+          setValue={setSearch}
+        />
+      </div>
+      <div className="list">{renderFeed()}</div>
+    </WrapperFeed>
+  )
 }

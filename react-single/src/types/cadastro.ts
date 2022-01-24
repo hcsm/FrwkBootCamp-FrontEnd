@@ -1,5 +1,5 @@
 export type CadastroType = {
-  id: number
+  professionalId: string
   nome: string
   senha: string
   confirmarSenha: string
@@ -13,17 +13,21 @@ export type CadastroType = {
   especialidade: StacksType | {}
   stackExperiencia: StacksType[] | []
   stackAprender: StacksType[] | []
-  foto: userFoto
+  foto: UserFoto
   ativo: boolean
 }
-
+export interface UserType extends CadastroType {
+  token?: any
+  refreshToken?: any
+}
 export interface StacksType {
-  id?: number
+  id: string
   label: string
   value: string
+  nome: string
 }
 
-export interface userFoto {
+export interface UserFoto {
   id: number
   value?: string
 }

@@ -1,20 +1,7 @@
 import styled from 'styled-components'
+import { DivWithScroll } from '../../../../styles/global'
 
-export const ListWrapper = styled.div`
-  width: 95%;
-  height: 100vh;
-  .list::-webkit-scrollbar {
-    width: 10px;
-  }
-
-  .list::-webkit-scrollbar-track {
-    background: #0b0c22;
-    border-radius: 10px;
-    padding: 1px;
-  }
-
-  .list::-webkit-scrollbar-thumb {
-    background: #213054;
-    border-radius: 10px;
-  }
+export const ListWrapper = styled(DivWithScroll('.list'))`
+  width: 98%;
+  height: 58%;
 `

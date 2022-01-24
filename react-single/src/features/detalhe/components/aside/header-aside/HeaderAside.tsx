@@ -1,23 +1,48 @@
-import React, { useState } from 'react'
-
+import React from 'react'
+import { RootState, useAppSelector } from '../../../../../app/store'
 import IconCircle from '../../../../../components/IconCircle'
-import db from '../../../../../assets/db.json'
+import { useHistory } from 'react-router-dom'
+import { useGetProfessionalsQuery } from '../../../../../services/users'
+import {
+  Button,
+  Header,
+  IconWrapper,
+  Image,
+  Title,
+  WrapperTitle,
+} from './styles'
 
-import { Header, Image, WrapperTitle, Title, Button } from './styles'
+type Props = {
+  toggle?: Function | undefined
+}
 
-type Props = {}
+export const HeaderAside = ({ toggle }: Props) => {
+  const user = useAppSelector((state: RootState) => state.authUser.data)
+  const history = useHistory()
+  const { data, isError } = useGetProfessionalsQuery()
 
-export const HeaderAside = (props: Props) => {
-  const [data] = useState(db)
-  const { sendfoto, cadastro } = data
+  function handleNavigate(email: string) {
+    const UserLogged =  data?.filter(
+        user => String(user.email) === email
+      )[0] 
+
+    history.push({pathname: '/perfil', 
+                  search: UserLogged?.professionalId, 
+                  state: UserLogged?.professionalId===undefined ? 'read' : 'edit'})
+  }
 
   return (
     <Header>
-      <Image src={sendfoto[0].value} alt="imagem de perfil" />
+      {toggle && (
+        <IconWrapper className="ms-auto pointer" onClick={() => toggle()}>
+          <IconCircle icon="Clear" color="white" />
+        </IconWrapper>
+      )}
+      <Image src={user.foto.value} alt="imagem de perfil" />
       <WrapperTitle>
         <Title>
-          {cadastro[0].nome}
-          <Button>
+          {user.nome}
+          <Button onClick={() => {handleNavigate(String(user.email))}}>
             <IconCircle
               color="white"
               borderColor="#7900DF"

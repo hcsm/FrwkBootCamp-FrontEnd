@@ -1,9 +1,9 @@
 // @flow
 import { yupResolver } from '@hookform/resolvers/yup'
+import * as Sentry from '@sentry/react'
 import axios, { Method } from 'axios'
-import { error } from 'console'
 import * as React from 'react'
-import { FieldError, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import * as yup from 'yup'
 import { setUser, useAppDispatch } from '../../../app/store'
@@ -57,25 +57,30 @@ export const FormCadastro = ({ activeStep, next, back }: Props) => {
   })
   const onSubmit = (dados: CadastroType) => {
     let method: Method = 'post'
-    if (authUser?.data?.id) {
-      dados.id = authUser.data.id
+    if (authUser?.data?.professionalId) {
+      dados.professionalId = authUser.data.professionalId
       method = 'put'
     }
     dados.email = dados.inicioEmail + dados.dominio
-    const { foto, inicioEmail, dominio, cep, ...cadastro } = dados
+    const { foto, inicioEmail, dominio, cep, confirmarSenha, ...cadastro } =
+      dados
+
     axios({
-      url: `${BASE_URL}/cadastro/${dados.id ?? ''}`,
+      url: `${BASE_URL}/professional`,
       method: method,
       data: cadastro,
     })
       .then(resp => {
-        dispatch(setUser({ inicioEmail, dominio, cep, ...resp.data }))
+        dispatch(setUser(resp.data))
         next()
       })
-      .catch(error => toast.error('Falha em comunicar com o servidor'))
+      .catch(function (error) {
+        Sentry.captureException(error)
+        // toast.error('Falha em comunicar com o servidor')
+      })
   }
   const onError = (errors: object) => {
-    Object.values(errors).map(e => (e ? toast.error(e.message) : false))
+    // Object.values(errors).map(e => (e ? // toast.error(e.message) : false))
   }
   const checkValid = async () => {
     toast.dismiss()

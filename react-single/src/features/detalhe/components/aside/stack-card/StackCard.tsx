@@ -1,24 +1,25 @@
-import React from 'react'
+import * as React from 'react'
 
 import { Wrapper, Title, WrapperBadge, Badge } from './styles'
 
 type Props = {
-  id: number
+  id: string
   title: string
-  stacks: Array<{
+  stacks?: Array<{
     value: string
     label: string
   }>
+  className?: string
 }
 
 export const StackCard = (props: Props) => {
   return (
-    <Wrapper>
+    <Wrapper className={props.className}>
       <Title>{props.title}</Title>
       <WrapperBadge>
-        {props.stacks.map(stack => (
-          <Badge label={stack.label} color="primary" />
-        ))}
+        {props.stacks
+          ? props.stacks.map(stack => <Badge title={stack.label} />)
+          : undefined}
       </WrapperBadge>
     </Wrapper>
   )
