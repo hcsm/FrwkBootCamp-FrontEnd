@@ -6,10 +6,10 @@ import {
   GoogleLoginProvider,
   SocialAuthService,
 } from 'angularx-social-login';
-import { mountRootParcel } from 'single-spa';
+import { mountRootParcel, ParcelConfig } from 'single-spa';
 import { environment } from './../../environments/environment';
 import { LoginService } from './login.service';
-import { config } from './react-input/reactWidget';
+import { config } from '../../../../react-single/src/components/InputEmail';
 
 declare var FB: any;
 @Component({
@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
     onChange: this.onChange,
     onSelectChange: this.onSelectChange,
   };
-  config = config;
+  config = config as ParcelConfig;
   mountRootParcel = mountRootParcel;
   loginForm = new FormGroup({
     email: new FormControl(undefined, Validators.required),
@@ -70,14 +70,18 @@ export class LoginComponent implements OnInit {
   }
 
   googleHandler(): void {
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(this.socialHandler);
+    this.authService
+      .signIn(GoogleLoginProvider.PROVIDER_ID)
+      .then(this.socialHandler);
   }
   linkedInHandler() {
     const uri = `https://www.linkedin.com/oauth/v2/authorization?response_type=${environment.linkedin_response_type}&state=${environment.linkedin_state}&scope=${environment.linkedin_scope}&client_id=${environment.linkedin_client_id}&redirect_uri=${environment.linkedin_redirect_uri}`;
     window.open(uri);
   }
   facebookHandler() {
-    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(this.socialHandler);
+    this.authService
+      .signIn(FacebookLoginProvider.PROVIDER_ID)
+      .then(this.socialHandler);
   }
   socialHandler(data: any) {
     const obj = {
